@@ -1,0 +1,5 @@
+web_shop:
+    resource: "@WebShopBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
