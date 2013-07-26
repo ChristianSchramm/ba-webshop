@@ -3,6 +3,7 @@
 namespace Web\Bundle\ShopBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Adress
@@ -46,6 +47,12 @@ class Adress
      * @var string
      *
      * @ORM\Column(name="Postcode", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "5",
+     *      minMessage = "Your first name must be at least {{ limit }} characters length",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters length"
+     * )
      */
     private $postcode;
 
