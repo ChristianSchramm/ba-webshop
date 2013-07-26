@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h3>Adresse </h3>
+<br>
+<strong>Name: </strong>{{ adress.name }}
+<br>
+<strong>Straße: </strong>{{ adress.street }}
+<br>
+<strong>Postleitzahl: </strong>{{ adress.postcode }}
+<br>
+<strong>Ort: </strong>{{ adress.location }}
+<br>
+<strong>Land: </strong>{{ adress.country }}
+
+{% endblock %}

@@ -24,30 +24,44 @@ class Adress
     /**
      * @var string
      *
-     * @ORM\Column(name="Street", type="string", length=255)
+     * @ORM\Column(name="Name", type="string", length=255, nullable=true)
+     */
+    private $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Street", type="string", length=255, nullable=true)
      */
     private $street;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Location", type="string", length=255)
+     * @ORM\Column(name="Location", type="string", length=255, nullable=true)
      */
     private $location;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Postcode", type="string", length=255)
+     * @ORM\Column(name="Postcode", type="string", length=255, nullable=true)
      */
     private $postcode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Country", type="string", length=255)
+     * @ORM\Column(name="Country", type="string", length=255, nullable=true)
      */
     private $country;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="adress")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
 
 
     /**
@@ -150,5 +164,51 @@ class Adress
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\User $user
+     * @return Adress
+     */
+    public function setUser(\Web\Bundle\ShopBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Web\Bundle\ShopBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Adress
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

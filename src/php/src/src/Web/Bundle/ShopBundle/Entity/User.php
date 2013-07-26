@@ -74,10 +74,24 @@ class User  implements UserInterface
      * @ORM\JoinTable(name="users_roles")
      */
     private $roles;
+    
+
+    /**
+     * @ORM\OneToMany(targetEntity="Adress", mappedBy="User")
+     */
+    protected $adresss;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Cart", mappedBy="User")
+     */
+    protected $carts;
 
     public function  __construct(){
-    	$this->roles = new \Doctrine\Common\Collections\ArrayCollection();
     	$this->salt = md5(uniqid());
+    	
+    	$this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+    	$this->adresss = new \Doctrine\Common\Collections\ArrayCollection(); 
+    	$this->carts = new \Doctrine\Common\Collections\ArrayCollection(); 
     }
     
     
@@ -284,4 +298,80 @@ class User  implements UserInterface
     
 
 
+
+    /**
+     * Add adresss
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Adress $adresss
+     * @return User
+     */
+    public function addAdress(\Web\Bundle\ShopBundle\Entity\Adress $adresss)
+    {
+        $this->adresss[] = $adresss;
+    
+        return $this;
+    }
+
+    /**
+     * Remove adresss
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Adress $adress
+     */
+    public function removeAdress(\Web\Bundle\ShopBundle\Entity\Adress $adresss)
+    {
+        $this->adress->removeElement($adresss);
+    }
+
+    /**
+     * Get adresss
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdress()
+    {
+        return $this->adresss;
+    }
+
+    /**
+     * Get adresss
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdresss()
+    {
+        return $this->adresss;
+    }
+
+    /**
+     * Add carts
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Cart $carts
+     * @return User
+     */
+    public function addCart(\Web\Bundle\ShopBundle\Entity\Cart $carts)
+    {
+        $this->carts[] = $carts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove carts
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Cart $carts
+     */
+    public function removeCart(\Web\Bundle\ShopBundle\Entity\Cart $carts)
+    {
+        $this->carts->removeElement($carts);
+    }
+
+    /**
+     * Get carts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCarts()
+    {
+        return $this->carts;
+    }
 }
