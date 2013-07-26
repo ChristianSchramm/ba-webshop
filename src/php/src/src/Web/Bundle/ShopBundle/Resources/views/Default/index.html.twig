@@ -1,6 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-Hello !
+
+<ul>
+    {% for product in products %}
+        <li>
+          <section>
+          <strong>{{ product.title }}</strong>
+          {{ product.genre }}
+          {{ product.status }}
+          </section>
+        </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

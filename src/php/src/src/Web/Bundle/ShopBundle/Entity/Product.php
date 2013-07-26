@@ -50,9 +50,9 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="Stauts", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Status", type="string", length=255, nullable=true)
      */
-    private $stauts;
+    private $status;
     
     
 
@@ -186,25 +186,25 @@ class Product
     }
 
     /**
-     * Set stauts
+     * Set status
      *
-     * @param string $stauts
+     * @param string $status
      * @return Product
      */
-    public function setStauts($stauts)
+    public function setStatus($status)
     {
-        $this->stauts = $stauts;
+        $this->status = $status;
     
         return $this;
     }
 
     /**
-     * Get stauts
+     * Get status
      *
      * @return string 
      */
-    public function getStauts()
+    public function getStatus()
     {
-        return $this->stauts;
+        return $this->status;
     }
 }
