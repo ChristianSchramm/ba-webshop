@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="/")
+     * @Route("/", name="default")
      * @Template()
      */
     public function indexAction()
@@ -23,7 +23,7 @@ class DefaultController extends Controller
     
     
     /**
-     * @Route("/{key}", name="search")
+     * @Route("/search/{key}", name="search")
      * @Template()
      */
     public function searchAction($key)
