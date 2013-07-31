@@ -144,6 +144,11 @@ textarea {
   }
 
   /* Allgemein ________________________________________________________ */
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
   li {
     list-style: none;
   }
@@ -158,11 +163,37 @@ textarea {
     position: relative;
   }
 
+  /* Warenkorb */
+  .amount,
+  .card,
+  .price,
+  .text {
+    display: inline-block;
+  }
+
+  .card {
+    padding-left: 40px;
+    position: relative;
+  }
+
+  .amount {
+    position: absolute;
+  }
+
   /* Navigation _______________________________________________________ */
   .meta-nav li,
   .main-nav li,
   .footer-nav li {
     float: left;
+  }
+
+  .meta-nav li,
+  .footer-nav li {
+    margin-left: 10px;
+  }
+  .meta-nav li:first-child,
+  .footer-nav li:first-child {
+    margin-left: 0;
   }
 
   .meta-nav,
@@ -202,17 +233,92 @@ textarea {
   }
 
   /* Footer-Navigation */
-  /* Products */
+  /* Produkte */
   .products li {
     float: left;
+    margin: 10px 5px 0;
+    padding: 5px;
   }
 
   .product-card {
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
     display: block;
     min-height: 700px;
+    position: relative;
     width: 300px;
   }
+
+  .image {
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+  .image img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .booking {
+    bottom: 25px;
+    height: 50px;
+    position: absolute;
+    right: 15px;
+  }
+
+  .add {
+    bottom: -10px;
+    display: inline-block;
+    position: absolute;
+    right: -30px;
+    width: 140px;
+  }
+
+  .rating {
+    bottom: 15px;
+    left: 15px;
+    position: absolute;
+  }
+  .rating li {
+    margin-left: 5px;
+    padding: 0;
+  }
+  .rating li:first-child {
+    margin-left: 0;
+  }
+  .rating a {
+    background: green;
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
 }
+/* Allgemein ______________________________________________ */
+/* Header */
+.text {
+  text-indent: -999em;
+}
+
+/* Navigation _____________________________________________ */
+/* Hauptnavigation */
+.layer0 {
+  text-align: center;
+}
+
+/* Produkte */
+.rating {
+  text-indent: -999em;
+}
+
+.booking {
+  font-size: 2em;
+}
+.booking span {
+  font-size: 0.5em;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
