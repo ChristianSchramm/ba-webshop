@@ -20,7 +20,9 @@ class DefaultController extends Controller
     	
     	$search = $session->get('search');
     	$type = $session->get('type');
-
+    	if (is_null($type)){
+    		$type = $em->getRepository('WebShopBundle:Type')->findOneByName("BD");
+    	}
     	$filter = $session->get('filter');
 
     	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $search, $filter);

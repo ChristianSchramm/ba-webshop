@@ -18,25 +18,15 @@ class ProductRepository extends EntityRepository
 	public function findAllByFilter($type, $search, $filter) {
 		
 		// seach and type filter
-		if (is_object($type)){
 
-			$q = $this
+
+		$q = $this
 				->createQueryBuilder('c')
 				->where('c.type = :type AND c.title LIKE :search ')
 				->setParameter('type', $type->getId())
 				->setParameter('search', "%".$search."%")
-				->getQuery()
-				;
-		}else  {
+				->getQuery();
 
-			$q = $this
-			->createQueryBuilder('c')
-			->where('c.title LIKE :search ')
-			->setParameter('search', "%".$search."%")
-			->getQuery()
-			;
-			
-		}
 		
 		$result = $q->getResult();
 		echo count($result);
@@ -61,39 +51,10 @@ class ProductRepository extends EntityRepository
 			}
 		}
 		
-		/*
-		for($j = 0; $j < $result->count(); $j++){
-			$genres = $result[$j]->getGenres();
-			$da = false;
-			
-			
-			
-			for ($i = 0; $i < count($filter); $i++){
-			  if ($filter[$i] == $genres[$j]->getId()){
-				  $da = true;
-			  }
-			}
-			if ($da){
-				$resultFinal->add($result[$j]);
-			}
-		}
-		*/
-		/*
-		for ($i = 0; $i < count($filter); $i++){
-			$da = false;
-			for($j = 0; $j < $result[$i]->getGenres()->count(); $j++){
-				$genres = $result[$i]->getGenres();
-				if ($filter[$i] == $genres[$j]->getId()){
-					$da = true;
-				}
-			}
-			if ($da){
-				$resultFinal->add($result[$i]);
-			}
-		}*/
-		
 
-		if ($resultFinal->count() > 0)
+
+
+		if (count($filter) > 0)
 			return $resultFinal;
 		else		
 		  return $result;

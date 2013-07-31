@@ -65,7 +65,7 @@
                     <figure class="image">
                       <img src="http://placekitten.com/g/200/300">
                     </figure>
-                    <h2 class="heading level2">{{ product.title }}</h2>
+                    <h2 class="heading level2">{{ product.title }}<small>{{ product.type.name }}</small></h2>
                     <p>          
                       {% for genre in product.genres %}
 								        {{ genre.name }}
