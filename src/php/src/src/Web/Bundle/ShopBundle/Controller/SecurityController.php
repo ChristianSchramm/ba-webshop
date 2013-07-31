@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\SecurityContext;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/login", name="login")
+     * @Route("/login/", name="login")
      * @Template()
      */
     public function loginAction()
@@ -50,7 +50,7 @@ class SecurityController extends Controller
     }
     
     /**
-     * @Route("/login_check", name="login_check")
+     * @Route("/login_check/", name="login_check")
      */
     public function loginCheckAction(){
  
@@ -58,7 +58,7 @@ class SecurityController extends Controller
     }
     
     /**
-     * @Route("/logout", name="logout")
+     * @Route("/logout/", name="logout")
      */
     public function  logoutAction(){
     	// The security layer will intercept this request
@@ -80,7 +80,7 @@ class SecurityController extends Controller
     
     
     /**
-     * @Route("/create", name="create")
+     * @Route("/create/", name="create")
      * @Template()
      */
     public function createAction(){
@@ -160,7 +160,7 @@ class SecurityController extends Controller
     }
     
     /**
-     * @Route("/account", name="account")
+     * @Route("/account/", name="account")
      * @Template()
      */
     public function accountAction()
@@ -174,7 +174,7 @@ class SecurityController extends Controller
     }
     
     /**
-     * @Route("/activate/{code}", name="activate")
+     * @Route("/activate/{code}/", name="activate")
      * @Template()
      */
     public function activateAction($code){

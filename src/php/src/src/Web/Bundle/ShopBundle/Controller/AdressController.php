@@ -18,7 +18,7 @@ class AdressController extends Controller
 {
 	
 	/**
-	 * @Route("/account/adress", name="account_adress")
+	 * @Route("/account/adress/", name="account_adress")
 	 * @Template()
 	 */
 	public function indexAction()
@@ -32,7 +32,7 @@ class AdressController extends Controller
 	}
 	
 	/**
-	 * @Route("/account/adress/edit", name="account_adress_edit")
+	 * @Route("/account/adress/edit/", name="account_adress_edit")
 	 * @Template()
 	 */
 	public function editAction()
@@ -48,7 +48,7 @@ class AdressController extends Controller
 	}
 	
 	/**
-	 * @Route("/account/adress/save", name="account_adress_save")
+	 * @Route("/account/adress/save/", name="account_adress_save")
 	 * @Template()
 	 */
 	public function saveAction()

@@ -6,15 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class AccountController extends Controller
+class GenreController extends Controller
 {
     /**
-     * @Route("/account/")
+     * @Route("/admin/genre/", name="admin_genre")
      * @Template()
      */
     public function indexAction()
     {
-    	return array();
+    	$em = $this->getDoctrine()->getManager();
+    	$genres = $em->getRepository('WebShopBundle:Genre')->findAll();
+    	
+    	return array('genres' => $genres);
     }
 
 }

@@ -13,17 +13,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class CartController extends Controller
 {
     /**
-     * @Route("/cart", name="cart")
+     * @Route("/cart/", name="cart")
      * @Template()
      */
     public function indexAction()
     {
+    	$em = $this->getDoctrine()->getManager();
     	
-    	return array();
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	
+    	return array('cart' => $cart);
     }
 
     /**
-     * @Route("/cart/add/{id}", name="cart_add")
+     * @Route("/cart/add/{id}/", name="cart_add")
      * @Template()
      */
     public function addAction($id)
@@ -35,11 +39,8 @@ class CartController extends Controller
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	
     	// try find item
-
-    	
     	$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
 
-    	
     	if (!is_null($cartProduct)){
     		$cartProduct->setAmount($cartProduct->getAmount()+1);
     	}else {
@@ -51,16 +52,34 @@ class CartController extends Controller
 
     	$em->persist($cartProduct);
     	$em->flush();
-    	
 
-    	
     	$url = $this->getRequest()->headers->get("referer");
     	if (empty($url)){
     		return $this->redirect($this->generateUrl('cart'));
     	}
     	return new RedirectResponse($url);
+    }
 
+    /**
+     * @Route("/cart/del/{id}/", name="cart_del")
+     * @Template()
+     */
+    public function removeAction($id)
+    {
+    	
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	
+    	$em = $this->getDoctrine()->getManager();
+    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	
+    	// try find item
+    	$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
+
+
+    	$em->remove($cartProduct);
+    	$em->flush();
     	
 
+    	return $this->redirect($this->generateUrl('cart'));
     }
 }

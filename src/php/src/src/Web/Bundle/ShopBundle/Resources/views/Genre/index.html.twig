@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h2>Genres</h2>
+<ul>
+    {% for genre in genres %}
+        <li>{{ genre.name }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

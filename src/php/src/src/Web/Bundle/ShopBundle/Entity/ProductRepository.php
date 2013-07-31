@@ -2,6 +2,8 @@
 
 namespace Web\Bundle\ShopBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -12,4 +14,85 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+	
+	public function findAllByFilter($type, $search, $filter) {
+		
+		// seach and type filter
+		if (is_object($type)){
+			$q = $this
+				->createQueryBuilder('c')
+				->where('c.type = :type AND c.title LIKE :search ')
+				->setParameter('type', $typeId)
+				->setParameter('search', "%".$search."&")
+				->getQuery()
+				;
+		}else {
+
+			$q = $this
+			->createQueryBuilder('c')
+			->where('c.title LIKE :search ')
+			->setParameter('search', "%".$search."%")
+			->getQuery()
+			;
+			
+		}
+		
+		$result = $q->getResult();
+		$resultFinal = new ArrayCollection();
+		
+		
+		// filter genre
+		foreach ($result as $product){
+			//echo $product->getTitle();
+			$ja = 0;
+			foreach ($product->getGenres() as $genre){
+				//echo $genre->getName();
+				foreach ($filter as $filt){
+					if ($genre->getId() == $filt){
+						$ja++;
+					}
+				}
+			}
+			if ($ja == count($filter)){
+				$resultFinal->add($product);
+			}
+		}
+		
+		/*
+		for($j = 0; $j < $result->count(); $j++){
+			$genres = $result[$j]->getGenres();
+			$da = false;
+			
+			
+			
+			for ($i = 0; $i < count($filter); $i++){
+			  if ($filter[$i] == $genres[$j]->getId()){
+				  $da = true;
+			  }
+			}
+			if ($da){
+				$resultFinal->add($result[$j]);
+			}
+		}
+		*/
+		/*
+		for ($i = 0; $i < count($filter); $i++){
+			$da = false;
+			for($j = 0; $j < $result[$i]->getGenres()->count(); $j++){
+				$genres = $result[$i]->getGenres();
+				if ($filter[$i] == $genres[$j]->getId()){
+					$da = true;
+				}
+			}
+			if ($da){
+				$resultFinal->add($result[$i]);
+			}
+		}*/
+		
+
+		if ($resultFinal->count() > 0)
+			return $resultFinal;
+		else		
+		  return $result;
+	}
 }

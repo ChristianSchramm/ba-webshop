@@ -4,23 +4,49 @@
 
 
 <div>
+
+<h2>Suche</h2>
+<form action="{{ path('search') }}" method="post">
+  <input name="search" type="text" value="{{ search }}">
+  <button>Suchen</button>
+</form>
+
+<h2>Filter</h2>
+<form action="{{ path('filter') }}" method="post">
+          
+  {% for genre in genres %}
+    <input type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">{{ genre.name }}
+  {% endfor %}
+  
+  <button>Filtern</button>
+</form>
+
+
 <h2>Übersicht</h2>
 <ul>
     {% for product in products %}
         <li>
           <section>
           <strong>{{ product.title }}</strong>
-          {{ product.genre }}
+          
+          {% for genre in product.genres %}
+			        {{ genre.name }}
+			    {% endfor %}
+
+          {{ product.type.name }}
           {{ product.status }}
-          <a href="{{ path('cart_add', {'id': product.id}) }}"> add to cart</a>
+          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('cart_add', {'id': product.id}) }}"> add to cart</a>
+          {% endif %}
           </section>
         </li>
     {% endfor %}
 </ul>
 </div>
 <div>
-<h2>Cart</h2>
-{{ cartCount }} - {{ cartSum }}
-</div>
-
+<a href="{{ path('cart') }}">
+	<h2>Cart</h2>
+		{{ cartCount }} - {{ cartSum }} €
+	</div>
+</a>
 {% endblock %}

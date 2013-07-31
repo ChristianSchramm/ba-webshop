@@ -28,23 +28,8 @@ class Product
      */
     private $title;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Type", type="string", length=255, nullable=true)
-     */
-    private $type;
+
     
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Genre", type="string", length=255, nullable=true)
-     */
-    private $genre;
-    
-
 
 
     /**
@@ -61,13 +46,34 @@ class Product
      */
     private $price;
     
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Description", type="text", nullable=true)
+     */
+    private $description;
+    
     
 
     /**
-     * @ORM\OneToMany(targetEntity="CartProduct", mappedBy="Product")
+     * @ORM\OneToMany(targetEntity="CartProduct", mappedBy="product")
      */
     protected $cartProducts;
     
+    
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Genre", inversedBy="products")
+     * @ORM\JoinTable(name="product_genres")
+     */
+    private $genres;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="products")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    protected $type;
     
 
     /**
@@ -76,6 +82,7 @@ class Product
     public function __construct()
     {
     	$this->cartProducts = new \Doctrine\Common\Collections\ArrayCollection();
+    	$this->genres = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -146,51 +153,9 @@ class Product
         return $this->cartProducts;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Product
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
 
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
 
-    /**
-     * Set genre
-     *
-     * @param string $genre
-     * @return Product
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-    
-        return $this;
-    }
 
-    /**
-     * Get genre
-     *
-     * @return string 
-     */
-    public function getGenre()
-    {
-        return $this->genre;
-    }
 
     /**
      * Set status
@@ -236,5 +201,84 @@ class Product
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Product
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add genres
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Genre $genres
+     * @return Product
+     */
+    public function addGenre(\Web\Bundle\ShopBundle\Entity\Genre $genres)
+    {
+        $this->genres[] = $genres;
+    
+        return $this;
+    }
+
+    /**
+     * Remove genres
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Genre $genres
+     */
+    public function removeGenre(\Web\Bundle\ShopBundle\Entity\Genre $genres)
+    {
+        $this->genres->removeElement($genres);
+    }
+
+    /**
+     * Get genres
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGenres()
+    {
+        return $this->genres;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Type $type
+     * @return Product
+     */
+    public function setType(\Web\Bundle\ShopBundle\Entity\Type $type = null)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Web\Bundle\ShopBundle\Entity\Type 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
