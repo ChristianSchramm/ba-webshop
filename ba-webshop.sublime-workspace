@@ -139,7 +139,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 360.0,
 		"selected_items":
 		[
 			[
@@ -179,7 +179,7 @@
 				"Set Syntax: R Console"
 			]
 		],
-		"width": 400.0
+		"width": 384.0
 	},
 	"console":
 	{
@@ -213,7 +213,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"*.scss"
@@ -1071,7 +1071,7 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
