@@ -28,12 +28,11 @@ class LoadCartData extends AbstractFixture implements OrderedFixtureInterface
   	
 	
   	$cart1 = new Cart();
+  	$cart1->setUser($this->getReference('user4'));
 
 
   	$manager->persist($cart1);
 
-
-    
     $this->addReference('cart1', $cart1);
   	
   	

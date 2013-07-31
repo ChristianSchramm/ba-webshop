@@ -2,6 +2,9 @@
 
 {% block body %}
 
+
+<div>
+<h2>Übersicht</h2>
 <ul>
     {% for product in products %}
         <li>
@@ -9,9 +12,15 @@
           <strong>{{ product.title }}</strong>
           {{ product.genre }}
           {{ product.status }}
+          <a href="{{ path('cart_add', {'id': product.id}) }}"> add to cart</a>
           </section>
         </li>
     {% endfor %}
 </ul>
+</div>
+<div>
+<h2>Cart</h2>
+{{ cartCount }} - {{ cartSum }}
+</div>
 
 {% endblock %}

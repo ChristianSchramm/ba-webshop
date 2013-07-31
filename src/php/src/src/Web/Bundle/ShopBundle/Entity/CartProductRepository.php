@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class CartProductRepository extends EntityRepository
 {
+	
+	public function findOneByCartAndProduct($cartid, $productid){
+		
+		$q = $this
+		->createQueryBuilder('c')
+		->where('c.cart = :cartid AND c.product = :productid')
+		->setParameter('cartid', $cartid)
+		->setParameter('productid', $productid)
+		->getQuery()
+		;
+			
+		return $q->getOneOrNullResult();
+	}
 }

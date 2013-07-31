@@ -54,6 +54,13 @@ class Product
      */
     private $status;
     
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="Price", type="float")
+     */
+    private $price;
+    
     
 
     /**
@@ -206,5 +213,28 @@ class Product
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

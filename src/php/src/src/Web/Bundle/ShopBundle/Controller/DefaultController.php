@@ -17,8 +17,27 @@ class DefaultController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	$products = $em->getRepository('WebShopBundle:Product')->findAll();
     	
+    	
+    	
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
 
-      return array('products' => $products);
+    	
+   	  if (!is_null($cart)){
+	    	$cartCount = 0;
+	    	$cartSum = 0;
+	    	foreach ($cart->getCartProducts() as $product){
+	    		$cartSum += $product->getAmount() * $product->getProduct()->getPrice();
+	    		$cartCount += $product->getAmount();
+	    	}
+	    	$cartSum = number_format($cartSum, 2, ',', ' ');
+   	  }
+    	
+
+      return array('products' => $products,
+      		         'cartCount' => $cartCount,
+      		         'cartSum' => $cartSum
+      		);
     }
     
     
