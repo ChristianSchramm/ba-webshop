@@ -1,5 +1,7 @@
 /* Imports ___________________________________________*/
 /*Komplettes Compass Framework*/
+/* Mixins _____________________________________________*/
+/*Base64 background-image*/
 /* ==========================================================================
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
    ========================================================================== */
@@ -59,6 +61,158 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+@media screen {
+  .cols {
+    margin: 0;
+    zoom: 1;
+  }
+  .cols:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    visibility: hidden;
+  }
+
+  .col {
+    float: left;
+    min-height: 1px;
+  }
+  .col:first-child {
+    margin-left: 0;
+  }
+
+  .c12of12 {
+    margin-left: 2.1276%;
+    width: 100%;
+  }
+
+  .c11of12 {
+    margin-left: 2.1276%;
+    width: 91.48937%;
+  }
+
+  .c10of12 {
+    margin-left: 2.1276%;
+    width: 82.97873%;
+  }
+
+  .c9of12 {
+    margin-left: 2.1276%;
+    width: 74.4681%;
+  }
+
+  .c8of12 {
+    margin-left: 2.1276%;
+    width: 65.95747%;
+  }
+
+  .c7of12 {
+    margin-left: 2.1276%;
+    width: 57.44683%;
+  }
+
+  .c6of12 {
+    margin-left: 2.1276%;
+    width: 48.9362%;
+  }
+
+  .c5of12 {
+    margin-left: 2.1276%;
+    width: 40.42557%;
+  }
+
+  .c4of12 {
+    margin-left: 2.1276%;
+    width: 31.91493%;
+  }
+
+  .c3of12 {
+    margin-left: 2.1276%;
+    width: 23.4043%;
+  }
+
+  .c2of12 {
+    margin-left: 2.1276%;
+    width: 14.89367%;
+  }
+
+  .c1of12 {
+    margin-left: 2.1276%;
+    width: 6.38303%;
+  }
+
+  /* Allgemein ________________________________________________________ */
+  li {
+    list-style: none;
+  }
+
+  .box {
+    padding: 15px;
+  }
+
+  /* Layout */
+  header {
+    min-height: 150px;
+    position: relative;
+  }
+
+  /* Navigation _______________________________________________________ */
+  .meta-nav li,
+  .main-nav li,
+  .footer-nav li {
+    float: left;
+  }
+
+  .meta-nav,
+  .search {
+    position: absolute;
+  }
+
+  /* Metanavigation */
+  .meta-nav {
+    right: 120px;
+    top: 0;
+    width: 300px;
+  }
+
+  /* Suche */
+  .search {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+
+  /* Hauptnavigation */
+  .main-nav {
+    bottom: 0;
+    position: relative;
+  }
+  .main-nav .layer0 {
+    display: table;
+    width: 100%;
+  }
+  .main-nav .layer0 li {
+    display: table-cell;
+    width: 33.33%;
+  }
+  .main-nav .layer1 {
+    display: none;
+  }
+
+  /* Footer-Navigation */
+  /* Products */
+  .products li {
+    float: left;
+  }
+
+  .product-card {
+    display: block;
+    min-height: 700px;
+    width: 300px;
+  }
+}
 /* ==========================================================================
    Media Queries
    ========================================================================== */

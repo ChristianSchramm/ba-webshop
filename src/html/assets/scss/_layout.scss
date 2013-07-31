@@ -1,0 +1,94 @@
+@include mf-layout;
+
+/* Allgemein ________________________________________________________ */
+
+li {
+  list-style: none;
+}
+
+.box {
+  padding: 15px;
+}
+
+/* Layout */
+
+header {
+  min-height: 150px;
+  position: relative;
+}
+
+/* Navigation _______________________________________________________ */
+
+.meta-nav,
+.main-nav,
+.footer-nav {
+  li {
+    float: left;
+  }
+}
+
+.meta-nav,
+.search {
+  position: absolute;
+}
+
+/* Metanavigation */
+
+.meta-nav {
+  right: 120px;
+  top: 0;
+  width: 300px;
+
+  li {
+  }
+}
+
+/* Suche */
+
+.search {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+/* Hauptnavigation */
+
+.main-nav {
+  bottom: 0;
+  position: relative;
+
+  .layer0 {
+    display: table;
+    width: 100%;
+
+    li {
+      display: table-cell;
+      width: 33.33%;
+    }
+  }
+
+  .layer1 {
+    display: none;
+  }
+}
+
+/* Footer-Navigation */
+
+.footer-nav {
+  li {
+  }
+}
+
+/* Products */
+
+.products {
+  li {
+    float: left;
+  }
+}
+
+.product-card {
+  display: block;
+  min-height: 700px;
+  width: 300px;  
+}

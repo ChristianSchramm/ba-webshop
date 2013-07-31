@@ -60,19 +60,17 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+@media screen {
+  @import "layout";
+}
 
+@import "content";
+// @import "colorbox";
+// @import "flexslider";
 
+@media print {
 
-
-
-
-
-
-
-
-
-
-
+}
 
 /* ==========================================================================
    Media Queries
