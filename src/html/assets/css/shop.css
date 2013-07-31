@@ -172,12 +172,15 @@ textarea {
   }
 
   .card {
+    background: url("http://placekitten.com/g/30/30") no-repeat;
     padding-left: 40px;
     position: relative;
   }
 
   .amount {
+    left: 25px;
     position: absolute;
+    top: 10px;
   }
 
   /* Navigation _______________________________________________________ */
