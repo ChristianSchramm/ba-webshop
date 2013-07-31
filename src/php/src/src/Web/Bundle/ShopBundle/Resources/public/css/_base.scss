@@ -1,0 +1,43 @@
+/* Mixins _____________________________________________*/
+
+@mixin mf-layout ($columns: 12, $col-margin: 2.1276%) {
+  
+  // $columns: 24, $col-margin: 1.052631578947368%
+
+  .cols {
+    margin: 0;
+    zoom: 1;
+
+    &:after {
+      clear: both;
+      content: ".";
+      display: block;
+      height: 0;
+      font-size: 0;
+      visibility: hidden;
+    }
+  }
+  .col {
+    float: left;
+    min-height: 1px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  $i: $columns;
+  @while $i > 0 {
+    .c#{$i}of#{$columns} {
+      margin-left: $col-margin;
+      width: ((((100% / $columns) * $i) + (($col-margin / $columns) * $i)) - $col-margin);
+    }
+    $i: $i - 1;
+  }
+}
+
+/*Base64 background-image*/
+@mixin base64-image($url) {
+  background-image: inline-image($url); 
+ *background-image: image-url($url);
+}

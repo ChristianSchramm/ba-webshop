@@ -19,14 +19,15 @@ class ProductRepository extends EntityRepository
 		
 		// seach and type filter
 		if (is_object($type)){
+
 			$q = $this
 				->createQueryBuilder('c')
 				->where('c.type = :type AND c.title LIKE :search ')
-				->setParameter('type', $typeId)
-				->setParameter('search', "%".$search."&")
+				->setParameter('type', $type->getId())
+				->setParameter('search', "%".$search."%")
 				->getQuery()
 				;
-		}else {
+		}else  {
 
 			$q = $this
 			->createQueryBuilder('c')
@@ -38,6 +39,7 @@ class ProductRepository extends EntityRepository
 		}
 		
 		$result = $q->getResult();
+		echo count($result);
 		$resultFinal = new ArrayCollection();
 		
 		
@@ -47,11 +49,12 @@ class ProductRepository extends EntityRepository
 			$ja = 0;
 			foreach ($product->getGenres() as $genre){
 				//echo $genre->getName();
-				foreach ($filter as $filt){
-					if ($genre->getId() == $filt){
-						$ja++;
+				if (!is_null($filter))
+					foreach ($filter as $filt){
+						if ($genre->getId() == $filt){
+							$ja++;
+						}
 					}
-				}
 			}
 			if ($ja == count($filter)){
 				$resultFinal->add($product);

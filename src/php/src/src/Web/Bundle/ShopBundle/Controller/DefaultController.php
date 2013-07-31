@@ -20,6 +20,7 @@ class DefaultController extends Controller
     	
     	$search = $session->get('search');
     	$type = $session->get('type');
+
     	$filter = $session->get('filter');
 
     	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $search, $filter);
@@ -32,11 +33,12 @@ class DefaultController extends Controller
     	
     	for ($i = 0; $i < count($genres); $i++){
     		$genres[$i]->active = false;
-    		foreach($filter as $filt){
-    			if ($filt == $genres[$i]->getId()){
-    				$genres[$i]->active = true;
-    			}
-    		}
+    		if (!is_null($filter))
+	    		foreach($filter as $filt){
+	    			if ($filt == $genres[$i]->getId()){
+	    				$genres[$i]->active = true;
+	    			}
+	    		}
     	}
 
     	// berechne Warenkorb

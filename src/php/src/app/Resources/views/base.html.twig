@@ -1,35 +1,81 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-   <meta charset="UTF-8" />
-   <title>{% block title %}Welcome!{% endblock %}</title>
-   {% block stylesheets %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
    
-   {% endblock %}
-   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+   	{% stylesheets '@WebShopBundle/Resources/public/css/shop.scss' 
+	   	   filter='yui_css' 
+			   output='css/min.css'
+		 %}
+		    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+		{% endstylesheets %}
+		
+
   </head>
   <body>
-    <header>
-      <a href="{{ path('default') }}">index</a>
-      <nav>
-		    <ul>
-		      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-	          <li><a href="{{ path('account') }}"> {{ app.user.username }}</a></li>
-	          <li><a href="{{ path('logout') }}"> logout</a></li>
-	       
-	        {% else %}
-	          <li><a href="{{ path('login') }}"> login</a></li>
-	        {% endif %}
-		    </ul>
-		  </nav>
-  	</header>
+      <div class="wrapper">
+        <header>
+          <a class="logo" href="{{ path('default') }}">Scheiben-Bude</a>
+
+          <nav class="meta-nav">
+            <ul>
+				      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			          <li><a href="{{ path('account') }}"> {{ app.user.username }}</a></li>
+			          <li><a href="{{ path('logout') }}"> logout</a></li>
+			       
+			        {% else %}
+			          <li><a href="{{ path('login') }}"> login</a></li>
+			        {% endif %}
+            </ul>
+          </nav> <!-- meta-navigation -->
+        
+         
+          <div class="search">
+           {% if search is defined %}
+            <form  action="{{ path('search') }}" method="post">
+              <input class="input" type="search" name="search" value="{{ search }}">
+              <button class="btn">Suchen</button>
+            </form>
+            {% endif %}
+          </div> <!-- search -->
+
+            
+        </header> <!-- header -->
+
     {% block body %}
         
     {% endblock %}
     
-
-    {% block javascripts %}
-    
+    {% block footer %}
+         <footer>
+          <nav class="footer-nav">
+            <ul>
+              <li><a href="#">AGB</a></li>
+              <li><a href="#">Impressum</a></li>
+              <li><a href="#">Bezahlung</a></li>
+              <li><a href="#">Versand</a></li>
+            </ul>
+          </nav>
+        </footer> <!-- footer -->
     {% endblock %}
+    
+    </div> <!-- wrapper -->
+		{% javascripts '@WebShopBundle/Resources/public/js/modernizr-2.6.2.min.js' 
+		               '@WebShopBundle/Resources/public/js/jquery-1.10.1.min.js'
+		               '@WebShopBundle/Resources/public/js/plugins.js'
+		               '@WebShopBundle/Resources/public/js/script.js'
+		               
+		   filter='yui_js' 
+		   output='js/min.js'
+		 %}
+		    <script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
     </body>
 </html>

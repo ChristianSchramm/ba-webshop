@@ -3,50 +3,96 @@
 {% block body %}
 
 
-<div>
+        <div class="main" role="main">
+          <div class="cols">
+            <div class="col c2of12">
+              <div class="filter">
+                <h2 class="heading level2">Filter</h2>
+                <h3 class="heading level3">Genre:</h3>
+                <form action="{{ path('filter') }}" method="post">
+                  <ul>
+                  {% for genre in genres %}
+								   <li>
+								     <input id="g{{ loop.index }}" type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">
+								     <label for="g{{ loop.index }}" class="label">{{ genre.name }}</label>
+								   </li>
+								  {% endfor %}
+                  </ul>
+                  <button class="btn">Filtern</button>
+                </form>
+              </div> <!-- filter -->
+            </div> <!-- c2of12 -->
 
-<h2>Suche</h2>
-<form action="{{ path('search') }}" method="post">
-  <input name="search" type="text" value="{{ search }}">
-  <button>Suchen</button>
-</form>
+            <div class="col c10of12">
+              <div class="cols">
+                <div class="col c9of12">
+                  <nav class="main-nav">
+                    <ul class="layer0">
+                      <li>
+                        <a href="{{ path('bd') }}">Blu-Ray</a>
+                        <ul class="layer1">
+                          <li><a href="#">Neu</a></li>
+                          <li><a href="#">Gebraucht</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="{{ path('dvd') }}">DVD</a>
+                        <ul class="layer1">
+                          <li><a href="#">Neu</a></li>
+                          <li><a href="#">Gebraucht</a></li>
+                        </ul>
+                      </li>
+                      <li class="layer1">
+                        <a href="{{ path('cd') }}">CD</a>
+                        <ul class="layer1">
+                          <li><a href="#">Neu</a></li>
+                          <li><a href="#">Gebraucht</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div> <!-- c9of12 -->
 
-<h2>Filter</h2>
-<form action="{{ path('filter') }}" method="post">
-          
-  {% for genre in genres %}
-    <input type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">{{ genre.name }}
-  {% endfor %}
-  
-  <button>Filtern</button>
-</form>
+                <div class="col c3of12">
+                  <a class="card" href="{{ path('cart') }}"><span class="amount">{{ cartCount }}</span><span class="text">Warenkorb</span><span class="price">({{ cartSum }}&euro;)</span></a>
+                </div> <!-- c3of12 -->
+              </div> <!-- cols -->
+              
+              <ul class="products">
+              {% for product in products %}
+                <li>
+                  <div class="box product-card">
+                    <figure class="image">
+                      <img src="http://placekitten.com/g/200/300">
+                    </figure>
+                    <h2 class="heading level2">{{ product.title }}</h2>
+                    <p>          
+                      {% for genre in product.genres %}
+								        {{ genre.name }}
+								      {% endfor %}
+			              </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <ul class="rating">
+                      <li><a class="star one" href="#">befriedigend</a></li>
+                      <li><a class="star two" href="#">gut</a></li>
+                      <li><a class="star three empty" href="#">sehr gut</a></li>
+                    </ul>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					            <a class="booking" href="{{ path('cart_add', {'id': product.id}) }}">{{ product.price }}&euro;<span class="add">add to cart</span></a>
+					          {% endif %}
+                    
+                  </div> <!-- box -->
+                </li>
+              {% endfor %}
+              </ul>
+            </div> <!-- c10of12 -->
+          </div> <!-- cols -->
+        </div> <!-- main -->
 
 
-<h2>Übersicht</h2>
-<ul>
-    {% for product in products %}
-        <li>
-          <section>
-          <strong>{{ product.title }}</strong>
-          
-          {% for genre in product.genres %}
-			        {{ genre.name }}
-			    {% endfor %}
-
-          {{ product.type.name }}
-          {{ product.status }}
-          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="{{ path('cart_add', {'id': product.id}) }}"> add to cart</a>
-          {% endif %}
-          </section>
-        </li>
-    {% endfor %}
-</ul>
-</div>
-<div>
-<a href="{{ path('cart') }}">
-	<h2>Cart</h2>
-		{{ cartCount }} - {{ cartSum }} €
-	</div>
-</a>
 {% endblock %}
