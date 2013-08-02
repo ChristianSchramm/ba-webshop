@@ -29,7 +29,7 @@ class ProductRepository extends EntityRepository
 
 		
 		$result = $q->getResult();
-		echo count($result);
+
 		$resultFinal = new ArrayCollection();
 		
 		

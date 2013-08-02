@@ -3,5 +3,12 @@
 {% block title %}WebShopBundle:Admin:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Admin:index page</h1>
+
+
+<h2>Admin Control Panel</h2>
+
+<a href="{{ path('admin_genre') }}">Genre Verwaltung</a>
+<a href="{{ path('admin_user') }}">User Verwaltung</a>
+<a href="{{ path('admin_product') }}">Product Verwaltung</a>
+<br>
 {% endblock %}

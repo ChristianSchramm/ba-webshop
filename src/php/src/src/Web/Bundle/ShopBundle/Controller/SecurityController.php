@@ -158,20 +158,7 @@ class SecurityController extends Controller
 					'form' => $form->createView(),
 	    ));
     }
-    
-    /**
-     * @Route("/account/", name="account")
-     * @Template()
-     */
-    public function accountAction()
-    {
-    	if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
-    		return $this->redirect($this->generateUrl('login'));
 
-    	}    	
-    	return array( );
-    
-    }
     
     /**
      * @Route("/activate/{code}/", name="activate")

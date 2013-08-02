@@ -8,13 +8,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class AccountController extends Controller
 {
+    
     /**
-     * @Route("/account/")
+     * @Route("/account/", name="account")
      * @Template()
      */
     public function indexAction()
     {
-    	return array();
+    	if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+    		return $this->redirect($this->generateUrl('login'));
+
+    	}    	
+    	return array( );
+    
     }
 
 }

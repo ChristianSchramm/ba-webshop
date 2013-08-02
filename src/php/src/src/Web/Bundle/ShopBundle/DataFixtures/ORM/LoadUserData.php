@@ -43,6 +43,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
 		$user1 = new User();
 	  $user1->setUsername('user');
 	  $user1->setEmail('user@localhost');
+	  
+	  $adress = $this->getReference('adress2');
+	  
+	  $user1->addAdress($adress);
+		$adress->setUser($user1);
 
 	
 	
@@ -56,6 +61,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
 		$user2 = new User();
 		$user2->setUsername('admin');
 		$user2->setEmail('admin@localhost');
+		
+		$adress = $this->getReference('adress3');
+		 
+		$user2->addAdress($adress);
+		$adress->setUser($user2);
 
 			
 		$encoder = $factory->getEncoder($user2);
@@ -68,6 +78,12 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface,Co
 		$user3 = new User();
 		$user3->setUsername('inactive');
 		$user3->setEmail('inactive@localhost');
+		
+
+		$adress = $this->getReference('adress4');
+			
+		$user3->addAdress($adress);
+		$adress->setUser($user3);
 			
 		$encoder = $factory->getEncoder($user3);
 		$password = $encoder->encodePassword('inactivepass', $user3->getSalt());

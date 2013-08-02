@@ -77,6 +77,13 @@ class Product
     
 
     /**
+     * @ORM\ManyToOne(targetEntity="Document", inversedBy="product")
+     * @ORM\JoinColumn(name="asset_id", referencedColumnName="id")
+     */
+    protected $image;
+    
+
+    /**
      * Constructor
      */
     public function __construct()

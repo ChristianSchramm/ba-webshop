@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h2>new Producte</h2>
+<form action="{{  path('account_adress_save') }}" method="post" }}>
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.product.title) }}
+        {{ form_errors(form.product.title) }}
+        {{ form_widget(form.product.title) }}
+    </div>
+    <div>
+        {{ form_label(form.product.price) }}
+        {{ form_errors(form.product.price) }}
+        {{ form_widget(form.product.price) }}
+    </div>
+    <div>
+        {{ form_label(form.product.genre) }}
+        {{ form_errors(form.product.genre) }}
+        {{ form_widget(form.product.genre) }}
+    </div>
+    <div>
+        {{ form_label(form.document.file) }}
+        {{ form_errors(form.document.file) }}
+        {{ form_widget(form.document.file) }}
+    </div>
+<input type="submit" />
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h2>Producte</h2>
+<p>
+  <a href="{{ path('admin_product_new') }}">new</a>
+</p>
+<ul>
+    {% for product in products %}
+        <li>{{ product.title }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

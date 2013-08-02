@@ -31,17 +31,17 @@ class LoadCartProductData extends AbstractFixture implements OrderedFixtureInter
   	
   	$cartProduct1 = new CartProduct();
   	$cartProduct1->setAmount(1);
-  	$cartProduct1->setCart($this->getReference('cart1'));
+  	$cartProduct1->setCart($this->getReference('cart4'));
   	$cartProduct1->setProduct($this->getReference('product1'));
   	
 
   	$cartProduct2 = new CartProduct();
   	$cartProduct2->setAmount(2);
-  	$cartProduct2->setCart($this->getReference('cart1'));
+  	$cartProduct2->setCart($this->getReference('cart4'));
   	$cartProduct2->setProduct($this->getReference('product3'));
   	
   	
-  	$cart = $this->getReference('cart1');
+  	$cart = $this->getReference('cart4');
   	$cart->getCartProducts()->count();
 
 		

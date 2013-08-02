@@ -107,4 +107,14 @@ class Genre
     {
         return $this->products;
     }
+    
+    /**
+     * __toString
+     *
+     * @return String
+     */
+    public function __toString()
+    {
+    	return $this->name;
+    }
 }
