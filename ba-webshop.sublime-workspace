@@ -91,7 +91,7 @@
 			"file": "src/html/assets/scss/_layout.scss",
 			"settings":
 			{
-				"buffer_size": 2117,
+				"buffer_size": 2215,
 				"line_ending": "Windows"
 			}
 		},
@@ -373,7 +373,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2234.0,
+						"translation.y": 2680.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -383,15 +383,15 @@
 					"file": "src/html/assets/scss/_layout.scss",
 					"settings":
 					{
-						"buffer_size": 2117,
+						"buffer_size": 2215,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								472,
-								472
+								55,
+								55
 							]
 						],
 						"settings":
@@ -490,7 +490,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 376.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -607,7 +607,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 395.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

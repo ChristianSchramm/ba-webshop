@@ -1,5 +1,8 @@
 /* Imports ___________________________________________*/
 /*Komplettes Compass Framework*/
+/* Farben _________________________________________________ */
+/* blau */
+/* grau */
 /* Mixins _____________________________________________*/
 /*Base64 background-image*/
 /* ==========================================================================
@@ -143,6 +146,52 @@ textarea {
     width: 6.38303%;
   }
 
+  /* Extends */
+  .main-nav .layer0 > li a {
+    background-color: blue;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0000ff), color-stop(100%, #00008b));
+    background: -webkit-linear-gradient(top, #0000ff, #00008b);
+    background: -moz-linear-gradient(top, #0000ff, #00008b);
+    background: -o-linear-gradient(top, #0000ff, #00008b);
+    background: linear-gradient(top, #0000ff, #00008b);
+  }
+  .lt-ie9 .main-nav .layer0 > li a, .main-nav .layer0 > li .lt-ie9 a {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=blue, endColorstr=darkblue);
+  }
+
+  .main-nav .layer0 > li a:active,
+  .main-nav .layer0 > li a:hover,
+  .main-nav .layer0 > li a:focus,
+  .main-nav .layer0 > li strong {
+    background-color: lightblue;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #add8e6), color-stop(100%, #0000ff));
+    background: -webkit-linear-gradient(top, #add8e6, #0000ff);
+    background: -moz-linear-gradient(top, #add8e6, #0000ff);
+    background: -o-linear-gradient(top, #add8e6, #0000ff);
+    background: linear-gradient(top, #add8e6, #0000ff);
+  }
+  .lt-ie9 .main-nav .layer0 > li a:active, .main-nav .layer0 > li .lt-ie9 a:active,
+  .lt-ie9 .main-nav .layer0 > li a:hover,
+  .main-nav .layer0 > li .lt-ie9 a:hover,
+  .lt-ie9 .main-nav .layer0 > li a:focus,
+  .main-nav .layer0 > li .lt-ie9 a:focus,
+  .lt-ie9 .main-nav .layer0 > li strong,
+  .main-nav .layer0 > li .lt-ie9 strong {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=lightblue, endColorstr=blue);
+  }
+
+  .card {
+    background-color: lightgrey;
+    background: url("http://placekitten.com/g/30/30") 10px 50% no-repeat, -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d3d3d3), color-stop(100%, #808080));
+    background: url("http://placekitten.com/g/30/30") 10px 50% no-repeat, -webkit-linear-gradient(top, #d3d3d3, #808080);
+    background: url("http://placekitten.com/g/30/30") 10px 50% no-repeat, -moz-linear-gradient(top, #d3d3d3, #808080);
+    background: url("http://placekitten.com/g/30/30") 10px 50% no-repeat, -o-linear-gradient(top, #d3d3d3, #808080);
+    background: url("http://placekitten.com/g/30/30") 10px 50% no-repeat, linear-gradient(top, #d3d3d3, #808080);
+  }
+  .lt-ie9 .card {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=lightgray, endColorstr=gray);
+  }
+
   /* Allgemein ________________________________________________________ */
   * {
     padding: 0;
@@ -158,28 +207,41 @@ textarea {
   }
 
   /* Layout */
+  .wrapper {
+    margin: 20px;
+  }
+
   header {
     min-height: 150px;
     position: relative;
   }
 
+  footer {
+    padding: 20px;
+  }
+
   /* Warenkorb */
   .amount,
-  .card,
   .price,
   .text {
     display: inline-block;
   }
 
   .card {
-    background: url("http://placekitten.com/g/30/30") no-repeat;
-    padding-left: 40px;
+    display: block;
+    padding: 10px 10px 10px 40px;
     position: relative;
   }
 
   .amount {
-    left: 25px;
+    left: 40px;
     position: absolute;
+    top: 20px;
+  }
+
+  .price {
+    position: absolute;
+    right: 10px;
     top: 10px;
   }
 
@@ -227,9 +289,17 @@ textarea {
     display: table;
     width: 100%;
   }
-  .main-nav .layer0 li {
+  .main-nav .layer0 > li {
     display: table-cell;
     width: 33.33%;
+  }
+  .main-nav .layer0 > li a,
+  .main-nav .layer0 > li strong {
+    display: block;
+    padding: 10px;
+  }
+  .main-nav .layer0 > li strong a {
+    margin: -10px;
   }
   .main-nav .layer1 {
     display: none;
@@ -297,8 +367,17 @@ textarea {
     height: 20px;
     width: 20px;
   }
+
+  /* Filter */
+  .filter label {
+    margin-left: 5px;
+  }
 }
 /* Allgemein ______________________________________________ */
+body {
+  font-size: 62.5%;
+}
+
 /* Header */
 .text {
   text-indent: -999em;
@@ -306,8 +385,30 @@ textarea {
 
 /* Navigation _____________________________________________ */
 /* Hauptnavigation */
+.main-nav a,
+.main-nav strong {
+  font-size: 1.4em;
+}
+.main-nav strong a {
+  font-size: 1em;
+}
+
 .layer0 {
   text-align: center;
+}
+.layer0 > li > a {
+  text-decoration: none;
+}
+.layer0 > li > a,
+.layer0 > li > strong,
+.layer0 > li > strong a {
+  color: #fff;
+}
+.layer0 a:active,
+.layer0 a:hover,
+.layer0 a:focus,
+.layer0 strong {
+  text-decoration: underline;
 }
 
 /* Produkte */
