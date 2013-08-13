@@ -24,8 +24,8 @@ class LoadTypeData extends AbstractFixture implements OrderedFixtureInterface
   {
   	
 	
-  	$type1 = new Type();
-  	$type1->setName('VHS');
+  	//$type1 = new Type();
+  	//$type1->setName('VHS');
   	
   	$type2 = new Type();
   	$type2->setName('DVD');
@@ -38,12 +38,12 @@ class LoadTypeData extends AbstractFixture implements OrderedFixtureInterface
 
 
 
-  	$manager->persist($type1);
+  	//$manager->persist($type1);
   	$manager->persist($type2);
   	$manager->persist($type3);
   	$manager->persist($type4);
     
-    $this->addReference('type1', $type1);
+    //$this->addReference('type1', $type1);
     $this->addReference('type2', $type2);
     $this->addReference('type3', $type3);
     $this->addReference('type4', $type4);

@@ -2,6 +2,10 @@
 
 namespace Web\Bundle\ShopBundle\Controller;
 
+use Web\Bundle\ShopBundle\Entity\Cart;
+
+use Web\Bundle\ShopBundle\Entity\Adress;
+
 use Entities\User;
 
 use Web\Bundle\ShopBundle\Repository;
@@ -96,12 +100,12 @@ class SecurityController extends Controller
 	     	$user = $registration->getUser();
 	    	
 	    	// unique user ?
-	    	$unique = $em->getRepository('RCTracksUserBundle:User')->isUserUnique($user->getUsername());
+	    	$unique = $em->getRepository('WebShopBundle:User')->isUserUnique($user->getUsername());
 	   
 				if ($unique){
 						
 					//load inactive role
-					$role = $em->getRepository('RCTracksUserBundle:Role')->findOneByName('ROLE_INACTIVE');
+					$role = $em->getRepository('WebShopBundle:Role')->findOneByName('ROLE_USER');
 		      $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
 		        //encode password using current encoder
 		      $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
@@ -109,28 +113,33 @@ class SecurityController extends Controller
 		      //set encrypted password
 	
 		      $user->setPassword($password);
-		      $user->addUserRole($role);
+		      $user->addRole($role);
 		        
 		      $em->persist($user);
 		        
 		        
-		      $activation = new Activation();
-				  $activation->setUser($user);
-		      $em->persist($activation);
+		      $adress = new Adress();
+				  $adress->setUser($user);
+		      $em->persist($adress);
+		      
+
+		      $cart = new Cart();
+		      $cart->setUser($user);
+		      $em->persist($cart);
 	
 		        
-		      $adress = new Adress();
-		      $profile = new Profile();
-		      $adress->setProfile($profile);
-		      $profile->setUser($user);
+		     // $adress = new Adress();
+		     // $profile = new Profile();
+		     // $adress->setProfile($profile);
+		     // $profile->setUser($user);
 		        
-		      $em->persist($profile);
-		      $em->persist($adress);
+		     // $em->persist($profile);
+		     // $em->persist($adress);
 		        
 		      $em->flush();
 		        
 		      // send atctivation mail
-		       	        
+		     /*  	        
 		      $message = \Swift_Message::newInstance()     // we create a new instance of the Swift_Message class
 		        					->setSubject('RCTracks.net account activation')     // we configure the title
 		        	        ->setFrom('notification@rctracks.net')     // we configure the sender
@@ -146,14 +155,14 @@ class SecurityController extends Controller
 		      $this->get('mailer')->send($message);     // then we send the message.
 		        
 	     		//return array( );
-		
+		*/
 		      return array('user' => $user);
 				}
 				
 				
 	    }
 	
-			return $this->render('RCTracksUserBundle:Security:new.html.twig', array(
+			return $this->render('WebShopBundle:Security:register.html.twig', array(
 					'user' => $user,
 					'form' => $form->createView(),
 	    ));

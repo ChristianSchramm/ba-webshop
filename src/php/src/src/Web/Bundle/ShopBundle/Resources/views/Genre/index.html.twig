@@ -3,9 +3,10 @@
 {% block body %}
 
 <h2>Genres</h2>
+<a href="{{ path('admin_genre_new') }}">new</a>
 <ul>
     {% for genre in genres %}
-        <li>{{ genre.name }}</li>
+        <li>{{ genre.name }} - <a href="{{ path('admin_genre_delete', { 'id': genre.id}) }}">X</a></li>
     {% endfor %}
 </ul>
 

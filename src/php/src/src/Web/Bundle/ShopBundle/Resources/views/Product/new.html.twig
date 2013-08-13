@@ -3,7 +3,7 @@
 {% block body %}
 
 <h2>new Producte</h2>
-<form action="{{  path('account_adress_save') }}" method="post" }}>
+<form action="{{  path('admin_product_create') }}" method="post" {{ form_enctype(form) }} }}>
     {{ form_errors(form) }}
 
     <div>
@@ -17,14 +17,16 @@
         {{ form_widget(form.product.price) }}
     </div>
     <div>
-        {{ form_label(form.product.genre) }}
-        {{ form_errors(form.product.genre) }}
-        {{ form_widget(form.product.genre) }}
+        {{ form_label(form.product.genres) }}
+        {{ form_errors(form.product.genres) }}
+        {{ form_widget(form.product.genres) }}
     </div>
     <div>
         {{ form_label(form.document.file) }}
         {{ form_errors(form.document.file) }}
         {{ form_widget(form.document.file) }}
     </div>
+    
 <input type="submit" />
+{{ form_end(form) }}
 {% endblock %}

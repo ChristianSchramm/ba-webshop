@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h3>Genre anlgegen</h3>
+<br>
+<form action="{{  path('admin_genre_create') }}" method="post" }}>
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+
+
+<input type="submit" />
+
+
+{{ form_end(form) }}
+
+
+
+{% endblock %}

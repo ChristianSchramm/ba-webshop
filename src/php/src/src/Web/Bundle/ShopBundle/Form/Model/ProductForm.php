@@ -4,16 +4,19 @@ namespace Web\Bundle\ShopBundle\Form\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Web\Bundle\ShopBundle\Entity\Document;
+use Web\Bundle\ShopBundle\Entity\Product;
+
 
 class ProductForm
 {
     /**
-     * @Assert\Type(type="Web\Bundle\ShopBundle\\Entity\Document")
+     * @Assert\Type(type="Web\Bundle\ShopBundle\Entity\Document")
      */
     protected $document;
     
     /**
-     * @Assert\Type(type="Web\Bundle\ShopBundle\\Entity\Product")
+     * @Assert\Type(type="Web\Bundle\ShopBundle\Entity\Product")
      */
     protected $product;
     

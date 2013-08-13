@@ -288,4 +288,27 @@ class Product
     {
         return $this->type;
     }
+
+    /**
+     * Set image
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Document $image
+     * @return Product
+     */
+    public function setImage(\Web\Bundle\ShopBundle\Entity\Document $image = null)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Web\Bundle\ShopBundle\Entity\Document 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }
