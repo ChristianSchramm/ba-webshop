@@ -1,3 +1,16 @@
+/* Farben _________________________________________________ */
+
+/* blau */
+
+$lightblue: lightblue;
+$blue: blue;
+$darkblue: darkblue;
+
+/* grau */
+
+$lightgray: lightgray;
+$gray: gray;
+
 /* Mixins _____________________________________________*/
 
 @mixin mf-layout ($columns: 12, $col-margin: 2.1276%) {
