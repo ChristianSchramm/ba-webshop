@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /** 
  * @ORM\Table(name="document")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Document
 {
@@ -174,6 +175,7 @@ class Document
      */
     public function getPath()
     {
+    	
         return $this->path;
     }
 

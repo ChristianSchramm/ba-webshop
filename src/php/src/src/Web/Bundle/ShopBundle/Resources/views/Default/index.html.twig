@@ -63,7 +63,11 @@
                 <li>
                   <div class="box product-card">
                     <figure class="image">
-                      <img src="http://placekitten.com/g/200/300">
+                      {% if product.image is not null %}
+                        <img width="200px" src="/uploads/documents/{{ product.image.path }}">
+                      {%  else %}
+                        <img src="http://dummyimage.com/200x200/000/0011ff">
+                      {% endif %}
                     </figure>
                     <h2 class="heading level2">{{ product.title }}<small>{{ product.type.name }}</small></h2>
                     <p>          

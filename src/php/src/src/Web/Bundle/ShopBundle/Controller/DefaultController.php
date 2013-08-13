@@ -27,6 +27,11 @@ class DefaultController extends Controller
 
     	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $search, $filter);
         	
+    	foreach ($products as $prod){
+    		if (!is_null($prod->getImage())){
+    			$prod->getImage()->setPath($prod->getImage()->getPath());
+    		}
+    	}
     	
     	
     	$user = $this->get('security.context')->getToken()->getUser();

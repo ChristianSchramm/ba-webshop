@@ -22,6 +22,8 @@ class ProductController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$products = $em->getRepository('WebShopBundle:Product')->findAll();
+		
+
 		 
 		return array('products' => $products);
 	}

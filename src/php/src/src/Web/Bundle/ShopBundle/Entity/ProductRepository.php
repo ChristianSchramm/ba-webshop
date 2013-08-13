@@ -22,6 +22,7 @@ class ProductRepository extends EntityRepository
 
 		$q = $this
 				->createQueryBuilder('c')
+        ->leftJoin('c.image', 'p')
 				->where('c.type = :type AND c.title LIKE :search ')
 				->setParameter('type', $type->getId())
 				->setParameter('search', "%".$search."%")
