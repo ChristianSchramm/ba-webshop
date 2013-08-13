@@ -1,5 +1,9 @@
 /* Allgemein ______________________________________________ */
 
+body {
+  font-size: 62.5%;
+}
+
 /* Header */
 
 .text{
@@ -10,8 +14,38 @@
 
 /* Hauptnavigation */
 
+.main-nav {
+  a,
+  strong {
+    font-size: 1.4em;
+  }
+
+  strong a {
+    font-size: 1em;
+  }
+}
+
 .layer0 {
   text-align: center;
+
+  > li > {
+    a {
+      text-decoration: none;
+    }
+
+    a,
+    strong,
+    strong a {
+      color: #fff;
+    }
+  }
+
+  a:active,
+  a:hover,
+  a:focus,
+  strong {
+    text-decoration: underline;
+  }
 }
 
 //

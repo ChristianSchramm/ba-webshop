@@ -1,5 +1,31 @@
 @include mf-layout;
 
+/* Extends */
+
+%blue-gradient {
+  background-color: $blue;
+  @include background(linear-gradient(top, $blue, $darkblue));
+  .lt-ie9 & {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=blue, endColorstr=darkblue);
+  }
+}
+
+%lightblue-gradient {
+  background-color: $lightblue;
+  @include background(linear-gradient(top, $lightblue, $blue));
+  .lt-ie9 & {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=lightblue, endColorstr=blue);
+  }
+}
+
+%gray-gradient {
+  background-color: $lightgray;
+  @include background(url('http://placekitten.com/g/30/30') 10px 50% no-repeat, linear-gradient(top, $lightgray, $gray));
+  .lt-ie9 & {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=lightgray, endColorstr=gray);
+  }
+}
+
 /* Allgemein ________________________________________________________ */
 
 * {
@@ -17,29 +43,43 @@ li {
 
 /* Layout */
 
+.wrapper {
+  margin: 20px;
+}
+
 header {
   min-height: 150px;
   position: relative;
 }
 
+footer {
+  padding: 20px;
+}
+
 /* Warenkorb */
 
 .amount,
-.card,
 .price,
 .text {
   display: inline-block;    
 }
 
 .card {
-  background: url('http://placekitten.com/g/30/30') no-repeat;
-  padding-left: 40px;
+  @extend %gray-gradient;
+  display: block;
+  padding: 10px 10px 10px 40px;
   position: relative;
 }
 
 .amount {
-  left: 25px;
+  left: 40px;
   position: absolute;
+  top: 20px;
+}
+
+.price {
+  position: absolute;
+  right: 10px;
   top: 10px;
 }
 
@@ -95,9 +135,30 @@ header {
     display: table;
     width: 100%;
 
-    li {
+    > li {
       display: table-cell;
       width: 33.33%;
+    
+      a {
+        @extend %blue-gradient;
+      }
+
+      a:active,
+      a:hover,
+      a:focus,
+      strong {
+        @extend %lightblue-gradient;
+      }
+
+      a,
+      strong {
+        display: block;
+        padding: 10px;
+      }
+
+      strong a {
+        margin: -10px;
+      }
     }
   }
 
@@ -180,5 +241,13 @@ header {
     display: block;
     height: 20px;
     width:20px;
+  }
+}
+
+/* Filter */
+
+.filter {
+  label {
+    margin-left: 5px;
   }
 }
