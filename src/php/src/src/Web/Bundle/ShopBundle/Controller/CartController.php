@@ -93,6 +93,24 @@ class CartController extends Controller
      */
     public function orderAction()
     {
+    	$em = $this->getDoctrine()->getManager();
+    	 
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	 
+    	return array('cart' => $cart);
+    }
+    
+    
+    
+    /**
+     * @Route("/cart/checkout/", name="cart_checkout")
+     * @Template()
+     */
+    public function checkoutAction()
+    {
+    	$rechnungsNummer = "R-". (rand(100000,999999));
+    	
     	
     	$em = $this->getDoctrine()->getManager();
     	 
@@ -110,19 +128,20 @@ class CartController extends Controller
     	//adress
     	$pdf->Ln(20);
     	$pdf->SetFont('Arial','',8);
-    	$pdf->Cell(30,10,utf8_decode('Scheiben-Stube, Stuben Straße 123, Stubenheim 01234'));
-    	
-    	$pdf->Ln(10);
+    	$pdf->Cell(30,10,utf8_decode('ScheibenBude, Buden Straße 123, Scheibenheim 01234'));
+
+    	// anschrift
+    	$pdf->Ln(15);
     	$pdf->SetFont('Arial','',10);
     	$pdf->Cell(30,10,utf8_decode($adress->getName()));
     	$pdf->Cell(100);
     	$pdf->Cell(30,10,utf8_decode("Kunden-Nr.: "));
-    	$pdf->Cell(30,10,utf8_decode("U-000".$user->getId()));
+    	$pdf->Cell(30,10,utf8_decode($user->getNumber()));
     	$pdf->Ln(5);
     	$pdf->Cell(30,10,utf8_decode($adress->getStreet()));
     	$pdf->Cell(100);
     	$pdf->Cell(30,10,utf8_decode("Rechnungs-Nr.: "));
-    	$pdf->Cell(30,10,utf8_decode("R-". (rand(100000,999999))));
+    	$pdf->Cell(30,10,utf8_decode($rechnungsNummer));
     	$pdf->Ln(5);
     	$pdf->Cell(30,10,utf8_decode($adress->getPostcode(). " " . $adress->getLocation()));
     	$pdf->Cell(100);
@@ -130,12 +149,82 @@ class CartController extends Controller
     	$pdf->Cell(30,10,utf8_decode(date("d.m.Y")));
     	$pdf->Ln(5);
     	$pdf->Cell(30,10,utf8_decode($adress->getCountry()));
-    	$pdf->Cell(100);
-    	$pdf->Cell(30,10,utf8_decode("Seite.: "));
-    	$pdf->Cell(30,10,utf8_decode("1"));
+
     	
+    	// betreff
+
+    	$pdf->Ln(30);
+    	$pdf->SetFont('Arial','',12);
+    	$pdf->Cell(30,10,'Rechnung');
     	
-    	$pdf->Output("uploads/lol.pdf");
+    	// waren
+        // header
+    	$pdf->Ln(10);
+    	$pdf->SetFont('Arial','B',10);
+    	$pdf->Cell(30,10,'Pos.','B');
+    	$pdf->Cell(70,10,'Beschreibung','B');
+    	$pdf->Cell(20,10,'Menge','B');
+    	$pdf->Cell(30,10,'E-Preis','B', 0,'R');
+    	$pdf->Cell(30,10,'Preis','B', 0,'R');
+        //content
+    	$pdf->SetFont('Arial','',10);
+    	
+      $summe = 0;
+      $versand = 6.90;
+    	$products = $cart->getCartProducts();
+    	for ($i = 0 ; $i < $products->count(); $i++){
+    		$prod = $products[$i];
+    		
+	    	$pdf->Ln(10);
+	    	$pdf->Cell(30,10,$i+1);
+	    	$pdf->Cell(70,10,utf8_decode(substr($prod->getProduct()->getTitle(),0,30)));
+	    	$pdf->Cell(20,10,utf8_decode($prod->getAmount()));
+	    	$pdf->Cell(30,10,utf8_decode(number_format($prod->getProduct()->getPrice(), 2, '.', ''). " EUR"), 0,0,'R');
+	    	$pdf->Cell(30,10,utf8_decode(number_format($prod->getAmount() * $prod->getProduct()->getPrice() , 2, '.', ''). " EUR"), 0,0,'R');
+	    	
+	    	$summe += $prod->getAmount() * $prod->getProduct()->getPrice();
+    	}
+    	$pdf->Ln(1);
+    	$pdf->Cell(180,10,'','B');
+    	
+    	// gesamtbetrag
+    	$pdf->Ln(10);
+    	$pdf->SetFont('Arial','',10);
+    	$pdf->Cell(120);
+    	$pdf->Cell(30,10,"Brutto Summe:");
+    	$pdf->Cell(30,10,number_format($summe , 2, '.', '')." EUR", 0, 0, 'R');
+    	$pdf->Ln(5);
+    	$pdf->Cell(120);
+    	$pdf->Cell(30,10,"Versandkosten:");
+    	$pdf->Cell(30,10,number_format($versand , 2, '.', '')." EUR", 0, 0, 'R');
+    	$pdf->Ln(5);
+    	$pdf->Cell(120);
+    	$pdf->Cell(30,10,"inkl. 19.00% MwSt.:");
+    	$pdf->Cell(30,10,number_format(($summe/119*19) , 2, '.', '')." EUR", 0, 0, 'R');
+    	$pdf->Ln(5);
+    	$pdf->SetFont('Arial','B',10);
+    	$pdf->Cell(120);
+    	$pdf->Cell(30,10,"Gesamtbetrag:");
+    	$pdf->Cell(30,10,number_format(($summe+$versand) , 2, '.', '')." EUR", 0, 0, 'R');
+    	
+
+    	// text
+    	
+    	$pdf->Ln(20);
+    	$pdf->Cell(30,10,utf8_decode("Die Ware bleibt bis zur Bezahlung Eingemtum des Lieferanten."));
+    	$pdf->Ln(5);
+    	$pdf->Cell(30,10,utf8_decode("Zahlungsziel ist innerhalb von 14 Tagen nach erhalt der Rechnung."));
+    	$pdf->Ln(10);
+    	$pdf->Cell(30,10,utf8_decode("Vielen Dank für Ihren Auftrag!"));
+    	
+    	//footer
+    	
+    	$pdf->SetY(-25);
+    	$pdf->SetFont('Arial','',8);
+    	$pdf->Cell(30,0,utf8_decode('UmsatzStID: DE-13579123 - Bankverbindung: Budenbank - Kontonummer: 123456 - BLZ: 9876543'));
+    	 
+    	
+    	$pdf->Output("uploads/rechnung_".$user->getNumber()."_".$rechnungsNummer.".pdf");
     
     	return $this->redirect($this->generateUrl('cart'));
     }

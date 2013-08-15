@@ -122,6 +122,16 @@ class User  implements UserInterface
     {
         return $this->id;
     }
+    
+    /**
+     * Get number
+     *
+     * @return string
+     */
+    public function getNumber()
+    {
+    	return "U-000".$this->getId();
+    }
 
     /**
      * Set username

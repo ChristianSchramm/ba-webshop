@@ -38,8 +38,47 @@ class ProductController extends Controller
 			
 		$form = $this->createForm(new ProductFormType(), new ProductForm());
 			
-		return array('form' => $form->createView() );
+		return array('form' => $form->createView(), 'image' => null);
 
+	}
+	
+	/**
+	 * @Route("/admin/product/remove/{id}", name="admin_product_remove")
+	 * @Template()
+	 */
+	public function removeAction($id)
+	{
+			
+		$em = $this->getDoctrine()->getManager();
+		$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
+		
+		$em->remove($product);
+		$em->flush();
+			
+		return $this->redirect($this->generateUrl('admin_product'));
+	
+	}
+	
+	/**
+	 * @Route("/admin/product/edit/{id}", name="admin_product_edit")
+	 * @Template()
+	 */
+	public function editAction($id)
+	{
+			
+		$em = $this->getDoctrine()->getManager();
+		$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
+		$image = $product->getImage();
+		$image->setPath($product->getImage()->getPath()); 
+	
+    $productForm = new ProductForm();
+    $productForm->setProduct($product);
+		$form = $this->createForm(new ProductFormType(), $productForm);
+			
+		return array( 'form' => $form->createView(),
+				          'id' => $product->getId(),
+				          'image' => $image );
+	
 	}
 	
 	/**
@@ -61,6 +100,8 @@ class ProductController extends Controller
 			
 			$document->upload();
 			
+			$product->setImage($document);
+			
 			$em->persist($document);
 			$em->persist($product);
 
@@ -69,6 +110,45 @@ class ProductController extends Controller
 			return $this->redirect($this->generateUrl('admin_product'));
 		}
 		return $this->render('WebShopBundle:Product:new.html.twig',
+				array('form' => $form->createView())
+		);
+	
+	}
+	
+	/**
+	 * @Route("/admin/product/save/{id}", name="admin_product_save")
+	 * @Template()
+	 */
+	public function saveAction($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
+	
+    $productForm = new ProductForm();
+    $productForm->setProduct($product);
+		$form = $this->createForm(new ProductFormType(), $productForm);
+		
+		$form->bind($this->getRequest());
+		
+		if ($form->isValid()) {
+			$formData = $form->getData();
+				
+			$product = $formData->getProduct();
+			
+			$document = $formData->getDocument();
+			if ($document->getFile() != ""){
+  
+				$document->upload();
+				$product->setImage($document);
+				$em->persist($document);
+			}
+			$em->persist($product);
+		
+			$em->flush();
+		
+			return $this->redirect($this->generateUrl('admin_product'));
+		}
+		return $this->render('WebShopBundle:Product:edit.html.twig',
 				array('form' => $form->createView())
 		);
 	

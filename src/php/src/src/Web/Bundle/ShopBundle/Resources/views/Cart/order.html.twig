@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}WebShopBundle:Cart:index{% endblock %}
+
+{% block body %}
+<div>
+<h2>Zusammenfassung</h2>
+
+<p>deine waren</p>
+
+
+<p>
+<a href="{{ path('default') }}">Weiter Einkaufen</a>
+</p>
+<p>
+<a href="{{ path('cart_checkout') }}">Kostenpflichtig Bestellen</a>
+</p>
+
+{% endblock %}
