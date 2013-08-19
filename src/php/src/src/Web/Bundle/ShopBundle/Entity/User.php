@@ -85,7 +85,17 @@ class User  implements UserInterface
      * @ORM\OneToMany(targetEntity="Cart", mappedBy="User")
      */
     protected $carts;
-
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bill", mappedBy="User")
+     */
+    protected $bills;
+    
+    
+    /**
+     * cosntruct
+     */
     public function  __construct(){
     	$this->salt = md5(uniqid());
     	
@@ -383,5 +393,38 @@ class User  implements UserInterface
     public function getCarts()
     {
         return $this->carts;
+    }
+
+    /**
+     * Add bills
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Bill $bills
+     * @return User
+     */
+    public function addBill(\Web\Bundle\ShopBundle\Entity\Bill $bills)
+    {
+        $this->bills[] = $bills;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bills
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Bill $bills
+     */
+    public function removeBill(\Web\Bundle\ShopBundle\Entity\Bill $bills)
+    {
+        $this->bills->removeElement($bills);
+    }
+
+    /**
+     * Get bills
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBills()
+    {
+        return $this->bills;
     }
 }

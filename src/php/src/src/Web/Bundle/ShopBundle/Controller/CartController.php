@@ -4,6 +4,8 @@ namespace Web\Bundle\ShopBundle\Controller;
 
 
 
+use Web\Bundle\ShopBundle\Entity\Bill;
+
 use Web\Bundle\ShopBundle\Helper\FPDFHelper;
 
 use Web\Bundle\ShopBundle\Entity\CartProduct;
@@ -224,7 +226,31 @@ class CartController extends Controller
     	$pdf->Cell(30,0,utf8_decode('UmsatzStID: DE-13579123 - Bankverbindung: Budenbank - Kontonummer: 123456 - BLZ: 9876543'));
     	 
     	
-    	$pdf->Output("uploads/rechnung_".$user->getNumber()."_".$rechnungsNummer.".pdf");
+    	$fileName = "rechnung_".$user->getNumber()."_".$rechnungsNummer.".pdf";
+    	
+    	$pdf->Output("uploads/bills/".$fileName);
+    	
+    	$bill = new Bill();
+    	$bill->setPath($fileName);
+    	$bill->setUser($user);
+    	$bill->setKundennummer($user->getNumber());
+    	$bill->setRechnungsnummer($rechnungsNummer);
+    	
+    	$em->persist($bill);
+    	
+    	// clear cart
+    	
+    	$products = $cart->getCartProducts();
+    	for ($i = 0 ; $i < $products->count(); $i++){
+    		$em->remove($products[$i]);
+    	}
+    	
+    	
+    	$em->flush();
+    	
+    	
+    	
+    	
     
     	return $this->redirect($this->generateUrl('cart'));
     }
