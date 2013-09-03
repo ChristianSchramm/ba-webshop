@@ -75,11 +75,12 @@
 								        {{ genre.name }}
 								      {% endfor %}
 			              </p>
+			              <p>{{ product.stars }}</p>
                     <p>{{ product.description }}</p>
                     <ul class="rating">
-                      <li><a class="star one" href="#">befriedigend</a></li>
-                      <li><a class="star two" href="#">gut</a></li>
-                      <li><a class="star three empty" href="#">sehr gut</a></li>
+                      <li><a class="star one" href="{{ path('vote', {'productid' : product.id, 'value' : "1"}) }}">befriedigend</a></li>
+                      <li><a class="star two" href="{{ path('vote', {'productid' : product.id, 'value' : "2"}) }}">gut</a></li>
+                      <li><a class="star three empty" href="{{ path('vote', {'productid' : product.id, 'value' : "3"}) }}">sehr gut</a></li>
                     </ul>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 					            <a class="booking" href="{{ path('cart_add', {'id': product.id}) }}">{{ product.price }}&euro;<span class="add">add to cart</span></a>

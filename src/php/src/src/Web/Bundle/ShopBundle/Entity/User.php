@@ -86,6 +86,11 @@ class User  implements UserInterface
      */
     protected $carts;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="user")
+     */
+    protected $votes;
+    
     
     /**
      * @ORM\OneToMany(targetEntity="Bill", mappedBy="User")
@@ -426,5 +431,38 @@ class User  implements UserInterface
     public function getBills()
     {
         return $this->bills;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Vote $votes
+     * @return User
+     */
+    public function addVote(\Web\Bundle\ShopBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove votes
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Vote $votes
+     */
+    public function removeVote(\Web\Bundle\ShopBundle\Entity\Vote $votes)
+    {
+        $this->votes->removeElement($votes);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

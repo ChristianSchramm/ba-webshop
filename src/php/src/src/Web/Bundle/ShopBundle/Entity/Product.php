@@ -82,6 +82,11 @@ class Product
      */
     protected $image;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="product")
+     */
+    protected $votes;
+    
 
     /**
      * Constructor
@@ -90,6 +95,7 @@ class Product
     {
     	$this->cartProducts = new \Doctrine\Common\Collections\ArrayCollection();
     	$this->genres = new \Doctrine\Common\Collections\ArrayCollection();
+    	$this->votes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -310,5 +316,38 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Vote $votes
+     * @return Product
+     */
+    public function addVote(\Web\Bundle\ShopBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove votes
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Vote $votes
+     */
+    public function removeVote(\Web\Bundle\ShopBundle\Entity\Vote $votes)
+    {
+        $this->votes->removeElement($votes);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

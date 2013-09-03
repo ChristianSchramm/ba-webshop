@@ -18,8 +18,6 @@ class ProductRepository extends EntityRepository
 	public function findAllByFilter($type, $search, $filter) {
 		
 		// seach and type filter
-
-
 		$q = $this
 				->createQueryBuilder('c')
         ->leftJoin('c.image', 'p')
@@ -27,12 +25,11 @@ class ProductRepository extends EntityRepository
 				->setParameter('type', $type->getId())
 				->setParameter('search', "%".$search."%")
 				->getQuery();
-
 		
 		$result = $q->getResult();
-
 		$resultFinal = new ArrayCollection();
 		
+	
 		
 		// filter genre
 		foreach ($result as $product){
@@ -52,9 +49,6 @@ class ProductRepository extends EntityRepository
 			}
 		}
 		
-
-
-
 		if (count($filter) > 0)
 			return $resultFinal;
 		else		
