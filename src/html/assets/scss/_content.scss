@@ -7,7 +7,8 @@ body {
 /* Header */
 
 .text{
-  text-indent: -999em;
+  // text-indent: -999em;
+  height: 0;
 }
 
 /* Navigation _____________________________________________ */
@@ -17,6 +18,7 @@ body {
 .main-nav {
   a,
   strong {
+    @include text-shadow(rgba(0,0,0,.8));
     font-size: 1.4em;
   }
 
@@ -51,6 +53,12 @@ body {
 //
 
 /* Produkte */
+
+.product-card {
+  .heading {
+    text-align: center;
+  }
+}
 
 .rating {
   text-indent: -999em;
