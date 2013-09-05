@@ -185,6 +185,7 @@ textarea {
   .card {
     background: #004f9f;
     display: block;
+    height: 40px;
     position: relative;
   }
 
@@ -262,14 +263,14 @@ textarea {
   .main-nav .layer0 > li a:focus,
   .main-nav .layer0 > li strong {
     background: #6a84bf;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
   }
   .main-nav .layer0 > li a,
   .main-nav .layer0 > li strong {
     display: block;
-    padding: 12px 10px;
+    padding: 10px;
   }
   .main-nav .layer0 > li strong a {
     margin: -12px;
