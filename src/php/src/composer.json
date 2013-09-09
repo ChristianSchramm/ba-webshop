@@ -22,7 +22,8 @@
         "sensio/generator-bundle": "2.2.*",
         "jms/security-extra-bundle": "1.5.*",
         "jms/di-extra-bundle": "1.4.*",
-	"phpunit/phpunit": "3.7.*"
+        "phpdocumentor/phpdocumentor": "dev-develop",
+	      "phpunit/phpunit": "3.7.*"
     },
     "scripts": {
         "post-install-cmd": [
