@@ -1,0 +1,80 @@
+<?php
+
+namespace Web\Bundle\ShopBundle\Controller;
+
+use Web\Bundle\ShopBundle\Form\Type\GenreType;
+
+use Web\Bundle\ShopBundle\Entity\Genre;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+class GenreController extends Controller
+{
+    /**
+     * @Route("/admin/genre/", name="admin_genre")
+     * @Template()
+     */
+    public function indexAction()
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$genres = $em->getRepository('WebShopBundle:Genre')->findAll();
+    	
+    	return array('genres' => $genres);
+    }
+    
+    /**
+     * @Route("/admin/genre/new", name="admin_genre_new")
+     * @Template()
+     */
+    public function newAction()
+    {
+      $form = $this->createForm(new GenreType(), new Genre());
+			
+		  return array('form' => $form->createView() );
+    }
+
+    /**
+     * @Route("/admin/genre/create", name="admin_genre_create")
+     * @Template()
+     */
+    public function createAction()
+    {
+			$em = $this->getDoctrine()->getManager();
+
+			
+			$form = $this->createForm(new GenreType(), new Genre());
+			$form->bind($this->getRequest());
+			
+			if ($form->isValid()) {
+				$genre = $form->getData();
+	
+				$em->persist($genre);
+				$em->flush();
+				return $this->redirect($this->generateUrl('admin_genre'));
+			}
+			return $this->render('WebShopBundle:Genre:new.html.twig',
+					array('form' => $form->createView())
+			);
+    }
+    
+    /**
+     * @Route("/admin/genre/delete/{id}", name="admin_genre_delete")
+     */
+    public function deleteAction($id)
+    {
+
+    	$em = $this->getDoctrine()->getManager();
+    	$genre = $em->getRepository('WebShopBundle:Genre')->findOneById($id);
+    	
+    	if ($genre){
+    		$em->remove($genre);
+    		$em->flush();
+    	}
+    	
+			return $this->redirect($this->generateUrl('admin_genre'));
+    }
+    
+}
+

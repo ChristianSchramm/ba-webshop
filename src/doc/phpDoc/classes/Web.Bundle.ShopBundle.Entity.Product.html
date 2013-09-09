@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Web.html">\Web</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1635450535"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1635450535" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-797147075"></a>
+                                <a href="../namespaces/Web.html" style="margin-left: 30px; padding-left: 0">Web</a>
+            </div>
+            <div id="namespace-797147075" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-669672142"></a>
+                                <a href="../namespaces/Web.Bundle.html" style="margin-left: 30px; padding-left: 0">Bundle</a>
+            </div>
+            <div id="namespace-669672142" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1091896340"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.html" style="margin-left: 30px; padding-left: 0">ShopBundle</a>
+            </div>
+            <div id="namespace-1091896340" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-405954463"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.DataFixtures.html" style="margin-left: 30px; padding-left: 0">DataFixtures</a>
+            </div>
+            <div id="namespace-405954463" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-433692198"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.DataFixtures.ORM.html" style="margin-left: 30px; padding-left: 0">ORM</a>
+            </div>
+            <div id="namespace-433692198" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadCartProductData.html">LoadCartProductData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadRoleData.html">LoadRoleData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadProductData.html">LoadProductData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadCartData.html">LoadCartData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadUserData.html">LoadUserData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadTypeData.html">LoadTypeData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadAdressData.html">LoadAdressData</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DataFixtures.ORM.LoadGenreData.html">LoadGenreData</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2031370637"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Entity.html" style="margin-left: 30px; padding-left: 0">Entity</a>
+            </div>
+            <div id="namespace-2031370637" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.UserRepository.html">UserRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.PaymentRepository.html">PaymentRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.User.html">User</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.CartProductRepository.html">CartProductRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Adress.html">Adress</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.VoteRepository.html">VoteRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">Product</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.BillRepository.html">BillRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Payment.html">Payment</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.AdressRepository.html">AdressRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Document.html">Document</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.TypeRepository.html">TypeRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Cart.html">Cart</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Role.html">Role</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.ProductRepository.html">ProductRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Type.html">Type</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Genre.html">Genre</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Bill.html">Bill</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.CartRepository.html">CartRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.Vote.html">Vote</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.GenreRepository.html">GenreRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.CartProduct.html">CartProduct</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.DocumentRepository.html">DocumentRepository</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Entity.RoleRepository.html">RoleRepository</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-895846759"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Tests.html" style="margin-left: 30px; padding-left: 0">Tests</a>
+            </div>
+            <div id="namespace-895846759" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2011852062"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Tests.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-2011852062" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.PaymentControllerTest.html">PaymentControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.AdressControllerTest.html">AdressControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.BillControllerTest.html">BillControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.CartControllerTest.html">CartControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.DefaultControllerTest.html">DefaultControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.AccountControllerTest.html">AccountControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.GenreControllerTest.html">GenreControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.UserControllerTest.html">UserControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.ProductControllerTest.html">ProductControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.VoteControllerTest.html">VoteControllerTest</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Tests.Controller.AdminControllerTest.html">AdminControllerTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1783899120"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.DependencyInjection.html" style="margin-left: 30px; padding-left: 0">DependencyInjection</a>
+            </div>
+            <div id="namespace-1783899120" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DependencyInjection.WebShopExtension.html">WebShopExtension</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.DependencyInjection.Configuration.html">Configuration</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1531919311"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-1531919311" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.CartController.html">CartController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.BillController.html">BillController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.SecurityController.html">SecurityController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.AdressController.html">AdressController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.GenreController.html">GenreController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.AccountController.html">AccountController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.ProductController.html">ProductController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.AdminController.html">AdminController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.UserController.html">UserController</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Controller.VoteController.html">VoteController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-619223342"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-619223342" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-676360092"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Form.Type.html" style="margin-left: 30px; padding-left: 0">Type</a>
+            </div>
+            <div id="namespace-676360092" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.ProductFormType.html">ProductFormType</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.GenreType.html">GenreType</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.UserType.html">UserType</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.DocumentType.html">DocumentType</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.RegistrationType.html">RegistrationType</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.AdressType.html">AdressType</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Type.ProductType.html">ProductType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1024795362"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Form.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1024795362" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Model.Registration.html">Registration</a></li>
+                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Form.Model.ProductForm.html">ProductForm</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1820733339"></a>
+                                <a href="../namespaces/Web.Bundle.ShopBundle.Helper.html" style="margin-left: 30px; padding-left: 0">Helper</a>
+            </div>
+            <div id="namespace-1820733339" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.Helper.FPDFHelper.html">FPDFHelper</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Web.Bundle.ShopBundle.WebShopBundle.html">WebShopBundle</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/TTFParser.html">TTFParser</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Web.Bundle.ShopBundle.Entity.html">\Web\Bundle\ShopBundle\Entity</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Web\Bundle\ShopBundle\Entity</small>Product</h1>
+                    <p><em>Product</em></p>
+                    
+
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getId" class="">getId()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_setTitle" class="">setTitle()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getTitle" class="">getTitle()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_addCartProduct" class="">addCartProduct()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_removeCartProduct" class="">removeCartProduct()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getCartProducts" class="">getCartProducts()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_setStatus" class="">setStatus()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getStatus" class="">getStatus()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_setPrice" class="">setPrice()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getPrice" class="">getPrice()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_setDescription" class="">setDescription()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getDescription" class="">getDescription()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_addGenre" class="">addGenre()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_removeGenre" class="">removeGenre()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getGenres" class="">getGenres()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_setType" class="">setType()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getType" class="">getType()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_setImage" class="">setImage()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getImage" class="">getImage()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_addVote" class="">addVote()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_removeVote" class="">removeVote()</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#method_getVotes" class="">getVotes()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_cartProducts" class="">$cartProducts</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_type" class="">$type</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_image" class="">$image</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_votes" class="">$votes</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_id" class="">$id</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_title" class="">$title</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_status" class="">$status</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_price" class="">$price</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_description" class="">$description</a><br />
+                                                                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html#property_genres" class="">$genres</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Entity.Product.php.html"><div class="path-wrapper">Entity/Product.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Web\Bundle\ShopBundle\Entity\Product</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                ORM\Table
+                            </th>
+                            <td>
+                                                                    <p>(name="products")</p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                ORM\Entity
+                            </th>
+                            <td>
+                                                                    <p>(repositoryClass="Web\Bundle\ShopBundle\Entity\ProductRepository")</p>
+
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_cartProducts" name="property_cartProducts" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$cartProducts</h3>
+                <pre class="signature">$cartProducts</pre>
+                <p><em></em></p>
+                
+
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\OneToMany
+                        </th>
+                        <td>
+                                                            <p>(targetEntity="CartProduct", mappedBy="product")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_type" name="property_type" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$type</h3>
+                <pre class="signature">$type</pre>
+                <p><em></em></p>
+                
+
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity="Type", inversedBy="products")</p>
+
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name="type_id", referencedColumnName="id")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_image" name="property_image" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$image</h3>
+                <pre class="signature">$image</pre>
+                <p><em></em></p>
+                
+
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity="Document", inversedBy="product")</p>
+
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name="asset_id", referencedColumnName="id")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_votes" name="property_votes" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$votes</h3>
+                <pre class="signature">$votes</pre>
+                <p><em></em></p>
+                
+
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\OneToMany
+                        </th>
+                        <td>
+                                                            <p>(targetEntity="Vote", mappedBy="product")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_id" name="property_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$id</h3>
+                <pre class="signature">$id : integer</pre>
+                <p><em></em></p>
+                
+
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="id", type="integer")</p>
+
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\Id
+                        </th>
+                        <td>
+                                                            
+
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\GeneratedValue
+                        </th>
+                        <td>
+                                                            <p>(strategy="AUTO")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_title" name="property_title" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$title</h3>
+                <pre class="signature">$title : string</pre>
+                <p><em></em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="Title", type="string", length=255)</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_status" name="property_status" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$status</h3>
+                <pre class="signature">$status : string</pre>
+                <p><em></em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="Status", type="string", length=255, nullable=true)</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_price" name="property_price" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$price</h3>
+                <pre class="signature">$price : float</pre>
+                <p><em></em></p>
+                
+
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="Price", type="float")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_description" name="property_description" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$description</h3>
+                <pre class="signature">$description : float</pre>
+                <p><em></em></p>
+                
+
+
+                                <h4>Type</h4>
+                float
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(name="Description", type="text", nullable=true)</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_genres" name="property_genres" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$genres</h3>
+                <pre class="signature">$genres</pre>
+                <p><em></em></p>
+                
+
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToMany
+                        </th>
+                        <td>
+                                                            <p>(targetEntity="Genre", inversedBy="products")</p>
+
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinTable
+                        </th>
+                        <td>
+                                                            <p>(name="product_genres")</p>
+
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct()</pre>
+                <p><em>Constructor</em></p>
+                
+
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getId" name="method_getId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getId() : integer</pre>
+                <p><em>Get id</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTitle" name="method_setTitle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTitle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTitle(string <span class="argument">$title</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Set title</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$title</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTitle" name="method_getTitle" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTitle()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTitle() : string</pre>
+                <p><em>Get title</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addCartProduct" name="method_addCartProduct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addCartProduct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addCartProduct(\Web\Bundle\ShopBundle\Entity\CartProduct <span class="argument">$cartProducts</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Add cartProducts</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.CartProduct.html">\Web\Bundle\ShopBundle\Entity\CartProduct</a></td>
+                                <td>$cartProducts</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeCartProduct" name="method_removeCartProduct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeCartProduct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeCartProduct(\Web\Bundle\ShopBundle\Entity\CartProduct <span class="argument">$cartProducts</span>)</pre>
+                <p><em>Remove cartProducts</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.CartProduct.html">\Web\Bundle\ShopBundle\Entity\CartProduct</a></td>
+                                <td>$cartProducts</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCartProducts" name="method_getCartProducts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCartProducts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCartProducts() : \Doctrine\Common\Collections\Collection</pre>
+                <p><em>Get cartProducts</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Doctrine\Common\Collections\Collection
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setStatus" name="method_setStatus" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setStatus()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setStatus(string <span class="argument">$status</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Set status</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$status</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStatus" name="method_getStatus" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getStatus()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStatus() : string</pre>
+                <p><em>Get status</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setPrice" name="method_setPrice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setPrice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setPrice(float <span class="argument">$price</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Set price</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$price</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPrice" name="method_getPrice" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPrice()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPrice() : float</pre>
+                <p><em>Get price</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDescription" name="method_setDescription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDescription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDescription(string <span class="argument">$description</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Set description</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$description</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDescription" name="method_getDescription" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDescription()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDescription() : string</pre>
+                <p><em>Get description</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addGenre" name="method_addGenre" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addGenre()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addGenre(\Web\Bundle\ShopBundle\Entity\Genre <span class="argument">$genres</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Add genres</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.Genre.html">\Web\Bundle\ShopBundle\Entity\Genre</a></td>
+                                <td>$genres</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeGenre" name="method_removeGenre" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeGenre()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeGenre(\Web\Bundle\ShopBundle\Entity\Genre <span class="argument">$genres</span>)</pre>
+                <p><em>Remove genres</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.Genre.html">\Web\Bundle\ShopBundle\Entity\Genre</a></td>
+                                <td>$genres</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGenres" name="method_getGenres" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGenres()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGenres() : \Doctrine\Common\Collections\Collection</pre>
+                <p><em>Get genres</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Doctrine\Common\Collections\Collection
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setType" name="method_setType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setType(\Web\Bundle\ShopBundle\Entity\Type <span class="argument">$type</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Set type</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.Type.html">\Web\Bundle\ShopBundle\Entity\Type</a></td>
+                                <td>$type</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getType" name="method_getType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getType() : \Web\Bundle\ShopBundle\Entity\Type</pre>
+                <p><em>Get type</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Type.html">\Web\Bundle\ShopBundle\Entity\Type</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setImage" name="method_setImage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setImage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setImage(\Web\Bundle\ShopBundle\Entity\Document <span class="argument">$image</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Set image</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.Document.html">\Web\Bundle\ShopBundle\Entity\Document</a></td>
+                                <td>$image</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getImage" name="method_getImage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getImage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getImage() : \Web\Bundle\ShopBundle\Entity\Document</pre>
+                <p><em>Get image</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Document.html">\Web\Bundle\ShopBundle\Entity\Document</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addVote" name="method_addVote" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addVote()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addVote(\Web\Bundle\ShopBundle\Entity\Vote <span class="argument">$votes</span>) : \Web\Bundle\ShopBundle\Entity\Product</pre>
+                <p><em>Add votes</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.Vote.html">\Web\Bundle\ShopBundle\Entity\Vote</a></td>
+                                <td>$votes</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/Web.Bundle.ShopBundle.Entity.Product.html">\Web\Bundle\ShopBundle\Entity\Product</a>
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_removeVote" name="method_removeVote" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">removeVote()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">removeVote(\Web\Bundle\ShopBundle\Entity\Vote <span class="argument">$votes</span>)</pre>
+                <p><em>Remove votes</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/Web.Bundle.ShopBundle.Entity.Vote.html">\Web\Bundle\ShopBundle\Entity\Vote</a></td>
+                                <td>$votes</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getVotes" name="method_getVotes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getVotes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getVotes() : \Doctrine\Common\Collections\Collection</pre>
+                <p><em>Get votes</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Doctrine\Common\Collections\Collection
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Product.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Entity/Product.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Web.html">\Web</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on September 9th, 2013 at 12:17.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
