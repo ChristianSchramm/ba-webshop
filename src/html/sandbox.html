@@ -28,6 +28,24 @@
               <li><a href="#">admin</a></li>
             </ul>
           </nav> <!-- meta-navigation -->
+
+          <div class="login">
+            <a class="login-btn" href="#">Login</a>
+            <div class="login-form">
+              <form>
+                <ul>
+                  <li><input class="input" placeholder="Login" type="text"></li>
+                  <li><input class="input" placeholder="Passwort" type="text"></li>
+                  <li><button>Einloggen</button></li>
+                </ul>
+              </form>
+
+              <ul class="register">
+                <li><a href="#">Registrieren</a></li>
+                <li><a href="#">Passwort vergessen?</a></li>
+              </ul>
+            </div> <!-- login-form -->
+          </div> <!-- login -->
         
           <div class="search">
             <form>
@@ -77,8 +95,8 @@
                           <li><a href="#">Gebraucht</a></li>
                         </ul>
                       </li>
-                      <li class="layer1">
-                        <strong><a href="#">CD</a></strong>
+                      <li>
+                        <a href="#">CD</a>
                         <ul class="layer1">
                           <li><a href="#">Neu</a></li>
                           <li><a href="#">Gebraucht</a></li>
@@ -89,69 +107,89 @@
                 </div> <!-- c9of12 -->
 
                 <div class="col c3of12">
-                  <a class="card" href="#"><span class="amount">3</span><span class="text">Warenkorb</span><span class="price">(199,89&euro;)</span></a>
+                  <a class="card" href="#"><span class="amount"><span>3</span></span>
+                    <!-- <span class="text">Warenkorb</span> -->
+                    <span class="price">(199,89&euro;)</span></a>
                 </div> <!-- c3of12 -->
               </div> <!-- cols -->
 
               <ul class="products">
                 <li>
                   <div class="box product-card">
-                    <figure class="image">
-                      <img alt="" height="300" src="http://placekitten.com/g/200/300" width="200">
-                    </figure>
                     <h2 class="heading level2">Produkttitel</h2>
+                    <div class="cols">
+                      <div class="col c6of12">
+                        <figure class="image">
+                          <img alt="" height="300" src="http://placekitten.com/g/200/300" width="200">
+                        </figure>
+                      </div> <!-- c6of12 -->
+                      <div class="col c6of12">
+                        <ul class="rating">
+                          <li><a class="star one" href="#">befriedigend</a></li>
+                          <li><a class="star two" href="#">gut</a></li>
+                          <li><a class="star three empty" href="#">sehr gut</a></li>
+                        </ul>
+                        <a class="booking" href="#">99,99&euro;<span class="add">in den Warenkorb</span></a>
+                      </div> <!-- c6of12 -->
+                    </div> <!-- cols -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <ul class="rating">
-                      <li><a class="star one" href="#">befriedigend</a></li>
-                      <li><a class="star two" href="#">gut</a></li>
-                      <li><a class="star three empty" href="#">sehr gut</a></li>
-                    </ul>
-                    <a class="booking" href="#">99,99&euro;<span class="add">in den Warenkorb</span></a>
                   </div> <!-- box -->
                 </li>
                 <li>
                   <div class="box product-card">
-                    <figure class="image">
-                      <img alt="" height="200" src="http://placekitten.com/g/200/200" width="200">
-                    </figure>
                     <h2 class="heading level2">Produkttitel</h2>
+                    <div class="cols">
+                      <div class="col c6of12">
+                        <figure class="image">
+                          <img alt="" height="200" src="http://placekitten.com/g/200/200" width="200">
+                        </figure>
+                      </div> <!-- c6of12 -->
+                      <div class="col c6of12">
+                        <ul class="rating">
+                          <li><a class="star one" href="#">befriedigend</a></li>
+                          <li><a class="star two" href="#">gut</a></li>
+                          <li><a class="star three empty" href="#">sehr gut</a></li>
+                        </ul>
+                        <a class="booking" href="#">99,99&euro;<span class="add">in den Warenkorb</span></a>
+                      </div> <!-- c6of12 -->
+                    </div> <!-- cols -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <ul class="rating">
-                      <li><a class="star one" href="#">befriedigend</a></li>
-                      <li><a class="star two" href="#">gut</a></li>
-                      <li><a class="star three empty" href="#">sehr gut</a></li>
-                    </ul>
-                    <a class="booking" href="#">99,99&euro;<span class="add">in den Warenkorb</span></a>
                   </div> <!-- box -->
                 </li>
                 <li>
                   <div class="box product-card">
-                    <figure class="image">
-                      <img alt="" height="200" src="http://placekitten.com/g/300/200" width="300">
-                    </figure>
                     <h2 class="heading level2">Produkttitel</h2>
+                    <div class="cols">
+                      <div class="col c6of12">
+                        <figure class="image">
+                          <img alt="" height="200" src="http://placekitten.com/g/300/200" width="300">
+                        </figure>
+                      </div> <!-- c6of12 -->
+                      <div class="col c6of12">
+                        <ul class="rating">
+                          <li><a class="star one" href="#">befriedigend</a></li>
+                          <li><a class="star two" href="#">gut</a></li>
+                          <li><a class="star three empty" href="#">sehr gut</a></li>
+                        </ul>
+                        <a class="booking" href="#">99,99&euro;<span class="add">in den Warenkorb</span></a>
+                      </div> <!-- c6of12 -->
+                    </div> <!-- cols -->
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <ul class="rating">
-                      <li><a class="star one" href="#">befriedigend</a></li>
-                      <li><a class="star two" href="#">gut</a></li>
-                      <li><a class="star three empty" href="#">sehr gut</a></li>
-                    </ul>
-                    <a class="booking" href="#">99,99&euro;<span class="add">in den Warenkorb</span></a>
                   </div> <!-- box -->
                 </li>
               </ul>

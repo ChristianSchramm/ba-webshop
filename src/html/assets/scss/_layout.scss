@@ -2,30 +2,6 @@
 
 /* Extends */
 
-%blue-gradient {
-  background-color: $blue;
-  @include background(linear-gradient(top, $blue, $darkblue));
-  .lt-ie9 & {
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=blue, endColorstr=darkblue);
-  }
-}
-
-%lightblue-gradient {
-  background-color: $lightblue;
-  @include background(linear-gradient(top, $lightblue, $blue));
-  .lt-ie9 & {
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=lightblue, endColorstr=blue);
-  }
-}
-
-%gray-gradient {
-  background-color: $lightgray;
-  @include background(url('http://placekitten.com/g/30/30') 10px 50% no-repeat, linear-gradient(top, $lightgray, $gray));
-  .lt-ie9 & {
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=lightgray, endColorstr=gray);
-  }
-}
-
 /* Allgemein ________________________________________________________ */
 
 * {
@@ -65,16 +41,22 @@ footer {
 }
 
 .card {
-  @extend %gray-gradient;
+  background: $darkblue;
   display: block;
-  padding: 10px 10px 10px 40px;
   position: relative;
 }
 
 .amount {
-  left: 40px;
-  position: absolute;
-  top: 20px;
+  background: $blue;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+
+  span {
+    left: 40px;
+    position: absolute;
+    top: 10px;
+  }
 }
 
 .price {
@@ -140,29 +122,31 @@ footer {
       width: 33.33%;
     
       a {
-        @extend %blue-gradient;
+        background: $darkblue;
       }
 
       a:active,
       a:hover,
       a:focus,
       strong {
-        @extend %lightblue-gradient;
+        background: $blue;
+        @include box-shadow(0 0 3px rgba(0,0,0,.9));
       }
 
       a,
       strong {
         display: block;
-        padding: 10px;
+        padding: 12px 10px;
       }
 
       strong a {
-        margin: -10px;
+        margin: -12px;
       }
     }
   }
 
   .layer1 {
+    @include box-shadow(0 0 6px rgba(0,0,0,.6));
     display: none;
   }
 }
@@ -189,43 +173,38 @@ footer {
 }
 
 .product-card {
-  @include box-shadow(0 0 3px rgba(0,0,0,.6));
+  @include box-shadow(0 0 6px rgba(0,0,0,.6));
+  border: 2px solid $darkblue;
   display: block;
-  min-height: 700px;
   position: relative;
-  width: 300px;  
+  width: 400px;
 
+  .heading {
+    margin-bottom: 20px;
+  }
 }
   
 .image {
-  @include box-shadow(0 0 3px rgba(0,0,0,.6));
-  margin: 0;
+  @include box-shadow(0 0 6px rgba(0,0,0,.6));
+  border: 1px solid $darkblue;
+  margin-bottom: 20px;
 
   img {
     display: block;
-    margin: 0 auto 20px;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
   }
 }
 
 .booking {
-  bottom: 25px;
-  height: 50px;
-  position: absolute;
-  right: 15px;
 }
 
 .add {
-  bottom: -10px;
   display: inline-block;
-  position: absolute;
-  right: -30px;
-  width: 140px;
 }
 
 .rating {
-  bottom: 15px;
-  left: 15px;
-  position: absolute;
 
   li {
     margin-left: 5px;
@@ -247,6 +226,8 @@ footer {
 /* Filter */
 
 .filter {
+  background: $darkblue;
+
   label {
     margin-left: 5px;
   }
