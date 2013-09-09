@@ -14,7 +14,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
-	
+	/**
+	 * Find all Products bei spezical filter
+	 * 
+	 * @param string $type
+	 * @param string $search
+	 * @param array $filter
+	 *
+	 * 
+	 * @return \Doctrine\Common\Collections\ArrayCollection|Product
+	 */
 	public function findAllByFilter($type, $search, $filter) {
 		
 		// seach and type filter
