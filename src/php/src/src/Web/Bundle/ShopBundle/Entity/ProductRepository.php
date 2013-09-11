@@ -20,7 +20,6 @@ class ProductRepository extends EntityRepository
 	 * @param string $type
 	 * @param string $search
 	 * @param array $filter
-	 *
 	 * 
 	 * @return \Doctrine\Common\Collections\ArrayCollection|Product
 	 */
