@@ -69,7 +69,9 @@ class ProductController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
 		$image = $product->getImage();
-		$image->setPath($product->getImage()->getPath()); 
+                if (is_object($image)){
+		  $image->setPath($product->getImage()->getPath()); 
+                }
 	
     $productForm = new ProductForm();
     $productForm->setProduct($product);
