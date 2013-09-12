@@ -24,11 +24,24 @@ class DefaultController extends Controller
     		$type = $em->getRepository('WebShopBundle:Type')->findOneByName("BD");
     	}
     	$filter = $session->get('filter');
-
     	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $search, $filter);
         	
+    	foreach ($products as $prod){
+    		if (!is_null($prod->getImage())){
+    			$prod->getImage()->setPath($prod->getImage()->getPath());
+    		}
+    		$prod->stars = 0;
+    		if ($prod->getVotes()->count() > 0){
+    		  foreach ($prod->getVotes() as $vote){
+    	  	  $prod->stars += $vote->getValue(); 
+    	    }
+    	    $prod->stars /= $prod->getVotes()->count();
+    		}
+    }
     	
     	
+
+    	  
     	$user = $this->get('security.context')->getToken()->getUser();
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
     	$genres = $em->getRepository('WebShopBundle:Genre')->findAll();

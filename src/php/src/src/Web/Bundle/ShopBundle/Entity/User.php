@@ -85,7 +85,22 @@ class User  implements UserInterface
      * @ORM\OneToMany(targetEntity="Cart", mappedBy="User")
      */
     protected $carts;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="user")
+     */
+    protected $votes;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Bill", mappedBy="User")
+     */
+    protected $bills;
+    
+    
+    /**
+     * cosntruct
+     */
     public function  __construct(){
     	$this->salt = md5(uniqid());
     	
@@ -121,6 +136,16 @@ class User  implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Get number
+     *
+     * @return string
+     */
+    public function getNumber()
+    {
+    	return "U-000".$this->getId();
     }
 
     /**
@@ -373,5 +398,71 @@ class User  implements UserInterface
     public function getCarts()
     {
         return $this->carts;
+    }
+
+    /**
+     * Add bills
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Bill $bills
+     * @return User
+     */
+    public function addBill(\Web\Bundle\ShopBundle\Entity\Bill $bills)
+    {
+        $this->bills[] = $bills;
+    
+        return $this;
+    }
+
+    /**
+     * Remove bills
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Bill $bills
+     */
+    public function removeBill(\Web\Bundle\ShopBundle\Entity\Bill $bills)
+    {
+        $this->bills->removeElement($bills);
+    }
+
+    /**
+     * Get bills
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBills()
+    {
+        return $this->bills;
+    }
+
+    /**
+     * Add votes
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Vote $votes
+     * @return User
+     */
+    public function addVote(\Web\Bundle\ShopBundle\Entity\Vote $votes)
+    {
+        $this->votes[] = $votes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove votes
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Vote $votes
+     */
+    public function removeVote(\Web\Bundle\ShopBundle\Entity\Vote $votes)
+    {
+        $this->votes->removeElement($votes);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

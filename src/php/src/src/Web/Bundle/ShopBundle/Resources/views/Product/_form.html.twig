@@ -1,0 +1,36 @@
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.product.title) }}
+        {{ form_errors(form.product.title) }}
+        {{ form_widget(form.product.title) }}
+    </div>
+    <div>
+        {{ form_label(form.product.price) }}
+        {{ form_errors(form.product.price) }}
+        {{ form_widget(form.product.price) }}
+    </div>
+    <div>
+        {{ form_label(form.product.genres) }}
+        {{ form_errors(form.product.genres) }}
+        {{ form_widget(form.product.genres) }}
+    </div>
+    <div>
+        {{ form_label(form.product.type) }}
+        {{ form_errors(form.product.type) }}
+        {{ form_widget(form.product.type) }}
+    </div>
+    <div>
+        {{ form_label(form.product.description) }}
+        {{ form_errors(form.product.description) }}
+        {{ form_widget(form.product.description) }}
+    </div>
+    
+    <div>
+        {% if image is not null %}
+        <img src="/uploads/documents/{{ image.path }}" />
+        {% endif %}
+        {{ form_label(form.document.file) }}
+        {{ form_errors(form.document.file) }}
+        {{ form_widget(form.document.file) }}
+    </div>

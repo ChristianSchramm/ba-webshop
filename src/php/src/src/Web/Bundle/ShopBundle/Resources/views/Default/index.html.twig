@@ -63,7 +63,11 @@
                 <li>
                   <div class="box product-card">
                     <figure class="image">
-                      <img src="http://placekitten.com/g/200/300">
+                      {% if product.image is not null %}
+                        <img width="200px" src="/uploads/documents/{{ product.image.path }}">
+                      {%  else %}
+                        <img src="http://dummyimage.com/200x200/000/0011ff">
+                      {% endif %}
                     </figure>
                     <h2 class="heading level2">{{ product.title }}<small>{{ product.type.name }}</small></h2>
                     <p>          
@@ -71,16 +75,12 @@
 								        {{ genre.name }}
 								      {% endfor %}
 			              </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			              <p>{{ product.stars }}</p>
+                    <p>{{ product.description }}</p>
                     <ul class="rating">
-                      <li><a class="star one" href="#">befriedigend</a></li>
-                      <li><a class="star two" href="#">gut</a></li>
-                      <li><a class="star three empty" href="#">sehr gut</a></li>
+                      <li><a class="star one" href="{{ path('vote', {'productid' : product.id, 'value' : "1"}) }}">befriedigend</a></li>
+                      <li><a class="star two" href="{{ path('vote', {'productid' : product.id, 'value' : "2"}) }}">gut</a></li>
+                      <li><a class="star three empty" href="{{ path('vote', {'productid' : product.id, 'value' : "3"}) }}">sehr gut</a></li>
                     </ul>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 					            <a class="booking" href="{{ path('cart_add', {'id': product.id}) }}">{{ product.price }}&euro;<span class="add">add to cart</span></a>
