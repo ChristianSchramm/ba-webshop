@@ -1,5 +1,8 @@
 /* Allgemein ______________________________________________ */
 
+@include mf-webfont(ExpletusSans-Bold);
+@include mf-webfont(ExpletusSans-Regular);
+
 body {
   font-size: 62.5%;
   font-family: "Arial";
@@ -133,13 +136,15 @@ a {
 .btn {
   @extend %textshadow-dark;
   color: #fff;
-  font-weight: bold;  
+  font-family: "ExpletusSans-Bold";
+  font-size: 1.5em;
 
   &:active,
   &:hover,
   &:focus {
     @extend %textshadow-white;
     color: darken($gray, 50%);
+    font-family: "ExpletusSans-Bold";
   }
 }
 

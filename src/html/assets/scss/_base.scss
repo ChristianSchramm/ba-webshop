@@ -64,8 +64,21 @@ $z-meta:              5;
   }
 }
 
-/*Base64 background-image*/
+/* Base64 background-image */
 @mixin base64-image($url) {
   background-image: inline-image($url); 
  *background-image: image-url($url);
+}
+
+/* Font */
+
+@mixin mf-webfont($fontname, $fontpath: "/assets/font") {
+  @font-face {
+    font-family: quote($fontname);
+    src:url("#{$fontpath}/#{$fontname}.eot");
+    src:url("#{$fontpath}/#{$fontname}.eot?#iefix") format("embedded-opentype"),
+        url("#{$fontpath}/#{$fontname}.ttf") format("truetype"),
+        url("#{$fontpath}/#{$fontname}.svg##{$fontname}") format("svg"),
+        url("#{$fontpath}/#{$fontname}.woff") format("woff");
+  }
 }

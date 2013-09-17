@@ -16,7 +16,8 @@
 }
 
 /* Fertige */
-/*Base64 background-image*/
+/* Base64 background-image */
+/* Font */
 /* ==========================================================================
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
    ========================================================================== */
@@ -222,7 +223,7 @@ textarea {
   }
 
   header {
-    min-height: 150px;
+    min-height: 170px;
     position: relative;
   }
 
@@ -243,7 +244,7 @@ textarea {
     display: inline-block;
     left: 15px;
     position: absolute;
-    top: 50px;
+    top: 60px;
   }
 
   /* Warenkorb */
@@ -319,7 +320,7 @@ textarea {
   .search {
     position: absolute;
     right: 15px;
-    top: 80px;
+    top: 100px;
   }
   .search .btn {
     margin-left: -5px;
@@ -377,7 +378,9 @@ textarea {
   .register li:first-child {
     margin: 0;
   }
-  .register li:active, .register li:hover, .register li:focus {
+  .register a:active,
+  .register a:hover,
+  .register a:focus {
     border-bottom: 1px dotted #2a2a2a;
   }
 
@@ -491,8 +494,8 @@ textarea {
     background: #004f9f;
     border: 1px solid #004f9f;
     cursor: pointer;
-    height: 30px;
-    padding: 5px 5px 7px;
+    height: 32px;
+    padding: 3px 5px 4px;
   }
   .btn:active, .btn:hover, .btn:focus {
     background: #399bff;
@@ -500,11 +503,23 @@ textarea {
 
   .input {
     border: 1px solid #004f9f;
-    height: 30px;
+    height: 32px;
     padding: 5px;
   }
 }
 /* Allgemein ______________________________________________ */
+@font-face {
+  font-family: "ExpletusSans-Bold";
+  src: url("/assets/font/ExpletusSans-Bold.eot");
+  src: url("/assets/font/ExpletusSans-Bold.eot?#iefix") format("embedded-opentype"), url("/assets/font/ExpletusSans-Bold.ttf") format("truetype"), url("/assets/font/ExpletusSans-Bold.svg#ExpletusSans-Bold") format("svg"), url("/assets/font/ExpletusSans-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ExpletusSans-Regular";
+  src: url("/assets/font/ExpletusSans-Regular.eot");
+  src: url("/assets/font/ExpletusSans-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/font/ExpletusSans-Regular.ttf") format("truetype"), url("/assets/font/ExpletusSans-Regular.svg#ExpletusSans-Regular") format("svg"), url("/assets/font/ExpletusSans-Regular.woff") format("woff");
+}
+
 body {
   font-size: 62.5%;
   font-family: "Arial";
@@ -599,10 +614,12 @@ a {
 /* Button */
 .btn {
   color: #fff;
-  font-weight: bold;
+  font-family: "ExpletusSans-Bold";
+  font-size: 1.5em;
 }
 .btn:active, .btn:hover, .btn:focus {
   color: #2a2a2a;
+  font-family: "ExpletusSans-Bold";
 }
 
 .input {
