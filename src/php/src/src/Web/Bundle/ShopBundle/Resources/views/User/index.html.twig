@@ -7,6 +7,9 @@
     {% for user in users %}
         <li>{{ user.username }}
           <a href="{{ path('admin_user_bill', {'id': user.id}) }}">Bestellungen</a>
+          <a href="{{ path('admin_user_edit', {'id': user.id}) }}">E</a>
+          <a href="{{ path('admin_user_show', {'id': user.id}) }}">S</a>
+          <a href="{{ path('admin_user_remove', {'id': user.id}) }}">X</a>
         </li>
     {% endfor %}
 </ul>
