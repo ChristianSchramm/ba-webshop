@@ -3,14 +3,14 @@
 {% block title %}WebShopBundle:Bill:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Bill:index page</h1>
+<h1>Welcome to the Bill:index pagerrr</h1>
 <ul>
   {% for bill in bills %}
     <li>Rechnung vom {{ bill.date|date('d.m.Y') }} - {{ bill.rechnungsnummer }} <a target="_blank" href="/uploads/bills/{{ bill.path }}">Hier</a>
       {% if bill.paid %}
-         <stong>bezahlt</stong>
+         <stong>bezahlt</stong> <a href="{{ path('admin_bill_set', {'id': bill.id}) }}">unbezahlt setzen</a>
       {% else %}
-        <stong>nicht bezahlt</stong>
+        <stong>nicht bezahlt</stong> <a href="{{ path('admin_bill_set', {'id': bill.id}) }}">bezahlt setzen</a>
       {% endif %}
     </li>
   {% endfor %}

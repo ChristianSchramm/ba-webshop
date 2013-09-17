@@ -20,4 +20,6 @@ class UserController extends Controller
 		 
 		return array('users' => $users);
 	}
+	
+
 }

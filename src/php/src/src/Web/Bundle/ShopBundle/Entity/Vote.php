@@ -30,13 +30,13 @@ class Vote
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="votes")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user;
     
     /**
      * @ORM\ManyToOne(targetEntity="Product", inversedBy="votes")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $product;
 

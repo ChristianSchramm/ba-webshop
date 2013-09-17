@@ -106,7 +106,8 @@ class User  implements UserInterface
     	
     	$this->roles = new \Doctrine\Common\Collections\ArrayCollection();
     	$this->adresss = new \Doctrine\Common\Collections\ArrayCollection(); 
-    	$this->carts = new \Doctrine\Common\Collections\ArrayCollection(); 
+    	$this->carts = new \Doctrine\Common\Collections\ArrayCollection();  
+    	$this->bills = new \Doctrine\Common\Collections\ArrayCollection(); 
     }
     
     
