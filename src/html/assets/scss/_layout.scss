@@ -1,6 +1,36 @@
 @include mf-layout;
 
-/* Extends */
+/* Extends __________________________________________________________ */
+
+/* runde Ecken */
+
+%s-round-1 {
+  @include border-radius(3px);
+}
+
+%m-round-1-0-0-1 {
+  @include border-radius(5px 0 0 5px);
+}
+
+/* Schatten */
+
+%boxshadow-login {
+  @include box-shadow(0 6px 7px -2px rgba(darken($gray,30%), 0.8));
+}
+
+%boxshadow-btn {
+  @include box-shadow(2px 2px 2px rgba($blue, 0.8))
+}
+
+%boxshadow-meta {
+  @include box-shadow(0 3px 5px rgba(darken($gray,30%), 0.8))
+}
+
+/* Sonstige */
+
+%box-sizing {
+  @include box-sizing(border-box);
+}
 
 /* Allgemein ________________________________________________________ */
 
@@ -20,7 +50,7 @@ li {
 /* Layout */
 
 .wrapper {
-  margin: 20px;
+  width: 100%;
 }
 
 header {
@@ -28,8 +58,24 @@ header {
   position: relative;
 }
 
+.inner {
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+  position: relative;
+  width: 960px;
+}
+
 footer {
-  padding: 20px;
+  border: solid $blue;
+  border-width: 5px 0 5px;
+}
+
+.logo {
+  display: inline-block;
+  left: 15px;
+  position: absolute;
+  top: 50px;
 }
 
 /* Warenkorb */
@@ -41,7 +87,7 @@ footer {
 }
 
 .card {
-  background: $darkblue;
+  background: $blue;
   display: block;
   height: 40px;
   position: relative;
@@ -68,6 +114,15 @@ footer {
 
 /* Navigation _______________________________________________________ */
 
+.meta {
+  @extend %boxshadow-meta;
+  background: lighten($blue, 30%);
+  border-top: 5px solid $blue;
+  height: 40px;
+  width: 100%;
+  z-index: $z-basic;
+}
+
 .meta-nav,
 .main-nav,
 .footer-nav {
@@ -87,25 +142,108 @@ footer {
   }
 }
 
-.meta-nav,
-.search {
-  position: absolute;
-}
 
 /* Metanavigation */
 
 .meta-nav {
-  right: 120px;
-  top: 0;
-  width: 300px;
+  position: absolute;
+  right: 100px;
+  top: 10px;
+  width: 200px;
+
+  a:active,
+  a:hover,
+  a:focus {
+    border-bottom: 1px dotted darken($gray, 50%);
+  }
 }
 
 /* Suche */
 
 .search {
   position: absolute;
-  right: 10px;
-  top: 15px;
+  right: 15px;
+  top: 80px;
+  
+  .input {
+    @extend %m-round-1-0-0-1;
+  }
+
+  .btn {
+    margin-left: -5px;
+  }
+}
+
+/* Login-menu */
+
+.login {
+  position: absolute;
+  right: 15px;
+  top: 0;
+
+  &:active,
+  &:hover,
+  &:focus {
+    .login-form {
+      display: block;
+    }
+
+    .login-btn {
+      background: $blue;
+    }
+  }
+}
+
+.login-btn {
+  @extend %box-sizing;
+  background: #fff;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  padding: 5px 5px 7px;
+  width: 80px;
+}
+
+.login-form {
+  @extend %boxshadow-login;
+  background: #fff;
+  border: solid lighten($blue,20%);
+  border-width: 0 2px 2px;
+  display: none;
+  padding: 20px 20px 50px;
+  position: absolute;
+  right: -2px;
+  width: 400px;
+  z-index: $z-meta;
+
+  li {
+    float: left;
+    margin-left: 5px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+}
+
+.register {
+  bottom: 20px;
+  left: 20px;
+  position: absolute;
+
+  li {
+    margin-left: 10px;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    &:active,
+    &:hover,
+    &:focus {
+      border-bottom: 1px dotted darken($gray, 50%);
+    }
+  }
 }
 
 /* Hauptnavigation */
@@ -123,7 +261,7 @@ footer {
       width: 33.33%;
     
       a {
-        background: $darkblue;
+        background: $blue;
       }
 
       a:active,
@@ -155,8 +293,8 @@ footer {
 /* Footer-Navigation */
 
 .footer-nav {
-  li {
-  }
+  height: 100px;
+
 }
 
 /* Produkte */
@@ -175,7 +313,7 @@ footer {
 
 .product-card {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
-  border: 2px solid $darkblue;
+  border: 2px solid $blue;
   display: block;
   position: relative;
   width: 400px;
@@ -187,7 +325,7 @@ footer {
   
 .image {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
-  border: 1px solid $darkblue;
+  border: 1px solid $blue;
   margin-bottom: 20px;
 
   img {
@@ -227,9 +365,35 @@ footer {
 /* Filter */
 
 .filter {
-  background: $darkblue;
+  background: $blue;
 
   label {
     margin-left: 5px;
   }
+}
+
+/* Button */
+
+.btn {
+  @extend %box-sizing;
+  @extend %boxshadow-btn;
+  background: $blue;
+  border: 1px solid $blue;
+  cursor: pointer;
+  height: 30px;
+  padding: 5px 5px 7px;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background: lighten($blue, 30%);
+  }
+}
+
+.input {
+  @extend %box-sizing;
+  @extend %s-round-1;
+  border: 1px solid $blue;
+  height: 30px;
+  padding: 5px;
 }

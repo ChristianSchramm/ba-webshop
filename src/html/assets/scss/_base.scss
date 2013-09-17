@@ -2,16 +2,31 @@
 
 /* blau */
 
-$lightblue: #e7e6f4;
-$blue: #6a84bf;
-$darkblue: #004F9F;
+$blue: #004F9F;
 
 /* grau */
 
-$lightgray: lightgray;
-$gray: gray;
+$gray: #aaaaaa;
 
-/* Mixins _____________________________________________*/
+/* Verläufe _______________________________________________ */
+
+
+/* Indizes ________________________________________________ */
+
+$z-basic:             1;
+$z-meta:              5;
+
+/* Mixins _________________________________________________ */
+
+%textshadow-dark {
+  @include text-shadow(1px 1px 1px rgba(#000, 0.7));
+}
+
+%textshadow-white {
+  @include text-shadow(1px 1px 1px #fff);
+}
+
+/* Fertige */
 
 @mixin mf-layout ($columns: 12, $col-margin: 2.1276%) {
   

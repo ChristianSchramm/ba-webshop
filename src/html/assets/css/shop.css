@@ -1,9 +1,21 @@
+@charset "CP850";
 /* Imports ___________________________________________*/
 /*Komplettes Compass Framework*/
 /* Farben _________________________________________________ */
 /* blau */
 /* grau */
-/* Mixins _____________________________________________*/
+/* Verläufe _______________________________________________ */
+/* Indizes ________________________________________________ */
+/* Mixins _________________________________________________ */
+.meta-nav a, .btn {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.meta-nav a:active, .meta-nav a:hover, .meta-nav a:focus, .btn:active, .btn:hover, .btn:focus {
+  text-shadow: 1px 1px 1px white;
+}
+
+/* Fertige */
 /*Base64 background-image*/
 /* ==========================================================================
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
@@ -146,7 +158,50 @@ textarea {
     width: 6.38303%;
   }
 
-  /* Extends */
+  /* Extends __________________________________________________________ */
+  /* runde Ecken */
+  .input {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+  }
+
+  .search .input {
+    -webkit-border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    -ms-border-radius: 5px 0 0 5px;
+    -o-border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  /* Schatten */
+  .login-form {
+    -webkit-box-shadow: 0 6px 7px -2px rgba(93, 93, 93, 0.8);
+    -moz-box-shadow: 0 6px 7px -2px rgba(93, 93, 93, 0.8);
+    box-shadow: 0 6px 7px -2px rgba(93, 93, 93, 0.8);
+  }
+
+  .btn {
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 79, 159, 0.8);
+    -moz-box-shadow: 2px 2px 2px rgba(0, 79, 159, 0.8);
+    box-shadow: 2px 2px 2px rgba(0, 79, 159, 0.8);
+  }
+
+  .meta {
+    -webkit-box-shadow: 0 3px 5px rgba(93, 93, 93, 0.8);
+    -moz-box-shadow: 0 3px 5px rgba(93, 93, 93, 0.8);
+    box-shadow: 0 3px 5px rgba(93, 93, 93, 0.8);
+  }
+
+  /* Sonstige */
+  .login-btn, .btn, .input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
   /* Allgemein ________________________________________________________ */
   * {
     padding: 0;
@@ -163,7 +218,7 @@ textarea {
 
   /* Layout */
   .wrapper {
-    margin: 20px;
+    width: 100%;
   }
 
   header {
@@ -171,8 +226,24 @@ textarea {
     position: relative;
   }
 
+  .inner {
+    display: block;
+    margin: 0 auto;
+    padding: 15px;
+    position: relative;
+    width: 960px;
+  }
+
   footer {
-    padding: 20px;
+    border: solid #004f9f;
+    border-width: 5px 0 5px;
+  }
+
+  .logo {
+    display: inline-block;
+    left: 15px;
+    position: absolute;
+    top: 50px;
   }
 
   /* Warenkorb */
@@ -190,7 +261,7 @@ textarea {
   }
 
   .amount {
-    background: #6a84bf;
+    background: #004f9f;
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -208,6 +279,14 @@ textarea {
   }
 
   /* Navigation _______________________________________________________ */
+  .meta {
+    background: #399bff;
+    border-top: 5px solid #004f9f;
+    height: 40px;
+    width: 100%;
+    z-index: 1;
+  }
+
   .meta-nav li,
   .main-nav li,
   .footer-nav li {
@@ -223,23 +302,83 @@ textarea {
     margin-left: 0;
   }
 
-  .meta-nav,
-  .search {
-    position: absolute;
-  }
-
   /* Metanavigation */
   .meta-nav {
-    right: 120px;
-    top: 0;
-    width: 300px;
+    position: absolute;
+    right: 100px;
+    top: 10px;
+    width: 200px;
+  }
+  .meta-nav a:active,
+  .meta-nav a:hover,
+  .meta-nav a:focus {
+    border-bottom: 1px dotted #2a2a2a;
   }
 
   /* Suche */
   .search {
     position: absolute;
-    right: 10px;
-    top: 15px;
+    right: 15px;
+    top: 80px;
+  }
+  .search .btn {
+    margin-left: -5px;
+  }
+
+  /* Login-menu */
+  .login {
+    position: absolute;
+    right: 15px;
+    top: 0;
+  }
+  .login:active .login-form, .login:hover .login-form, .login:focus .login-form {
+    display: block;
+  }
+  .login:active .login-btn, .login:hover .login-btn, .login:focus .login-btn {
+    background: #004f9f;
+  }
+
+  .login-btn {
+    background: #fff;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    padding: 5px 5px 7px;
+    width: 80px;
+  }
+
+  .login-form {
+    background: #fff;
+    border: solid #0682ff;
+    border-width: 0 2px 2px;
+    display: none;
+    padding: 20px 20px 50px;
+    position: absolute;
+    right: -2px;
+    width: 400px;
+    z-index: 5;
+  }
+  .login-form li {
+    float: left;
+    margin-left: 5px;
+  }
+  .login-form li:first-child {
+    margin: 0;
+  }
+
+  .register {
+    bottom: 20px;
+    left: 20px;
+    position: absolute;
+  }
+  .register li {
+    margin-left: 10px;
+  }
+  .register li:first-child {
+    margin: 0;
+  }
+  .register li:active, .register li:hover, .register li:focus {
+    border-bottom: 1px dotted #2a2a2a;
   }
 
   /* Hauptnavigation */
@@ -262,7 +401,7 @@ textarea {
   .main-nav .layer0 > li a:hover,
   .main-nav .layer0 > li a:focus,
   .main-nav .layer0 > li strong {
-    background: #6a84bf;
+    background: #004f9f;
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
     -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.9);
@@ -283,6 +422,10 @@ textarea {
   }
 
   /* Footer-Navigation */
+  .footer-nav {
+    height: 100px;
+  }
+
   /* Produkte */
   .products li {
     float: left;
@@ -342,10 +485,35 @@ textarea {
   .filter label {
     margin-left: 5px;
   }
+
+  /* Button */
+  .btn {
+    background: #004f9f;
+    border: 1px solid #004f9f;
+    cursor: pointer;
+    height: 30px;
+    padding: 5px 5px 7px;
+  }
+  .btn:active, .btn:hover, .btn:focus {
+    background: #399bff;
+  }
+
+  .input {
+    border: 1px solid #004f9f;
+    height: 30px;
+    padding: 5px;
+  }
 }
 /* Allgemein ______________________________________________ */
 body {
   font-size: 62.5%;
+  font-family: "Arial";
+}
+
+a {
+  color: #0068d2;
+  font-size: 1.4em;
+  text-decoration: none;
 }
 
 /* Header */
@@ -382,6 +550,36 @@ body {
   text-decoration: underline;
 }
 
+/* Meta-navigation */
+.meta-nav a {
+  color: #fff;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+.meta-nav a:active, .meta-nav a:hover, .meta-nav a:focus {
+  color: #2a2a2a;
+}
+
+/* Login-menu */
+.login:active .login-btn, .login:hover .login-btn, .login:focus .login-btn {
+  color: #6cb5ff;
+}
+
+.login-btn {
+  color: #004f9f;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 2.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.register a:active,
+.register a:hover,
+.register a:focus {
+  color: #2a2a2a;
+}
+
 /* Produkte */
 .product-card .heading {
   text-align: center;
@@ -396,6 +594,19 @@ body {
 }
 .booking span {
   font-size: 0.5em;
+}
+
+/* Button */
+.btn {
+  color: #fff;
+  font-weight: bold;
+}
+.btn:active, .btn:hover, .btn:focus {
+  color: #2a2a2a;
+}
+
+.input {
+  color: #004f9f;
 }
 
 /* ==========================================================================
