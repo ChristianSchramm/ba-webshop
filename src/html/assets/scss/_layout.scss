@@ -49,7 +49,6 @@ li {
 
 .small-box {
   padding: 10px;
-  position: relative;
 }
 
 /* Layout */
@@ -69,6 +68,10 @@ header {
   padding: 15px;
   position: relative;
   width: 80%;
+}
+
+.main {
+  min-height: 500px;
 }
 
 footer {
@@ -129,7 +132,6 @@ footer {
 }
 
 .meta-nav,
-.main-nav,
 .footer-nav {
   li {
     float: left;
@@ -261,51 +263,100 @@ footer {
 
 .main-nav {
   bottom: 0;
+  margin-bottom: 20px;
   position: relative;
+}
 
-  .layer0 {
-    display: table;
-    width: 100%;
+.layer0 {
+  background: $dark-blue;
+  display: table;
+  width: 100%;
 
-    > li {
-      display: table-cell;
-      width: 33.33%;
-    
-      a {
-        background: $dark-blue;
-      }
+  > li {
+    display: table-cell;
+    width: 33.33%;
+  
+    > a {
+      background: $medium-blue;
+      position: relative;
+      z-index: $z-basic;
+    }
 
-      a:active,
-      a:hover,
-      a:focus,
-      strong {
-        background: $dark-blue;
-        @include box-shadow(inset 0 0 5px rgba(0,0,0,.9));
-      }
+    &:active > a,
+    &:hover > a,
+    &:focus > a,
+    > strong {
+      @include box-shadow(0 6px 5px -4px rgba($dark-blue,.5));
+      background: #fff;
+      border-left: 1px solid $lighter-blue;
+      border-right: 1px solid $lighter-blue;
+      border-top: 5px solid $dark-blue;
+      margin: -5px 0 0;
+      position: relative;
+      z-index: $z-meta;
+    }
 
-      a,
-      strong {
+    &:active,
+    &:hover,
+    &:focus {
+      .layer1 {
         display: block;
-        padding: 10px;
       }
+    }
 
-      strong a {
-        margin: -12px;
-      }
+    > a,
+    > strong {
+      display: block;
+      padding: 10px;
+    }
+
+    > strong a {
+      margin: -12px;
+    }
+  }
+}
+
+.layer1 {
+  @include box-shadow(0 0 6px rgba(0,0,0,.6));
+  display: none;
+  position: absolute;
+  width: 33.33%;
+  z-index: $z-subnavi;
+
+  a,
+  li,
+  strong {
+    display: block;
+  }
+
+  li {
+    background: #fff;
+    border-top: 1px solid $grey;
+    position: relative;
+
+    &:first-child {
+      border: 0;
     }
   }
 
-  .layer1 {
-    @include box-shadow(0 0 6px rgba(0,0,0,.6));
-    display: none;
+  a,
+  strong {
+    padding: 10px 20px;
   }
+}
+
+.ico-info {
+  background: red;
+  display: block;
+  height: 10px;
+  position: absolute;
+  width: 100%;
 }
 
 /* Footer-Navigation */
 
 .footer-nav {
   height: 100px;
-
 }
 
 /* Produkte */
@@ -322,6 +373,10 @@ footer {
     &:first-child {
       margin-left: 0;
     }
+  }
+
+  .col {
+    position: relative;
   }
 }
 
@@ -350,14 +405,18 @@ footer {
 }
 
 .booking {
-
 }
 
 .add {
+  bottom: 20px;
   display: inline-block;
+  position: absolute;
+  right: 10px;
 }
 
 .rating {
+  display: inline-block;
+  width: 100%;
 
   li {
     display: inline;
