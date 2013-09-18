@@ -2,13 +2,19 @@
 
 /* blau */
 
-$blue: #004F9F;
+$dark-blue: #004F9F;
+$lighter-blue: lighten($dark-blue, 40%);
+$light-blue: lighten($dark-blue, 30%);
+$blue: lighten($dark-blue,20%);
+$medium-blue: lighten($dark-blue, 10%);
 
 /* grau */
 
-$gray: #aaaaaa;
+$grey: #aaaaaa;
+$medium-grey: darken($grey,30%);
+$dark-grey: darken($grey, 50%);
 
-/* Verläufe _______________________________________________ */
+/* Verlaeufe _______________________________________________ */
 
 
 /* Indizes ________________________________________________ */
@@ -64,8 +70,21 @@ $z-meta:              5;
   }
 }
 
-/*Base64 background-image*/
+/* Base64 background-image */
 @mixin base64-image($url) {
   background-image: inline-image($url); 
  *background-image: image-url($url);
+}
+
+/* Font */
+
+@mixin mf-webfont($fontname, $fontpath: "/assets/font") {
+  @font-face {
+    font-family: quote($fontname);
+    src:url("#{$fontpath}/#{$fontname}.eot");
+    src:url("#{$fontpath}/#{$fontname}.eot?#iefix") format("embedded-opentype"),
+        url("#{$fontpath}/#{$fontname}.ttf") format("truetype"),
+        url("#{$fontpath}/#{$fontname}.svg##{$fontname}") format("svg"),
+        url("#{$fontpath}/#{$fontname}.woff") format("woff");
+  }
 }
