@@ -4,16 +4,20 @@
 		"selected_items":
 		[
 			[
+				"border",
+				"border-top"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
 				"t",
 				"text-align"
 			],
 			[
 				"margin",
 				"margin-bottom"
-			],
-			[
-				"marg",
-				"margin-left"
 			],
 			[
 				"te",
@@ -95,7 +99,11 @@
 			"file": "src/html/sandbox.html",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 10758,
+=======
+				"buffer_size": 11720,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 				"line_ending": "Windows"
 			}
 		},
@@ -103,11 +111,16 @@
 			"file": "src/html/assets/scss/_base.scss",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 990,
+=======
+				"buffer_size": 1056,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 				"line_ending": "Windows"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "src/html/assets/scss/_boilerplate.scss",
 			"settings":
 			{
@@ -120,10 +133,25 @@
 			"settings":
 			{
 				"buffer_size": 148,
+=======
+			"file": "src/html/assets/js/plugins.js",
+			"settings":
+			{
+				"buffer_size": 1430,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/html/assets/scss/_layout.scss",
+			"settings":
+			{
+				"buffer_size": 2839,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 				"line_ending": "Windows"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "src/html/assets/js/plugins.js",
 			"settings":
 			{
@@ -146,21 +174,41 @@
 				"buffer_size": 825,
 				"line_ending": "Windows"
 			}
+=======
+			"file": "src/html/assets/scss/_content.scss",
+			"settings":
+			{
+				"buffer_size": 825,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/html/assets/scss/_boilerplate.scss",
+			"settings":
+			{
+				"buffer_size": 3726,
+				"line_ending": "Windows"
+			}
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 311.0,
 		"selected_items":
 		[
 			[
-				"c",
-				"Git: Commit"
+				"Package Control: ",
+				"Package Control: Install Package"
 			],
 			[
 				"ad",
 				"Git: Add..."
+			],
+			[
+				"c",
+				"Git: Commit"
 			],
 			[
 				"add",
@@ -191,7 +239,11 @@
 				"Set Syntax: R Console"
 			]
 		],
+<<<<<<< HEAD
 		"width": 400.0
+=======
+		"width": 512.0
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 	},
 	"console":
 	{
@@ -208,6 +260,7 @@
 	},
 	"file_history":
 	[
+		"/E/Projekte/ChristianSchramm/ba-webshop/src/html/assets/scss/shop.scss",
 		"/F/webit/Projekte/ssk-rahmenportal/src/html/index.html",
 		"/F/ChristianSchramm/Projekte/ba-webshop/src/html/assets/css/shop.css",
 		"/F/ChristianSchramm/Projekte/ba-webshop/src/html/assets/css/main.css",
@@ -283,15 +336,24 @@
 					"file": "src/html/sandbox.html",
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 10758,
+=======
+						"buffer_size": 11720,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								9998,
 								9998
+=======
+								993,
+								993
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							]
 						],
 						"settings":
@@ -390,7 +452,11 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 5065.0,
+=======
+						"translation.y": 206.0,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -400,15 +466,24 @@
 					"file": "src/html/assets/scss/_base.scss",
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 990,
+=======
+						"buffer_size": 1056,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								144,
 								144
+=======
+								248,
+								248
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							]
 						],
 						"settings":
@@ -514,18 +589,30 @@
 				},
 				{
 					"buffer": 2,
+<<<<<<< HEAD
 					"file": "src/html/assets/scss/_boilerplate.scss",
 					"settings":
 					{
 						"buffer_size": 3726,
+=======
+					"file": "src/html/assets/js/plugins.js",
+					"settings":
+					{
+						"buffer_size": 1430,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								1504,
 								1504
+=======
+								734,
+								734
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							]
 						],
 						"settings":
@@ -619,30 +706,57 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
+<<<<<<< HEAD
 							"syntax": "Packages/SCSS/SCSS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 899.0,
+=======
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 473.0,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 3,
+<<<<<<< HEAD
 					"file": "src/html/assets/scss/shop.scss",
 					"settings":
 					{
 						"buffer_size": 148,
+=======
+					"file": "src/html/assets/scss/_layout.scss",
+					"settings":
+					{
+						"buffer_size": 2839,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								148,
 								148
+=======
+								1199,
+								1199
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							]
 						],
 						"settings":
@@ -741,25 +855,37 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1425.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
+<<<<<<< HEAD
 					"file": "src/html/assets/js/plugins.js",
 					"settings":
 					{
 						"buffer_size": 1430,
+=======
+					"file": "src/html/assets/scss/_content.scss",
+					"settings":
+					{
+						"buffer_size": 825,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								734,
 								734
+=======
+								689,
+								689
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							]
 						],
 						"settings":
@@ -853,12 +979,20 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
+<<<<<<< HEAD
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+=======
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 473.0,
+=======
+						"translation.y": 812.0,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -871,18 +1005,30 @@
 			[
 				{
 					"buffer": 5,
+<<<<<<< HEAD
 					"file": "src/html/assets/scss/_layout.scss",
 					"settings":
 					{
 						"buffer_size": 2729,
+=======
+					"file": "src/html/assets/scss/_boilerplate.scss",
+					"settings":
+					{
+						"buffer_size": 3726,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								1346,
 								1346
+=======
+								1130,
+								1130
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 							]
 						],
 						"settings":
@@ -977,6 +1123,7 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+<<<<<<< HEAD
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -1099,6 +1246,13 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 108.0,
+=======
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 899.0,
+>>>>>>> ebba3efce8f06a3f8f2a172054b8a74aa6d05b08
 						"zoom_level": 1.0
 					},
 					"type": "text"

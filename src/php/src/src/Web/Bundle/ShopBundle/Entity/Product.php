@@ -46,6 +46,14 @@ class Product
      */
     private $price;
     
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Shipping", type="string", length=255, nullable=true)
+     */
+    private $shipping;
+    
 
     /**
      * @var float

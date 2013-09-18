@@ -1,7 +1,17 @@
 /* Allgemein ______________________________________________ */
 
+@include mf-webfont(ExpletusSans-Bold);
+@include mf-webfont(ExpletusSans-Regular);
+
 body {
   font-size: 62.5%;
+  font-family: "Arial";
+}
+
+a {
+  color: lighten($blue, 10%);
+  font-size: 1.4em;
+  text-decoration: none;
 }
 
 /* Header */
@@ -50,7 +60,52 @@ body {
   }
 }
 
-//
+/* Meta-navigation */
+
+.meta-nav {
+  a {
+    @extend %textshadow-dark;
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+
+    &:active,
+    &:hover,
+    &:focus {
+      @extend %textshadow-white;
+      color: darken($gray, 50%);
+    }
+  }
+}
+
+/* Login-menu */
+
+.login {
+  &:active,
+  &:hover,
+  &:focus {
+    .login-btn {
+      color: lighten($blue, 40%);
+    }
+  }
+}
+
+.login-btn {
+  color: $blue;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 2.3;
+  text-align: center;
+  text-decoration: none;
+}
+
+.register {
+  a:active,
+  a:hover,
+  a:focus {
+    color: darken($gray, 50%);
+  }
+}
 
 /* Produkte */
 
@@ -74,4 +129,25 @@ body {
       size: 0.5em;
     }
   }
+}
+
+/* Button */
+
+.btn {
+  @extend %textshadow-dark;
+  color: #fff;
+  font-family: "ExpletusSans-Bold";
+  font-size: 1.5em;
+
+  &:active,
+  &:hover,
+  &:focus {
+    @extend %textshadow-white;
+    color: darken($gray, 50%);
+    font-family: "ExpletusSans-Bold";
+  }
+}
+
+.input {
+  color: $blue;
 }
