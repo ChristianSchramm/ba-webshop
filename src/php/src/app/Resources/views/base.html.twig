@@ -22,50 +22,85 @@
   <body>
       <div class="wrapper">
         <header>
-          <a class="logo" href="{{ path('default') }}">Scheiben-Bude</a>
 
-          <nav class="meta-nav">
-            <ul>
-				      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			          <li><a href="{{ path('account') }}"> {{ app.user.username }}</a></li>
-			          {% if is_granted('ROLE_ADMIN') %}
-			            <li><a href="{{ path('admin') }}">  ACP</a></li>
-			          {% endif %}
-			          <li><a href="{{ path('logout') }}"> logout</a></li>
-			       
-			        {% else %}
-			          <li><a href="{{ path('login') }}"> login</a></li>
-			        {% endif %}
-            </ul>
-          </nav> <!-- meta-navigation -->
-        
-         
-          <div class="search">
-           {% if search is defined %}
-            <form  action="{{ path('search') }}" method="post">
-              <input class="input" type="search" name="search" value="{{ search }}">
-              <button class="btn">Suchen</button>
-            </form>
-            {% endif %}
-          </div> <!-- search -->
+          <div class="meta">
+            <div class="inner">
 
+              <a class="logo" href="{{ path('default') }}">
+                <img alt="" height="100" src="http://placekitten.com/g/200/100" width="200">
+              </a>
+
+              <nav class="meta-nav">
+                <ul>
+	                <li><a href="{{ path('static_kontakt') }}"> Kontakt</a></li>
+					        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				          <li><a href="{{ path('account') }}"> Mein Konto</a></li>
+					          {% if is_granted('ROLE_ADMIN') %}
+					          <li><a href="{{ path('admin') }}">  ACP</a></li>
+					          {% endif %}
+					        {% endif %}
+				        </ul>
+              </nav> <!-- meta-nav -->
+              
+              <div class="login">
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="login-btn" href="#">Login</a>
+                <div class="login-form">
+                  <form action="{{ path('login_check') }}" method="post">
+                    <ul>
+                      <li><input class="input" placeholder="Login" type="text" id="username" name="_username" ></li>
+                      <li><input class="input" placeholder="Passwort" type="password" id="password" name="_password"></li>
+                      <li><button class="btn">Einloggen</button></li>
+                    </ul>
+                  </form>
+
+                  <ul class="register">
+                    <li><a href="{{ path('register') }}">Registrieren</a></li>
+                    <li><a href="#">Passwort vergessen?</a></li>
+                  </ul>
+                </div> <!-- login-form -->
+                {% else %}
+                  <a  class="login-btn" href="{{ path('logout') }}">logout</a>
+                {% endif %}
+              </div> <!-- login -->
+              
             
+              <div class="search">
+                {% if search is defined %}
+                <form  action="{{ path('search') }}" method="post">
+                  <input class="input" type="search" name="search" value="{{ search }}">
+                  <button class="btn">Suchen</button>
+                </form>
+                {% endif %}
+              </div> <!-- search -->
+              
+            </div> <!-- inner  -->
+          </div> <!-- meta -->
         </header> <!-- header -->
-
+      
+      
+      
+  
+				<div class="main" role="main">
+          <div class="inner">
     {% block body %}
         
     {% endblock %}
     
+              </div> <!-- inner -->
+        </div> <!-- main -->
+    
     {% block footer %}
          <footer>
-          <nav class="footer-nav">
-            <ul>
-              <li><a href="#">AGB</a></li>
-              <li><a href="#">Impressum</a></li>
-              <li><a href="#">Bezahlung</a></li>
-              <li><a href="#">Versand</a></li>
-            </ul>
-          </nav>
+          <div class="inner">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="#">AGB</a></li>
+                <li><a href="#">Bezahlung</a></li>
+                <li><a href="#">Versand</a></li>
+              </ul>
+            </nav>
+          </div> <!-- inner -->
         </footer> <!-- footer -->
     {% endblock %}
     
