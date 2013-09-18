@@ -217,6 +217,11 @@ textarea {
     padding: 15px;
   }
 
+  .small-box {
+    padding: 10px;
+    position: relative;
+  }
+
   /* Layout */
   .wrapper {
     width: 100%;
@@ -232,12 +237,12 @@ textarea {
     margin: 0 auto;
     padding: 15px;
     position: relative;
-    width: 960px;
+    width: 80%;
   }
 
   footer {
-    border: solid #004f9f;
-    border-width: 5px 0 5px;
+    background: #399bff;
+    border-top: 5px solid #004f9f;
   }
 
   .logo {
@@ -307,13 +312,18 @@ textarea {
   .meta-nav {
     position: absolute;
     right: 100px;
-    top: 10px;
-    width: 200px;
+    top: 11px;
+    min-width: 200px;
   }
   .meta-nav a:active,
   .meta-nav a:hover,
   .meta-nav a:focus {
     border-bottom: 1px dotted #2a2a2a;
+  }
+  .meta-nav ul {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
   }
 
   /* Suche */
@@ -430,10 +440,17 @@ textarea {
   }
 
   /* Produkte */
-  .products li {
+  .products {
+    display: inline-block;
+  }
+  .products > li {
     float: left;
-    margin: 10px 5px 0;
-    padding: 5px;
+    margin: 10px 0 0 10px;
+    max-width: 308px;
+    min-width: 200px;
+  }
+  .products > li:first-child {
+    margin-left: 0;
   }
 
   .product-card {
@@ -443,7 +460,6 @@ textarea {
     border: 2px solid #004f9f;
     display: block;
     position: relative;
-    width: 400px;
   }
   .product-card .heading {
     margin-bottom: 20px;
@@ -468,6 +484,8 @@ textarea {
   }
 
   .rating li {
+    display: inline;
+    float: left;
     margin-left: 5px;
     padding: 0;
   }
@@ -618,7 +636,7 @@ a {
   font-size: 1.5em;
 }
 .btn:active, .btn:hover, .btn:focus {
-  color: #2a2a2a;
+  color: d #2a2a2a;
   font-family: "ExpletusSans-Bold";
 }
 

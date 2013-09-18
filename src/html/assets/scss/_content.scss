@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: lighten($blue, 10%);
+  color: $medium-blue;
   font-size: 1.4em;
   text-decoration: none;
 }
@@ -73,7 +73,7 @@ a {
     &:hover,
     &:focus {
       @extend %textshadow-white;
-      color: darken($gray, 50%);
+      color: $dark-grey;
     }
   }
 }
@@ -85,13 +85,13 @@ a {
   &:hover,
   &:focus {
     .login-btn {
-      color: lighten($blue, 40%);
+      color: $lighter-blue;
     }
   }
 }
 
 .login-btn {
-  color: $blue;
+  color: $dark-blue;
   font-size: 1.2em;
   font-weight: bold;
   line-height: 2.3;
@@ -103,7 +103,7 @@ a {
   a:active,
   a:hover,
   a:focus {
-    color: darken($gray, 50%);
+    color: $dark-grey;
   }
 }
 
@@ -143,11 +143,11 @@ a {
   &:hover,
   &:focus {
     @extend %textshadow-white;
-    color: darken($gray, 50%);
+    color: d$dark-grey;
     font-family: "ExpletusSans-Bold";
   }
 }
 
 .input {
-  color: $blue;
+  color: $dark-blue;
 }

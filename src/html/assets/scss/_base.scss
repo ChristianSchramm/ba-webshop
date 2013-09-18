@@ -2,11 +2,17 @@
 
 /* blau */
 
-$blue: #004F9F;
+$dark-blue: #004F9F;
+$lighter-blue: lighten($dark-blue, 40%);
+$light-blue: lighten($dark-blue, 30%);
+$blue: lighten($dark-blue,20%);
+$medium-blue: lighten($dark-blue, 10%);
 
 /* grau */
 
-$gray: #aaaaaa;
+$grey: #aaaaaa;
+$medium-grey: darken($grey,30%);
+$dark-grey: darken($grey, 50%);
 
 /* Verläufe _______________________________________________ */
 
