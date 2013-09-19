@@ -22,6 +22,15 @@ class ProductType extends AbstractType
 				'multiple' => true
 		));
 		$builder->add('description', 'textarea');
+		$builder->add('shipping', 'choice', array(
+    'choices'   => array(
+        '2'   => '2 Tage',
+        '3' => '3 Tage',
+        '5'   => '5 Tage',
+        '7'   => '7 Tage',
+        '10'   => '10 Tage',
+        '14'   => '14 Tage',
+    ),));
 
 	}
 	

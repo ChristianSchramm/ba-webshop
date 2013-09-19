@@ -21,6 +21,11 @@
         {{ form_widget(form.product.type) }}
     </div>
     <div>
+        {{ form_label(form.product.shipping) }}
+        {{ form_errors(form.product.shipping) }}
+        {{ form_widget(form.product.shipping) }}
+    </div>
+    <div>
         {{ form_label(form.product.description) }}
         {{ form_errors(form.product.description) }}
         {{ form_widget(form.product.description) }}

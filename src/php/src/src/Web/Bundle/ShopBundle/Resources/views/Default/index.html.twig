@@ -29,24 +29,38 @@
                   <nav class="main-nav">
                     <ul class="layer0">
                       <li>
-                        <a href="{{ path('bd') }}">Blu-Ray</a>
+                        {%  if type == 'BD' %}
+                          <strong>Blu-Ray</strong>
+                        {% else %}
+                           <a href="{{ path('bd') }}">Blu-Ray</a>
+                        {% endif %}
                         <ul class="layer1">
-                          <li><a href="#">Neu</a></li>
-                          <li><a href="#">Gebraucht</a></li>
+                          <li><a href="{{ path('bd', {'cond':'New'} ) }}">Neu</a></li>
+                          <li><a href="{{ path('bd', {'cond':'Old'} ) }}">Gebraucht</a></li>
                         </ul>
                       </li>
                       <li>
-                        <a href="{{ path('dvd') }}">DVD</a>
+                        {%  if type == 'DVD' %}
+                          <strong>DVD</strong>
+                        {% else %}
+                           <a href="{{ path('dvd') }}">DVD</a>
+                        {% endif %}
+                        
                         <ul class="layer1">
-                          <li><a href="#">Neu</a></li>
-                          <li><a href="#">Gebraucht</a></li>
+                          <li><a href="{{ path('dvd', {'cond':'New'} ) }}">Neu</a></li>
+                          <li><a href="{{ path('dvd', {'cond':'Old'} ) }}">Gebraucht</a></li>
                         </ul>
                       </li>
-                      <li class="layer1">
-                        <a href="{{ path('cd') }}">CD</a>
+                      <li>
+                        {%  if type == 'CD' %}
+                          <strong>CD</strong>
+                        {% else %}
+                           <a href="{{ path('cd') }}">CD</a>
+                        {% endif %}
+                        
                         <ul class="layer1">
-                          <li><a href="#">Neu</a></li>
-                          <li><a href="#">Gebraucht</a></li>
+                          <li><a href="{{ path('cd', {'cond':'New'} ) }}">Neu</a></li>
+                          <li><a href="{{ path('cd', {'cond':'Old'} ) }}">Gebraucht</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -54,7 +68,12 @@
                 </div> <!-- c9of12 -->
 
                 <div class="col c3of12">
-                  <a class="card" href="{{ path('cart') }}"><span class="amount">{{ cartCount }}</span><span class="text">Warenkorb</span><span class="price">({{ cartSum }}&euro;)</span></a>
+                  <a class="card" href="{{ path('cart') }}">
+                  	<span class="amount">
+                  		<span>{{ cartCount }}</span>
+                  	</span>
+                  	<span class="price">({{ cartSum }}&euro;)</span>
+                  </a>
                 </div> <!-- c3of12 -->
               </div> <!-- cols -->
               
@@ -78,9 +97,9 @@
                             <p><strong>auf Lager</strong></p>
                             <p>Lieferung innerhalb der nächsten {{ product.shipping }} Werktage</p>
                             <ul class="rating">
-				                      <li><a class="star one {% if product.stars < 1 %} empty {% endif %} " href="{{ path('vote', {'productid' : product.id, 'value' : "1"}) }}">befriedigend</a></li>
-				                      <li><a class="star two {% if product.stars < 2 %} empty {% endif %} " href="{{ path('vote', {'productid' : product.id, 'value' : "2"}) }}">gut</a></li>
-				                      <li><a class="star three {% if product.stars < 3 %} empty {% endif %} " href="{{ path('vote', {'productid' : product.id, 'value' : "3"}) }}">sehr gut</a></li>
+				                      <li><a class="star one {% if product.stars < 1 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "1"}) }} {% endif %}">befriedigend</a></li>
+				                      <li><a class="star two {% if product.stars < 2 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "2"}) }} {% endif %}">gut</a></li>
+				                      <li><a class="star three {% if product.stars < 3 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "3"}) }} {% endif %}">sehr gut</a></li>
                             </ul>
                             <ul>
                              {% for genre in product.genres %}
