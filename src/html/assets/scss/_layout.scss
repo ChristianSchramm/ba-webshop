@@ -67,7 +67,7 @@ header {
   margin: 0 auto;
   padding: 15px;
   position: relative;
-  width: 80%;
+  width: 90%;
 }
 
 .main {
@@ -98,6 +98,7 @@ footer {
   background: $dark-blue;
   display: block;
   height: 40px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -226,7 +227,7 @@ footer {
   padding: 20px 20px 50px;
   position: absolute;
   right: -2px;
-  width: 400px;
+  width: 398px;
   z-index: $z-meta;
 
   li {
@@ -236,6 +237,10 @@ footer {
     &:first-child {
       margin: 0;
     }
+  }
+
+  .input {
+    width: 145px;
   }
 }
 
@@ -263,8 +268,9 @@ footer {
 
 .main-nav {
   bottom: 0;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   position: relative;
+  max-width: 900px;
 }
 
 .layer0 {
@@ -456,7 +462,7 @@ footer {
   border: 1px solid $dark-blue;
   cursor: pointer;
   height: 32px;
-  padding: 3px 5px 4px;
+  padding: 3px 10px 4px;
 
   &:active,
   &:hover,
