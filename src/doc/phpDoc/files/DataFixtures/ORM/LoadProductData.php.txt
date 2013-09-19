@@ -33,7 +33,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
   	$product1->addGenre($this->getReference('genre1'));
   	$product1->addGenre($this->getReference('genre2'));
   	$product1->addGenre($this->getReference('genre3'));
-  	$product1->setStatus('Gebraucht');
+  	$product1->setStatus('Old');
   	$product1->setPrice(8.95);
   	$product1->setDescription("Based very loosely on Robert Ludlum's novel, the Bourne Identity is the story of a man whose wounded body is discovered by fishermen who nurse him back to health. He can remember nothing and begins to try to rebuild his memory based on clues such as the Swiss bank account, the number of which, is implanted in his hip. He soon realizes that he is being hunted and takes off with Marie on a search to find out who he is and why he is being hunted");
 
@@ -41,14 +41,14 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
   	$product2->setTitle('Silent Hill');
   	$product2->setType($this->getReference('type3'));
   	$product2->addGenre($this->getReference('genre1'));
-  	$product2->setStatus('Neu');
+  	$product2->setStatus('New');
   	$product2->setPrice(3.95);
 
   	$product3 = new Product();
   	$product3->setTitle('Toy Story');
   	$product3->setType($this->getReference('type4'));
   	$product3->addGenre($this->getReference('genre2'));
-  	$product3->setStatus('Neu');
+  	$product3->setStatus('New');
   	$product3->setPrice(6);
 
   	$manager->persist($product1);

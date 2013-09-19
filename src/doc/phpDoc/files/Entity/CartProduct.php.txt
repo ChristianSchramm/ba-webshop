@@ -122,3 +122,4 @@ class CartProduct
         return $this->product;
     }
 }
+

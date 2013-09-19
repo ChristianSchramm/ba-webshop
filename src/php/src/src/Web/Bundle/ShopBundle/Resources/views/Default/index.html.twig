@@ -32,7 +32,7 @@
                         {%  if type == 'BD' %}
                           <strong>Blu-Ray</strong>
                         {% else %}
-                           <a href="{{ path('bd') }}">Blu-Ray</a>
+                           <a href="{{ path('bd', {'cond':'New'} ) }}">Blu-Ray</a>
                         {% endif %}
                         <ul class="layer1">
                           <li><a href="{{ path('bd', {'cond':'New'} ) }}">Neu</a></li>
@@ -43,7 +43,7 @@
                         {%  if type == 'DVD' %}
                           <strong>DVD</strong>
                         {% else %}
-                           <a href="{{ path('dvd') }}">DVD</a>
+                           <a href="{{ path('dvd', {'cond':'New'} ) }}">DVD</a>
                         {% endif %}
                         
                         <ul class="layer1">
@@ -55,7 +55,7 @@
                         {%  if type == 'CD' %}
                           <strong>CD</strong>
                         {% else %}
-                           <a href="{{ path('cd') }}">CD</a>
+                           <a href="{{ path('cd', {'cond':'New'} ) }}">CD</a>
                         {% endif %}
                         
                         <ul class="layer1">

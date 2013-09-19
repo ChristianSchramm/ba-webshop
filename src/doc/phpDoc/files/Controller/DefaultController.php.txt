@@ -20,11 +20,13 @@ class DefaultController extends Controller
     	
     	$search = $session->get('search');
     	$type = $session->get('type');
+    	$cond = $session->get('cond');
     	if (is_null($type)){
     		$type = $em->getRepository('WebShopBundle:Type')->findOneByName("BD");
+    		$cond = "New";
     	}
     	$filter = $session->get('filter');
-    	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $search, $filter);
+    	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $cond, $search, $filter);
         	
     	foreach ($products as $prod){
     		if (!is_null($prod->getImage())){
@@ -67,20 +69,25 @@ class DefaultController extends Controller
    	  }
     	
    	  $cartSum = number_format($cartSum, 2, ',', ' ');
+   	  
+   	  
+   	  // Variablen an die View übergeben
       return array('products' => $products,
       		         'cartCount' => $cartCount,
       		         'cartSum' => $cartSum,
       		         'search' => $search,
-      		         'genres' => $genres
+      		         'genres' => $genres,
+      		         'type' => $type,
+      		         'cond' => $cond,
       		);
     }
     
     
     /**
-     * @Route("/dvd/", name="dvd")
+     * @Route("/dvd/{cond}", name="dvd", defaults={"cond" = "New"})
      * @Template()
      */
-    public function dvdAction()
+    public function dvdAction($cond)
     {
     	$session = $this->getRequest()->getSession();
     	
@@ -88,15 +95,16 @@ class DefaultController extends Controller
     	$type = $em->getRepository('WebShopBundle:Type')->findOneByName("DVD");
     	
       $session->set('type', $type);
+      $session->set('cond', $cond);
       
       return $this->redirect($this->generateUrl('default'));
     }
     
     /**
-     * @Route("/bd/", name="bd")
+     * @Route("/bd/{cond}", name="bd", defaults={"cond" = "New"})
      * @Template()
      */
-    public function bdAction()
+    public function bdAction($cond)
     {
     	$session = $this->getRequest()->getSession();
     	 
@@ -104,15 +112,16 @@ class DefaultController extends Controller
     	$type = $em->getRepository('WebShopBundle:Type')->findOneByName("BD");
     	 
     	$session->set('type', $type);
+      $session->set('cond', $cond);
     
     	return $this->redirect($this->generateUrl('default'));
     }
     
     /**
-     * @Route("/cd/", name="cd")
+     * @Route("/cd/{cond}", name="cd", defaults={"cond" = "New"})
      * @Template()
      */
-    public function cdAction()
+    public function cdAction($cond)
     {
     	$session = $this->getRequest()->getSession();
     	 
@@ -120,6 +129,7 @@ class DefaultController extends Controller
     	$type = $em->getRepository('WebShopBundle:Type')->findOneByName("CD");
     	 
     	$session->set('type', $type);
+      $session->set('cond', $cond);
     
     	return $this->redirect($this->generateUrl('default'));
     }

@@ -46,6 +46,13 @@ class Product
      */
     private $price;
     
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Amount", type="integer")
+     */
+    private $amount;
+    
     
     /**
      * @var string
@@ -380,5 +387,28 @@ class Product
     public function getShipping()
     {
         return $this->shipping;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     * @return Product
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }

@@ -35,7 +35,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="Status", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Status", type="string", length=255, nullable=false)
      */
     private $status;
     
@@ -45,6 +45,14 @@ class Product
      * @ORM\Column(name="Price", type="float")
      */
     private $price;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Shipping", type="string", length=255 , options={"default":2})
+     */
+    private $shipping;
     
 
     /**
@@ -350,4 +358,28 @@ class Product
     {
         return $this->votes;
     }
+
+    /**
+     * Set shipping
+     *
+     * @param string $shipping
+     * @return Product
+     */
+    public function setShipping($shipping)
+    {
+        $this->shipping = $shipping;
+
+        return $this;
+    }
+
+    /**
+     * Get shipping
+     *
+     * @return string 
+     */
+    public function getShipping()
+    {
+        return $this->shipping;
+    }
 }
+
