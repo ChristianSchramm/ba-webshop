@@ -12,6 +12,7 @@ class ProductType extends AbstractType
 	{
 		$builder->add('title', 'text');
 		$builder->add('price', 'text');
+		$builder->add('amount', 'text');
 		$builder->add('type', 'entity', array(
 				'class' => 'WebShopBundle:Type',
 				'required' => true,
@@ -22,6 +23,21 @@ class ProductType extends AbstractType
 				'multiple' => true
 		));
 		$builder->add('description', 'textarea');
+		$builder->add('shipping', 'choice', array(
+    'choices'   => array(
+        '2'   => '2 Tage',
+        '3' => '3 Tage',
+        '5'   => '5 Tage',
+        '7'   => '7 Tage',
+        '10'   => '10 Tage',
+        '14'   => '14 Tage',
+    ),));
+		
+		$builder->add('status', 'choice', array(
+				'choices'   => array(
+						'New'   => 'Neu',
+						'Old' => 'Gebraucht',
+				),));
 
 	}
 	

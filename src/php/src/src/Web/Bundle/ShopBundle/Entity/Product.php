@@ -35,7 +35,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="Status", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Status", type="string", length=255, nullable=false)
      */
     private $status;
     
@@ -45,6 +45,13 @@ class Product
      * @ORM\Column(name="Price", type="float")
      */
     private $price;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Amount", type="integer")
+     */
+    private $amount;
     
     
     /**
@@ -380,5 +387,28 @@ class Product
     public function getShipping()
     {
         return $this->shipping;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     * @return Product
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }

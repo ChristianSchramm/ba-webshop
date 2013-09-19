@@ -124,3 +124,4 @@ class Role  implements RoleInterface
     }
 
 }
+
