@@ -1,4 +1,4 @@
-/* Farben _________________________________________________ */
+/* Farben ___________________________________________________________ */
 
 /* blau */
 
@@ -10,20 +10,38 @@ $medium-blue: lighten($dark-blue, 10%);
 
 /* grau */
 
+$lighter-grey: #f0f0f0;
 $grey: #aaaaaa;
-$medium-grey: darken($grey,30%);
+$light-grey: lighten($grey, 15%);
+$medium-grey: darken($grey, 30%);
 $dark-grey: darken($grey, 50%);
 
-/* Verläufe _______________________________________________ */
+/* Sonstige */
+
+$green: green;
+$red: red;
+
+/* Bilder ___________________________________________________________ */
+
+$ico-edit: "ico-edit.png";
+$ico-delete: "ico-delete.png";
+$ico-cart: "ico-cart.png";
+$ico-new: "ico-new.png";
+$ico-payed: "ico-payed.png";
+$ico-notpayed: "ico-notpayed.png";
+$ico-rate: "ico-rate.png";
+$ico-rate-set: "ico-rate-set.png";
+$ico-search: "ico-search.png";
+$ico-show: "ico-show.png";
 
 
-/* Indizes ________________________________________________ */
+/* Indizes __________________________________________________________ */
 
 $z-basic:             1;
 $z-meta:              5;
 $z-subnavi:          10;
 
-/* Mixins _________________________________________________ */
+/* Mixins ___________________________________________________________ */
 
 %textshadow-dark {
   @include text-shadow(1px 1px 1px rgba(#000, 0.7));
