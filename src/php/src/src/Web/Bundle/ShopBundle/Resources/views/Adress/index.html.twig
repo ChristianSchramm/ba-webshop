@@ -1,8 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::user.html.twig' %}
 
-{% block body %}
+{% block title %} Accountverwaltung{% endblock %}
 
-<h3>Adresse <small><a href="{{ path('account_adress_edit') }}">edit</a></small></h3>
+{% block content %}
+
+<h2>Adressdaten <small><a href="{{ path('account_adress_edit') }}">edit</a></small></h2>
 <br>
 <strong>Name: </strong>{{ adress.name }}
 <br>

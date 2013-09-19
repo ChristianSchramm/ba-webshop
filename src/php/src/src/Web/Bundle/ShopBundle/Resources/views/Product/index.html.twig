@@ -1,8 +1,12 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::admin.html.twig' %}
 
-{% block body %}
+{% block title %} Admin Control Panel{% endblock %}
 
-<h2>Producte</h2>
+{% block content %}
+
+<h2>Produkt Verwaltung</h2>
+
+
 <p>
   <a href="{{ path('admin_product_new') }}">new</a>
 </p>

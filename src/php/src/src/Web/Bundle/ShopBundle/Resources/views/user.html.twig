@@ -2,10 +2,16 @@
 
 {% block body %}
 
-                  
-                  
-
-
+				<nav class="main-nav">
+          <ul class="layer0">
+            <li>
+              <a href="{{ path('account_adress') }}">Adressinformationen</a>
+            </li>
+            <li>
+							<a href="{{ path('account_bill') }}">Bestellungen</a>
+            </li>
+          </ul>
+        </nav>       
 
           <div class="cols">
             <div class="col c2of12">
@@ -14,7 +20,7 @@
               </div> <!-- filter -->
             </div> <!-- c2of12 -->
 
-            <div class="col c10of12">
+            <div class="col c8of12">
               <div class="cols">
               
               </div> <!-- cols -->

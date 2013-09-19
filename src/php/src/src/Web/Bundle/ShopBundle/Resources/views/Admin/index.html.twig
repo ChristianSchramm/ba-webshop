@@ -1,14 +1,14 @@
-{% extends "::base.html.twig" %}
+{% extends 'WebShopBundle::admin.html.twig' %}
 
-{% block title %}WebShopBundle:Admin:index{% endblock %}
+{% block title %} Admin Control Panel{% endblock %}
 
-{% block body %}
+{% block content %}
 
 
 <h2>Admin Control Panel</h2>
 
-<a href="{{ path('admin_genre') }}">Genre Verwaltung</a>
-<a href="{{ path('admin_user') }}">User Verwaltung</a>
-<a href="{{ path('admin_product') }}">Product Verwaltung</a>
+<a href="{{ path('admin_genre') }}">Genre Verwaltung</a><br>
+<a href="{{ path('admin_user') }}">User Verwaltung</a><br>
+<a href="{{ path('admin_product') }}">Product Verwaltung</a><br>
 <br>
 {% endblock %}

@@ -1,19 +1,12 @@
-{% extends "::base.html.twig" %}
+{% extends 'WebShopBundle::user.html.twig' %}
 
 {% block title %} Accountverwaltung{% endblock %}
 
-{% block body %}
-<h1>Verwaltung</h1>
+{% block content %}
 <h2>Accountverwaltung</h2>
 
-<a href="{{ path('account_adress') }}">Adressinformationen</a>
-
-<h2>Bestellungen</h2>
-
-
-<a href="{{ path('account_bill') }}">Rechnungen</a>
-<br>
-
+<a href="{{ path('account_adress') }}">Adressinformationen</a><br>
+<a href="{{ path('account_bill') }}">Bestellungen</a>
 
 
 {% endblock %}

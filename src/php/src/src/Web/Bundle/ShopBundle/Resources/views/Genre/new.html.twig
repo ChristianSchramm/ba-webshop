@@ -1,8 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::admin.html.twig' %}
 
-{% block body %}
+{% block title %} Admin Control Panel{% endblock %}
 
-<h3>Genre anlgegen</h3>
+{% block content %}
+
+<h2>Genre anlegen</h2>
 <br>
 <form action="{{  path('admin_genre_create') }}" method="post" }}>
     {{ form_errors(form) }}

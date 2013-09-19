@@ -1,8 +1,11 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::admin.html.twig' %}
 
-{% block body %}
+{% block title %} Admin Control Panel{% endblock %}
 
-<h2>new Producte</h2>
+{% block content %}
+
+<h2>Produkt anlegen</h2>
+
 <form action="{{  path('admin_product_create') }}" method="post" {{ form_enctype(form) }} }}>
 
 {% include 'WebShopBundle:Product:_form.html.twig' %}

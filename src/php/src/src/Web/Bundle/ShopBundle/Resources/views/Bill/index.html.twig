@@ -1,9 +1,10 @@
-{% extends "::base.html.twig" %}
+{% extends 'WebShopBundle::user.html.twig' %}
 
-{% block title %}WebShopBundle:Bill:index{% endblock %}
+{% block title %} Accountverwaltung{% endblock %}
 
-{% block body %}
-<h1>Welcome to the Bill:index page</h1>
+{% block content %}
+<h2>Bestellungen</h2>
+
 <ul>
   {% for bill in bills %}
     <li>Rechnung vom {{ bill.date|date('d.m.Y') }} - {{ bill.rechnungsnummer }} <a target="_blank" href="/uploads/bills/{{ bill.path }}">Hier</a>

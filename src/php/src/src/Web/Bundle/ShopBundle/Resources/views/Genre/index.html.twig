@@ -1,8 +1,11 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::admin.html.twig' %}
 
-{% block body %}
+{% block title %} Admin Control Panel{% endblock %}
 
-<h2>Genres</h2>
+{% block content %}
+
+<h2>Genre Verwaltung</h2>
+
 <a href="{{ path('admin_genre_new') }}">new</a>
 <ul>
     {% for genre in genres %}
