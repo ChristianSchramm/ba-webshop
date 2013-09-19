@@ -466,4 +466,27 @@ class User  implements UserInterface
     {
         return $this->votes;
     }
+
+    /**
+     * Add adresss
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Adress $adresss
+     * @return User
+     */
+    public function addAdresss(\Web\Bundle\ShopBundle\Entity\Adress $adresss)
+    {
+        $this->adresss[] = $adresss;
+
+        return $this;
+    }
+
+    /**
+     * Remove adresss
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Adress $adresss
+     */
+    public function removeAdresss(\Web\Bundle\ShopBundle\Entity\Adress $adresss)
+    {
+        $this->adresss->removeElement($adresss);
+    }
 }

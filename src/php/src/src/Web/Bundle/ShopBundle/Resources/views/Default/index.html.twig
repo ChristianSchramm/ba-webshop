@@ -62,32 +62,42 @@
               {% for product in products %}
                 <li>
                   <div class="box product-card">
-                    <figure class="image">
-                      {% if product.image is not null %}
-                        <img width="200px" src="/uploads/documents/{{ product.image.path }}">
-                      {%  else %}
-                        <img src="http://dummyimage.com/200x200/000/0011ff">
-                      {% endif %}
-                    </figure>
-                    <h2 class="heading level2">{{ product.title }}<small>{{ product.type.name }}</small></h2>
-                    <p>          
-                      {% for genre in product.genres %}
-								        {{ genre.name }}
-								      {% endfor %}
-			              </p>
-			              <p>{{ product.stars }}</p>
-                    <p>{{ product.description }}</p>
-                    <ul class="rating">
-                      <li><a class="star one" href="{{ path('vote', {'productid' : product.id, 'value' : "1"}) }}">befriedigend</a></li>
-                      <li><a class="star two" href="{{ path('vote', {'productid' : product.id, 'value' : "2"}) }}">gut</a></li>
-                      <li><a class="star three empty" href="{{ path('vote', {'productid' : product.id, 'value' : "3"}) }}">sehr gut</a></li>
-                    </ul>
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-					            <a class="booking" href="{{ path('cart_add', {'id': product.id}) }}">{{ product.price }}&euro;<span class="add">add to cart</span></a>
-					          {% endif %}
-                    
-                  </div> <!-- box -->
-                </li>
+                      <h2 class="heading level2">{{ product.title }}</h2>
+                      <div class="cols">
+                        <div class="col c6of12">
+                          <figure class="image">
+                          {% if product.image is not null %}
+		                        <img height="300" width="200px" src="/uploads/documents/{{ product.image.path }}">
+		                      {%  else %}
+		                        <img height="300" width="200px" src="http://dummyimage.com/300x200/000/0011ff">
+		                      {% endif %}
+                          </figure>
+                        </div> <!-- c6of12 -->
+                        <div class="col c6of12">
+                          <div class="small-box">
+                            <p><strong>auf Lager</strong></p>
+                            <p>Lieferung innerhalb der nächsten {{ product.shipping }} Werktage</p>
+                            <ul class="rating">
+				                      <li><a class="star one {% if product.stars < 1 %} empty {% endif %} " href="{{ path('vote', {'productid' : product.id, 'value' : "1"}) }}">befriedigend</a></li>
+				                      <li><a class="star two {% if product.stars < 2 %} empty {% endif %} " href="{{ path('vote', {'productid' : product.id, 'value' : "2"}) }}">gut</a></li>
+				                      <li><a class="star three {% if product.stars < 3 %} empty {% endif %} " href="{{ path('vote', {'productid' : product.id, 'value' : "3"}) }}">sehr gut</a></li>
+                            </ul>
+                            <ul>
+                             {% for genre in product.genres %}
+												        <li>{{ genre.name }}</li>
+												      {% endfor %}
+                            </ul>
+                            <strong class="booking">{{ product.price }}&euro;</strong>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+									            <a class="add btn" href="{{ path('cart_add', {'id': product.id}) }}">in den Warenkorb</a>
+									          {% endif %}
+                          </div> <!-- box -->
+                        </div> <!-- c6of12 -->
+                      </div> <!-- cols -->
+                      <p>{{ product.description }}</p>
+                    </div> <!-- box -->
+                  </li>
+
               {% endfor %}
               </ul>
             </div> <!-- c10of12 -->

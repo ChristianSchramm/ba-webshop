@@ -1,3 +1,23 @@
 {% extends '::base.html.twig' %}
 
+{% block body %}
+        <div class="main" role="main">
+          <div class="cols">
+            <div class="col c2of12">
+              <div class="filter">
+              
+              </div> <!-- filter -->
+            </div> <!-- c2of12 -->
 
+            <div class="col c10of12">
+              <div class="cols">
+              
+              </div> <!-- cols -->
+              {% block content %}
+
+							{% endblock %}
+            </div> <!-- c10of12 -->
+          </div> <!-- cols -->
+        </div> <!-- main -->
+        
+{% endblock %}

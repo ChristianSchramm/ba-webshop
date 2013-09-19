@@ -66,12 +66,12 @@
               
             
               <div class="search">
-                {% if search is defined %}
+                
                 <form  action="{{ path('search') }}" method="post">
-                  <input class="input" type="search" name="search" value="{{ search }}">
+                  <input class="input" type="search" name="search" value="{% if search is defined %}{{ search }}{% endif %}">
                   <button class="btn">Suchen</button>
                 </form>
-                {% endif %}
+                
               </div> <!-- search -->
               
             </div> <!-- inner  -->
