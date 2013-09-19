@@ -3,30 +3,7 @@
 {% block body %}
 
 
-        <div class="main" role="main">
-          <div class="cols">
-            <div class="col c2of12">
-              <div class="filter">
-                <h2 class="heading level2">Filter</h2>
-                <h3 class="heading level3">Genre:</h3>
-                <form action="{{ path('filter') }}" method="post">
-                  <ul>
-                  {% for genre in genres %}
-								   <li>
-								     <input id="g{{ loop.index }}" type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">
-								     <label for="g{{ loop.index }}" class="label">{{ genre.name }}</label>
-								   </li>
-								  {% endfor %}
-                  </ul>
-                  <button class="btn">Filtern</button>
-                </form>
-              </div> <!-- filter -->
-            </div> <!-- c2of12 -->
-
-            <div class="col c10of12">
-              <div class="cols">
-                <div class="col c9of12">
-                  <nav class="main-nav">
+        					<nav class="main-nav">
                     <ul class="layer0">
                       <li>
                         {%  if type == 'BD' %}
@@ -65,18 +42,14 @@
                       </li>
                     </ul>
                   </nav>
-                </div> <!-- c9of12 -->
+                  
+                  
 
-                <div class="col c3of12">
-                  <a class="card" href="{{ path('cart') }}">
-                  	<span class="amount">
-                  		<span>{{ cartCount }}</span>
-                  	</span>
-                  	<span class="price">({{ cartSum }}&euro;)</span>
-                  </a>
-                </div> <!-- c3of12 -->
-              </div> <!-- cols -->
-              
+          <div class="cols">
+
+
+            <div class="col c10of12">
+  
               <ul class="products">
               {% for product in products %}
                 <li>
@@ -120,8 +93,34 @@
               {% endfor %}
               </ul>
             </div> <!-- c10of12 -->
+            <div class="col c2of12">
+              <a class="card" href="{{ path('cart') }}">
+               	<span class="amount">
+                	<span>{{ cartCount }}</span>
+               	</span>
+                <span class="price">({{ cartSum }}&euro;)</span>
+              </a>
+            
+              <div class="filter">
+                <h2 class="heading level2">Filter</h2>
+                <h3 class="heading level3">Genre:</h3>
+                <form action="{{ path('filter') }}" method="post">
+                  <ul>
+                  {% for genre in genres %}
+								   <li>
+								     <input id="g{{ loop.index }}" type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">
+								     <label for="g{{ loop.index }}" class="label">{{ genre.name }}</label>
+								   </li>
+								  {% endfor %}
+                  </ul>
+                  <input class="from" type="text" size="3">
+                  <input class="until" type="text" size="3">
+                  <button class="btn">Filtern</button>
+                </form>
+              </div> <!-- filter -->
+            </div> <!-- c2of12 -->
           </div> <!-- cols -->
-        </div> <!-- main -->
+
 
 
 {% endblock %}
