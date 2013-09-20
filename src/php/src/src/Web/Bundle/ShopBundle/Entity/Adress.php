@@ -40,6 +40,12 @@ class Adress
      * @var string
      *
      * @ORM\Column(name="Location", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Your first name must be at least {{ limit }} characters length",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters length"
+     * )
      */
     private $location;
 
@@ -50,8 +56,7 @@ class Adress
      * @Assert\Length(
      *      min = "5",
      *      max = "5",
-     *      minMessage = "Your first name must be at least {{ limit }} characters length",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters length"
+     *      exactMessage= "Die Postleitzahl muss 5 Zahlen enthalten."
      * )
      */
     private $postcode;

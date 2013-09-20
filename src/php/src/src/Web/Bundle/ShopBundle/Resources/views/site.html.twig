@@ -1,11 +1,47 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
                   
-                  
-
-
+                  <nav class="main-nav">
+                    <ul class="layer0">
+                      <li>
+                        <a href="{{ path('bd', {'cond':'New'} ) }}">Blu-Ray</a>
+                        <ul class="layer1">
+                          <li>
+                            <span class="ico-info"></span>
+                            <a href="{{ path('bd', {'cond':'New'} ) }}">Neu</a>
+                          </li>
+                          <li>
+                            <a href="{{ path('bd', {'cond':'Old'} ) }}">Gebraucht</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="{{ path('dvd', {'cond':'New'} ) }}">DVD</a>
+                        <ul class="layer1">
+                          <li>
+                            <span class="ico-info"></span>
+                            <a href="{{ path('dvd', {'cond':'New'} ) }}">Neu</a>
+                          </li>
+                          <li>
+                            <a href="{{ path('dvd', {'cond':'Old'} ) }}">Gebraucht</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="{{ path('cd', {'cond':'New'} ) }}">CD</a>                       
+                        <ul class="layer1">
+                          <li>
+                            <span class="ico-info"></span>
+                            <a href="{{ path('cd', {'cond':'New'} ) }}">Neu</a>
+                          </li>
+                          <li>
+                            <a href="{{ path('cd', {'cond':'Old'} ) }}">Gebraucht</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
 
           <div class="cols">
             <div class="col c2of12">

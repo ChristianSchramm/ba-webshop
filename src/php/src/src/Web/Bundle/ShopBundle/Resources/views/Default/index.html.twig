@@ -12,8 +12,13 @@
                            <a href="{{ path('bd', {'cond':'New'} ) }}">Blu-Ray</a>
                         {% endif %}
                         <ul class="layer1">
-                          <li><a href="{{ path('bd', {'cond':'New'} ) }}">Neu</a></li>
-                          <li><a href="{{ path('bd', {'cond':'Old'} ) }}">Gebraucht</a></li>
+                          <li>
+                            <span class="ico-info"></span>
+                            <a href="{{ path('bd', {'cond':'New'} ) }}">Neu</a>
+                          </li>
+                          <li>
+                            <a href="{{ path('bd', {'cond':'Old'} ) }}">Gebraucht</a>
+                          </li>
                         </ul>
                       </li>
                       <li>
@@ -24,8 +29,13 @@
                         {% endif %}
                         
                         <ul class="layer1">
-                          <li><a href="{{ path('dvd', {'cond':'New'} ) }}">Neu</a></li>
-                          <li><a href="{{ path('dvd', {'cond':'Old'} ) }}">Gebraucht</a></li>
+                          <li>
+                            <span class="ico-info"></span>
+                            <a href="{{ path('dvd', {'cond':'New'} ) }}">Neu</a>
+                          </li>
+                          <li>
+                            <a href="{{ path('dvd', {'cond':'Old'} ) }}">Gebraucht</a>
+                          </li>
                         </ul>
                       </li>
                       <li>
@@ -36,8 +46,13 @@
                         {% endif %}
                         
                         <ul class="layer1">
-                          <li><a href="{{ path('cd', {'cond':'New'} ) }}">Neu</a></li>
-                          <li><a href="{{ path('cd', {'cond':'Old'} ) }}">Gebraucht</a></li>
+                          <li>
+                            <span class="ico-info"></span>
+                            <a href="{{ path('cd', {'cond':'New'} ) }}">Neu</a>
+                          </li>
+                          <li>
+                            <a href="{{ path('cd', {'cond':'Old'} ) }}">Gebraucht</a>
+                          </li>
                         </ul>
                       </li>
                     </ul>

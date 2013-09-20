@@ -9,11 +9,36 @@ class AdressType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('name', 'text');
-		$builder->add('street', 'text');
-		$builder->add('postcode', 'text');
-		$builder->add('location', 'text');
-		$builder->add('country', 'text');
+		$builder->add('name', 'text', array( 
+            'label'  => 'Name',
+            'attr'   =>  array( 'class'   => 'input'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+            )
+        );
+		$builder->add('street', 'text', array( 
+            'label'  => 'Straße',
+            'attr'   =>  array( 'class'   => 'input'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+            )
+        );
+		$builder->add('postcode', 'text', array( 
+            'label'  => 'Postleitzahl',
+            'attr'   =>  array( 'class'   => 'input'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+            )
+        );
+		$builder->add('location', 'text', array( 
+            'label'  => 'Wohnort',
+            'attr'   =>  array( 'class'   => 'input'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+            )
+        );
+		$builder->add('country', 'text', array( 
+            'label'  => 'Nation',
+            'attr'   =>  array( 'class'   => 'input'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+            )
+        );
 	}
 	
 

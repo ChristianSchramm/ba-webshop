@@ -14,11 +14,42 @@ a {
   text-decoration: none;
 }
 
+p {
+  font-size: 1.4em;
+}
+
 /* Header */
 
 .text{
   // text-indent: -999em;
   height: 0;
+}
+
+
+/* Typo _____________________________________________________________ */
+
+.style1,
+.style2 {
+  @extend %textshadow-white;
+  color: $medium-blue;
+  font-family: "ExpletusSans-Bold";
+  font-weight: normal;
+}
+
+.style1 {
+  font-size: 2.4em;
+}
+
+.style2 {
+  font-size: 2em;
+}
+
+.style3 {
+  @extend %textshadow-dark;
+  color: #fff;
+  font-family: "ExpletusSans-Bold";
+  font-weight: normal;
+  font-size: 1.6em;
 }
 
 /* Navigation _____________________________________________ */
@@ -116,7 +147,16 @@ a {
   }
 }
 
-/* Produkte */
+/* Footer-Nav */
+
+.footer-nav {
+  a {
+    @extend %textshadow-dark;
+    color: #fff;
+  }
+}
+
+/* Produkte _________________________________________________________ */
 
 .product-card {
   .heading {
@@ -129,6 +169,7 @@ a {
 }
 
 .booking {
+  color: $dark-blue;
   font: {
     size: 2em;
   }
@@ -140,23 +181,70 @@ a {
   }
 }
 
-/* Button */
+.amount span,
+.price {
+  @extend %textshadow-dark;
+  color: #fff;
+  font-family: "ExpletusSans-Bold";
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+.empty {
+  color: $red;
+}
+
+.storing {
+  color: $green;
+}
+
+.delivery {
+  font-size: 1.3em;
+}
+
+/* Button ___________________________________________________________ */
 
 .btn {
   @extend %textshadow-dark;
   color: #fff;
   font-family: "ExpletusSans-Bold";
   font-size: 1.5em;
+  line-height: 28px;
 
   &:active,
   &:hover,
   &:focus {
     @extend %textshadow-white;
-    color: d$dark-grey;
+    color: $dark-grey;
     font-family: "ExpletusSans-Bold";
   }
 }
 
-.input {
+/* Formulare ________________________________________________________ */
+
+.input,
+.textarea,
+.select {
   color: $dark-blue;
+}
+
+.label {
+  color: $dark-grey;
+  font-size: 1.4em;
+}
+
+/* Tabelle __________________________________________________________ */
+
+tfoot {
+  small {
+    @extend %textshadow-dark;
+    color: #fff;
+  }
+}
+
+/* Links ____________________________________________________________ */
+
+.edit,
+.delete {
+  text-indent: -999em;
 }

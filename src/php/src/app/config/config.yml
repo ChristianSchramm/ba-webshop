@@ -36,6 +36,7 @@ assetic:
         cssrewrite: ~
         compass: 
             apply_to: "\.(scss|sass)$" 
+            images_dir: %kernel.root_dir%/../src/Web/Bundle/ShopBundle/Resources/public/img
         coffee: 
             apply_to: "\.coffee$"
         #closure:

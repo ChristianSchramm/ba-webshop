@@ -2,41 +2,43 @@
 
 {% block title %} Accountverwaltung{% endblock %}
 
+{% form_theme form 'WebShopBundle:Form:form_errors.html.twig' %}
+
 {% block content %}
 
-<h2>Adressdaten bearbeiten</h3>
-<br>
-<form action="{{  path('account_adress_save') }}" method="post" }}>
-    {{ form_errors(form) }}
+<h2 class="heading style2">Adressdaten bearbeiten</h2>
 
-    <div>
+<form class="form" action="{{  path('account_adress_save') }}" method="post" }}>
+    {{ form_errors(form) }}
+    
+    <div class="cols">
+      <div class="col c6of12">
         {{ form_label(form.name) }}
-        {{ form_errors(form.name) }}
         {{ form_widget(form.name) }}
-    </div>
-    <div>
+        
+        {{ form_errors(form.name) }}
+        
         {{ form_label(form.street) }}
         {{ form_errors(form.street) }}
         {{ form_widget(form.street) }}
-    </div>       
-    <div>
+        
         {{ form_label(form.postcode) }}
         {{ form_errors(form.postcode) }}
         {{ form_widget(form.postcode) }}
-    </div> 
-    <div>
+        
         {{ form_label(form.location) }}
         {{ form_errors(form.location) }}
         {{ form_widget(form.location) }}
-    </div>    
-    <div>
+        
         {{ form_label(form.country) }}
         {{ form_errors(form.country) }}
         {{ form_widget(form.country) }}
+        
+        <button class="btn form-btn" type="submit">Daten absenden</button>
+        
+        
+      </div> <!-- c6of12 -->
     </div>
-
-
-<input type="submit" />
 
 {{ form_end(form) }}
 
