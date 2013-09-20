@@ -54,11 +54,14 @@ li {
 /* Layout */
 
 .wrapper {
+  background: $lighter-grey;
   width: 100%;
 }
 
 header {
-  min-height: 170px;
+  @extend %boxshadow-meta;
+  background: #fff;
+  min-height: 250px;
   position: relative;
 }
 
@@ -83,42 +86,14 @@ footer {
   display: inline-block;
   left: 15px;
   position: absolute;
-  top: 60px;
+  top: 100px;
 }
 
-/* Warenkorb */
+/* Typo _____________________________________________________________ */
 
-.amount,
-.price,
-.text {
-  display: inline-block;    
-}
-
-.card {
-  background: $dark-blue;
+.heading {
   display: block;
-  height: 40px;
   margin-bottom: 20px;
-  position: relative;
-}
-
-.amount {
-  background: $dark-blue;
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-
-  span {
-    left: 40px;
-    position: absolute;
-    top: 10px;
-  }
-}
-
-.price {
-  position: absolute;
-  right: 10px;
-  top: 10px;
 }
 
 /* Navigation _______________________________________________________ */
@@ -177,10 +152,11 @@ footer {
 .search {
   position: absolute;
   right: 15px;
-  top: 100px;
+  top: 140px;
   
   .input {
     @extend %m-round-1-0-0-1;
+    background: $lighter-grey;
   }
 
   .btn {
@@ -268,7 +244,7 @@ footer {
 
 .main-nav {
   bottom: 0;
-  margin: 0 auto 20px;
+  margin: 30px auto 50px;
   position: relative;
   max-width: 900px;
 }
@@ -325,6 +301,7 @@ footer {
 .layer1 {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
   display: none;
+  margin-top: 10px;
   position: absolute;
   width: 33.33%;
   z-index: $z-subnavi;
@@ -355,6 +332,7 @@ footer {
   background: red;
   display: block;
   height: 10px;
+  margin-top: -10px;
   position: absolute;
   width: 100%;
 }
@@ -363,22 +341,59 @@ footer {
 
 .footer-nav {
   height: 100px;
+
+  ul {
+    float: right;
+  }
 }
 
-/* Produkte */
+/* Warenkorb */
+
+.amount,
+.price,
+.text {
+  display: inline-block;    
+}
+
+.card {
+  background: $medium-blue;
+  display: block;
+  height: 40px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.amount {
+  background: 6px 8px no-repeat;
+  @include base64-image($ico-cart);
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+
+  span {
+    left: 34px;
+    position: absolute;
+    top: 16px;
+  }
+}
+
+.price {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+
+/* Produkte _________________________________________________________ */
 
 .products {
   display: inline-block;
 
   > li {
     float: left;
-    margin: 10px 0 0 10px;
-    max-width: 308px;
+    margin: 5px 0 5px 10px;
+    max-width: 325px;
     min-width: 200px;
-
-    &:first-child {
-      margin-left: 0;
-    }
   }
 
   .col {
@@ -388,12 +403,17 @@ footer {
 
 .product-card {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
+  background: #fff;
   border: 2px solid $dark-blue;
   display: block;
   position: relative;
 
   .heading {
     margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 10px;
   }
 }
   
@@ -414,20 +434,20 @@ footer {
 }
 
 .add {
-  bottom: 20px;
   display: inline-block;
-  position: absolute;
-  right: 10px;
+  float: right;
+  margin-bottom: 20px;
 }
 
 .rating {
   display: inline-block;
+  margin: 10px 0 20px;
   width: 100%;
 
   li {
     display: inline;
     float: left;
-    margin-left: 5px;
+    margin-left: 10px;
     padding: 0;
 
     &:first-child {
@@ -443,6 +463,29 @@ footer {
   }
 }
 
+.genre-list {
+  display: inline-block;
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+
+  li {
+    border-left: 1px solid $grey;
+    float: left;
+    margin-left: 10px;
+    padding-left: 10px;
+
+    &:first-child {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
 /* Filter */
 
 .filter {
@@ -453,7 +496,7 @@ footer {
   }
 }
 
-/* Button */
+/* Button ___________________________________________________________ */
 
 .btn {
   @extend %box-sizing;
@@ -461,8 +504,8 @@ footer {
   background: $dark-blue;
   border: 1px solid $dark-blue;
   cursor: pointer;
-  height: 32px;
-  padding: 3px 10px 4px;
+  padding: 0 10px;
+  vertical-align: middle;
 
   &:active,
   &:hover,
@@ -471,10 +514,111 @@ footer {
   }
 }
 
-.input {
+.form-btn {
+  float: right;
+  margin-top: 40px;
+}
+
+/* Formulare ________________________________________________________ */
+
+.label {
+  margin-right: 10px;
+}
+
+.input,
+.textarea,
+.select {
   @extend %box-sizing;
   @extend %s-round-1;
+  background: #fff;
   border: 1px solid $dark-blue;
-  height: 32px;
   padding: 5px;
+  vertical-align: middle;
+}
+
+.input {
+  height: 32px;
+}
+
+.form {
+  margin-top: 20px;
+  padding-bottom: 20px;
+
+  .label,
+  .input,
+  .select,
+  .textarea {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .file-input {
+    margin-bottom: 20px;
+  }
+
+  .input,
+  .textarea {
+    width: 100%;
+  }
+
+  .textarea {
+    min-height: 105px;
+  }
+}
+
+/* Tabelle __________________________________________________________ */
+
+table {
+  @extend %s-round-1;
+  border: 1px solid $blue;
+  width: 100%;
+
+  .heading {
+    margin-bottom: 0;
+  }
+}
+
+thead,
+tfoot {
+  background: $light-blue;
+  border: 0;
+}
+
+td,
+th {
+  border-left: 1px solid $dark-blue;
+  padding: 10px 15px;
+
+  &:first-child {
+    border: 0;
+  }
+}
+
+tbody {
+  tr {
+    background: $light-grey;
+
+    &:nth-child(2) {
+      background: #fff;
+    }
+  }
+}
+
+
+/* Icons ____________________________________________________________ */
+
+.edit,
+.delete {
+    background: 50% 0 no-repeat;
+    display: inline-block;
+    height: 25px;
+    width: 100%;
+}
+
+.edit {
+  @include base64-image($ico-edit);
+}
+
+.delete {
+  @include base64-image($ico-delete);
 }
