@@ -364,16 +364,16 @@ footer {
 }
 
 .amount {
-  background: 6px 8px no-repeat;
+  background: 10px 8px no-repeat;
   @include base64-image($ico-cart);
   display: inline-block;
   height: 40px;
   width: 40px;
 
   span {
-    left: 34px;
+    left: 42px;
     position: absolute;
-    top: 16px;
+    top: 10px;
   }
 }
 
@@ -617,8 +617,21 @@ tbody {
 
 .edit {
   @include base64-image($ico-edit);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-edit-hover);    
+  }
 }
 
 .delete {
   @include base64-image($ico-delete);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-delete-hover);
+    
+  }
 }
