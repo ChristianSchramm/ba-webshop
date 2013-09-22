@@ -29,11 +29,17 @@ p {
 /* Typo _____________________________________________________________ */
 
 .style1,
+.style2,
+.style3,
+.style4 {
+  font-family: "ExpletusSans-Bold";
+  font-weight: normal;
+}
+
+.style1,
 .style2 {
   @extend %textshadow-white;
   color: $medium-blue;
-  font-family: "ExpletusSans-Bold";
-  font-weight: normal;
 }
 
 .style1 {
@@ -47,9 +53,13 @@ p {
 .style3 {
   @extend %textshadow-dark;
   color: #fff;
-  font-family: "ExpletusSans-Bold";
-  font-weight: normal;
-  font-size: 1.6em;
+  font-size: 1.8em;
+}
+
+.style4 {
+  @extend %textshadow-dark;
+  color: $lighter-blue;
+  font-size: 1.5em;
 }
 
 /* Navigation _____________________________________________ */
@@ -209,6 +219,20 @@ p {
 
 .delivery {
   font-size: 1.3em;
+}
+
+/* Filter */
+
+.filter {
+  p,
+  .label {
+    @extend %textshadow-dark;
+    color: #fff;
+  }
+
+  p {
+    font-weight: bold;
+  }
 }
 
 /* Button ___________________________________________________________ */

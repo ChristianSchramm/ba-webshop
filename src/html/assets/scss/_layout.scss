@@ -279,6 +279,7 @@ footer {
     > strong {
       @include box-shadow(0 6px 5px -4px rgba($dark-blue,.5));
       background: #fff;
+      border-bottom: 1px solid #fff;
       border-left: 1px solid $lighter-blue;
       border-right: 1px solid $lighter-blue;
       border-top: 5px solid $dark-blue;
@@ -530,10 +531,28 @@ footer {
 /* Filter */
 
 .filter {
-  background: $dark-blue;
+  background: $medium-grey;
+  border: 2px solid $dark-blue;
+
+  li {
+    margin-bottom: 5px;
+  }
 
   label {
     margin-left: 5px;
+  }
+
+  .input {
+    margin: 5px 0 10px;
+    width: 45%;
+  }
+
+  .until {
+    margin-left: 2px;
+  }
+
+  p {
+    display: inline-block;
   }
 }
 
@@ -564,6 +583,7 @@ footer {
 
 .label {
   margin-right: 10px;
+  vertical-align: middle;
 }
 
 .input,
@@ -574,6 +594,10 @@ footer {
   background: #fff;
   border: 1px solid $dark-blue;
   padding: 5px;
+  vertical-align: middle;
+}
+
+input[type="checkbox"] {
   vertical-align: middle;
 }
 

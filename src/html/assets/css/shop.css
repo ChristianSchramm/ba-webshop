@@ -7,9 +7,10 @@
 /* Bilder ___________________________________________________________ */
 /* Indizes __________________________________________________________ */
 /* Mixins ___________________________________________________________ */
-.style3, .meta-nav a,
+.style3, .style4, .meta-nav a,
 .footer-nav a, .amount span,
-.price, .btn, tfoot small {
+.price, .filter p,
+.filter .label, .btn, tfoot small {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -426,6 +427,7 @@ textarea {
     -moz-box-shadow: 0 6px 5px -4px rgba(0, 79, 159, 0.5);
     box-shadow: 0 6px 5px -4px rgba(0, 79, 159, 0.5);
     background: #fff;
+    border-bottom: 1px solid #fff;
     border-left: 1px solid #6cb5ff;
     border-right: 1px solid #6cb5ff;
     border-top: 5px solid #004f9f;
@@ -651,10 +653,24 @@ textarea {
 
   /* Filter */
   .filter {
-    background: #004f9f;
+    background: #5d5d5d;
+    border: 2px solid #004f9f;
+  }
+  .filter li {
+    margin-bottom: 5px;
   }
   .filter label {
     margin-left: 5px;
+  }
+  .filter .input {
+    margin: 5px 0 10px;
+    width: 45%;
+  }
+  .filter .until {
+    margin-left: 2px;
+  }
+  .filter p {
+    display: inline-block;
   }
 
   /* Button ___________________________________________________________ */
@@ -677,6 +693,7 @@ textarea {
   /* Formulare ________________________________________________________ */
   .label {
     margin-right: 10px;
+    vertical-align: middle;
   }
 
   .input,
@@ -685,6 +702,10 @@ textarea {
     background: #fff;
     border: 1px solid #004f9f;
     padding: 5px;
+    vertical-align: middle;
+  }
+
+  input[type="checkbox"] {
     vertical-align: middle;
   }
 
@@ -808,10 +829,16 @@ p {
 
 /* Typo _____________________________________________________________ */
 .style1,
-.style2 {
-  color: #0068d2;
+.style2,
+.style3,
+.style4 {
   font-family: "ExpletusSans-Bold";
   font-weight: normal;
+}
+
+.style1,
+.style2 {
+  color: #0068d2;
 }
 
 .style1 {
@@ -824,9 +851,12 @@ p {
 
 .style3 {
   color: #fff;
-  font-family: "ExpletusSans-Bold";
-  font-weight: normal;
-  font-size: 1.6em;
+  font-size: 1.8em;
+}
+
+.style4 {
+  color: #6cb5ff;
+  font-size: 1.5em;
 }
 
 /* Navigation _____________________________________________ */
@@ -946,6 +976,15 @@ p {
 
 .delivery {
   font-size: 1.3em;
+}
+
+/* Filter */
+.filter p,
+.filter .label {
+  color: #fff;
+}
+.filter p {
+  font-weight: bold;
 }
 
 /* Button ___________________________________________________________ */
