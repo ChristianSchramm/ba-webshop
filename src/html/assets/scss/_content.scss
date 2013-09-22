@@ -80,10 +80,10 @@ p {
     }
   }
 
-  a:active,
-  a:hover,
-  a:focus,
-  strong {
+  li:active > a,
+  li:hover > a,
+  li:focus > a,
+  > strong {
     color: $dark-grey;
     text-decoration: underline;
   }
@@ -102,7 +102,8 @@ p {
 
 /* Meta-navigation */
 
-.meta-nav {
+.meta-nav,
+.footer-nav {
   a {
     @extend %textshadow-dark;
     color: #fff;

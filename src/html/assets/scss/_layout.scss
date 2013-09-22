@@ -26,6 +26,10 @@
   @include box-shadow(0 3px 5px rgba($medium-grey, 0.8))
 }
 
+%boxshadow-footer {
+  @include box-shadow(0 -3px 5px rgba($medium-grey, 0.8))
+}
+
 /* Sonstige */
 
 %box-sizing {
@@ -59,7 +63,6 @@ li {
 }
 
 header {
-  @extend %boxshadow-meta;
   background: #fff;
   min-height: 250px;
   position: relative;
@@ -74,12 +77,16 @@ header {
 }
 
 .main {
+  @extend %boxshadow-footer;
   min-height: 500px;
+  position: relative;
 }
 
 footer {
+  @extend %boxshadow-footer;
   background: $light-blue;
-  border-top: 5px solid $dark-blue;
+  border-bottom: 5px solid $dark-blue;
+  border-top: 1px solid #fff;
 }
 
 .logo {
@@ -101,6 +108,7 @@ footer {
 .meta {
   @extend %boxshadow-meta;
   background: $light-blue;
+  border-bottom: 1px solid #fff;
   border-top: 5px solid $dark-blue;
   height: 40px;
   width: 100%;
@@ -260,6 +268,7 @@ footer {
   
     > a {
       background: $medium-blue;
+      border: 1px solid #fff;
       position: relative;
       z-index: $z-basic;
     }
@@ -391,7 +400,7 @@ footer {
 
   > li {
     float: left;
-    margin: 5px 0 5px 10px;
+    margin: 20px 10px 0;
     max-width: 400px;
     min-width: 200px;
   }
@@ -420,7 +429,9 @@ footer {
 .image {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
   border: 1px solid $dark-blue;
+  display: inline-block;
   margin-bottom: 20px;
+  max-width: 100%;
 
   img {
     display: block;
@@ -439,6 +450,8 @@ footer {
   margin-bottom: 20px;
 }
 
+/* Bewertung */
+
 .rating {
   display: inline-block;
   margin: 10px 0 20px;
@@ -454,14 +467,27 @@ footer {
       margin-left: 0;
     }
   }
+}
 
-  a {
-    background: green;
-    display: block;
-    height: 20px;
-    width:20px;
+.star {
+  background: 0 0 no-repeat;
+  @include base64-image($ico-rate-set);
+  display: block;
+  height: image-height($ico-rate);
+  width: image-width($ico-rate);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-rate-hover);
   }
 }
+
+.empty {
+  @include base64-image($ico-rate);
+}
+
+/* Genre */
 
 .genre-list {
   display: inline-block;
