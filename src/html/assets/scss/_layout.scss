@@ -267,7 +267,7 @@ footer {
     width: 33.33%;
   
     > a {
-      background: $medium-blue;
+      background: $lighter-blue;
       border: 1px solid #fff;
       position: relative;
       z-index: $z-basic;
@@ -441,7 +441,9 @@ footer {
   position: relative;
 
   .heading {
-    margin-bottom: 20px;
+    background: $medium-grey;
+    padding: 10px 0;
+    margin-bottom: 10px;
   }
 
   p {

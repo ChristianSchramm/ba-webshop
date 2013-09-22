@@ -38,8 +38,8 @@ p {
 
 .style1,
 .style2 {
-  @extend %textshadow-white;
-  color: $medium-blue;
+  @extend %textshadow-dark;
+  color: #fff;
 }
 
 .style1 {

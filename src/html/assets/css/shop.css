@@ -7,14 +7,14 @@
 /* Bilder ___________________________________________________________ */
 /* Indizes __________________________________________________________ */
 /* Mixins ___________________________________________________________ */
-.style3, .style4, .meta-nav a,
+.style1,
+.style2, .style3, .style4, .meta-nav a,
 .footer-nav a, .filter p,
 .filter .label, .btn, tfoot small {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
-.style1,
-.style2, .meta-nav a:active, .meta-nav a:hover, .meta-nav a:focus,
+.meta-nav a:active, .meta-nav a:hover, .meta-nav a:focus,
 .footer-nav a:active,
 .footer-nav a:hover,
 .footer-nav a:focus, .btn:active, .btn:hover, .btn:focus {
@@ -415,7 +415,7 @@ textarea {
     width: 33.33%;
   }
   .layer0 > li > a {
-    background: #0068d2;
+    background: #6cb5ff;
     border: 1px solid #fff;
     position: relative;
     z-index: 1;
@@ -570,7 +570,9 @@ textarea {
     position: relative;
   }
   .product-card .heading {
-    margin-bottom: 20px;
+    background: #5d5d5d;
+    padding: 10px 0;
+    margin-bottom: 10px;
   }
   .product-card p {
     margin-bottom: 10px;
@@ -841,7 +843,7 @@ p {
 
 .style1,
 .style2 {
-  color: #0068d2;
+  color: #fff;
 }
 
 .style1 {
