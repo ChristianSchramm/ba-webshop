@@ -18,15 +18,33 @@ class DefaultController extends Controller
     	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	
+    	// hole filter aus der session
     	$search = $session->get('search');
     	$type = $session->get('type');
     	$cond = $session->get('cond');
+    	
+    	$from = $session->get('from');
+    	if (is_null($from)){
+    		$from = 0;
+    	}
+    	$until = $session->get('until');
+    	if (is_null($until)){
+    		$until = 100;
+    	}
+    	
+    	// testen ob untel kleiner als from ist, notfalls tauschen
+    	if ($until < $from){
+    		$tmp = $until;
+    		$until = $from;
+    		$from = $tmp;
+    	}
+    	
     	if (is_null($type)){
     		$type = $em->getRepository('WebShopBundle:Type')->findOneByName("BD");
     		$cond = "New";
     	}
     	$filter = $session->get('filter');
-    	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $cond, $search, $filter);
+    	$products = $em->getRepository('WebShopBundle:Product')->findAllByFilter($type, $cond, $search, $filter, $from, $until);
         	
     	foreach ($products as $prod){
     		if (!is_null($prod->getImage())){
@@ -79,6 +97,8 @@ class DefaultController extends Controller
       		         'genres' => $genres,
       		         'type' => $type,
       		         'cond' => $cond,
+      		         'from' => $from,
+      		         'until' => $until
       		);
     }
     
@@ -159,6 +179,12 @@ class DefaultController extends Controller
     	  $session->set('filter', $_POST['filter']);
     	}else {
     		$session->set('filter', array());
+    	}
+    	if (isset($_POST['from'])){
+    	  $session->set('from', (int)$_POST['from']);
+    	}
+    	if (isset($_POST['until'])){
+    	  $session->set('until', (int)$_POST['until']);
     	}
     
     	return $this->redirect($this->generateUrl('default'));

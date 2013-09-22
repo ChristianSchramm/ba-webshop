@@ -23,16 +23,18 @@ class ProductRepository extends EntityRepository
 	 * 
 	 * @return \Doctrine\Common\Collections\ArrayCollection|Product
 	 */
-	public function findAllByFilter($type, $cond, $search, $filter) {
+	public function findAllByFilter($type, $cond, $search, $filter, $from, $until) {
 		
 		// seach and type filter
 		$q = $this
 				->createQueryBuilder('c')
         ->leftJoin('c.image', 'p')
-				->where('c.type = :type AND c.title LIKE :search  AND c.status = :cond')
+				->where('c.type = :type AND c.title LIKE :search  AND c.status = :cond AND c.price >= :from AND c.price <= :until')
 				->setParameter('type', $type->getId())
 				->setParameter('search', "%".$search."%")
 				->setParameter('cond', $cond)
+				->setParameter('from', $from)
+				->setParameter('until', $until)
 				->getQuery();
 		
 		$result = $q->getResult();
