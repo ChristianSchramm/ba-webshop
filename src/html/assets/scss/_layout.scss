@@ -380,31 +380,39 @@ footer {
 }
 
 .card {
-  background: $medium-blue;
+  background: $lighter-blue;
   display: block;
   height: 40px;
   margin-bottom: 20px;
   position: relative;
+  
+  &:active,
+  &:hover,
+  &:focus {
+    .amount {
+      @include base64-image($ico-cart-hover);
+    }
+  }
 }
 
 .amount {
-  background: 10px 8px no-repeat;
+  background: 8px 8px no-repeat $medium-grey;
   @include base64-image($ico-cart);
   display: inline-block;
   height: 40px;
-  width: 40px;
+  width: 60px;
 
   span {
     left: 42px;
     position: absolute;
-    top: 10px;
+    top: 8px;
   }
 }
 
 .price {
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 9px;
 }
 
 

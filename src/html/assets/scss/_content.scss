@@ -200,13 +200,35 @@ p {
   }
 }
 
+/* Warenkorb */
+
+.card {
+  &:active,
+  &:hover,
+  &:focus {
+    .amount span {
+      color: $lighter-blue;
+    }
+
+    .price {
+      color: $medium-grey;
+    }
+  }
+}
+
 .amount span,
 .price {
-  @extend %textshadow-dark;
   color: #fff;
-  font-family: "ExpletusSans-Bold";
   font-size: 1.3em;
   font-weight: normal;
+}
+
+.price {
+  font-family: "ExpletusSans-Bold";
+}
+
+.amount span {
+  font-family: 'Arial';
 }
 
 .empty {
