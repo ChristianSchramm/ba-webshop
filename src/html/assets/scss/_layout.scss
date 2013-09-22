@@ -70,7 +70,7 @@ header {
   margin: 0 auto;
   padding: 15px;
   position: relative;
-  width: 90%;
+  width: 80%;
 }
 
 .main {
@@ -392,7 +392,7 @@ footer {
   > li {
     float: left;
     margin: 5px 0 5px 10px;
-    max-width: 325px;
+    max-width: 400px;
     min-width: 200px;
   }
 
@@ -465,6 +465,7 @@ footer {
 
 .genre-list {
   display: inline-block;
+  margin-bottom: 20px;
 
   &:after {
     clear: both;

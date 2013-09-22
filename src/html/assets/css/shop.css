@@ -244,7 +244,7 @@ textarea {
     margin: 0 auto;
     padding: 15px;
     position: relative;
-    width: 90%;
+    width: 80%;
   }
 
   .main {
@@ -518,7 +518,7 @@ textarea {
   .products > li {
     float: left;
     margin: 5px 0 5px 10px;
-    max-width: 325px;
+    max-width: 400px;
     min-width: 200px;
   }
   .products .col {
@@ -584,6 +584,7 @@ textarea {
 
   .genre-list {
     display: inline-block;
+    margin-bottom: 20px;
   }
   .genre-list:after {
     clear: both;
