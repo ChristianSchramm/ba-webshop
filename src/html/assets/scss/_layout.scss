@@ -335,10 +335,24 @@ footer {
   strong {
     padding: 10px 20px;
   }
+
+  li:active,
+  li:hover,
+  li:focus {
+    a,
+    strong {
+      background: $light-blue;
+    }
+
+    .ico-info {
+      @include base64-image($ico-edge-hover);
+    }
+  }
 }
 
 .ico-info {
-  background: red;
+  background: 30px 0 no-repeat;
+  @include base64-image($ico-edge);
   display: block;
   height: 10px;
   margin-top: -10px;

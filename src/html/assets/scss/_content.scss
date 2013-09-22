@@ -80,9 +80,9 @@ p {
     }
   }
 
-  li:active > a,
-  li:hover > a,
-  li:focus > a,
+  > li:active > a,
+  > li:hover > a,
+  > li:focus > a,
   > strong {
     color: $dark-grey;
     text-decoration: underline;
@@ -97,6 +97,14 @@ p {
   a,
   strong {
     text-align: left;
+  }
+
+  li:active a,
+  li:hover a,
+  li:focus a,
+  strong {
+    color: #fff;
+    text-decoration: underline;
   }
 }
 
