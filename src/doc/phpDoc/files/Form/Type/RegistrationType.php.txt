@@ -13,7 +13,13 @@ class RegistrationType extends AbstractType
         $builder->add(
             'terms',
             'checkbox',
-            array('property_path' => 'termsAccepted')
+        		array(
+            'label'  => 'Bestädigung der AGB\'s',
+            'attr'   =>  array( 'class'   => 'checkbox'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+        		'property_path' => 'termsAccepted',
+            )
+            
         );
     }
 

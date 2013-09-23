@@ -1152,7 +1152,7 @@ function _endpage()
 function _loadfont($font)
 {
 	// Load a font definition file from the font directory
-	echo $this->fontpath.$font;
+	// $this->fontpath.$font;
 	include($this->fontpath.$font);
 	$a = get_defined_vars();
 	if(!isset($a['name']))

@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class BillController extends Controller
 {
     /**
-     * @Route("/account/bill", name="account_bill")
+     * @Route("/account/bill/", name="account_bill")
      * @Template()
      */
     public function indexAction()

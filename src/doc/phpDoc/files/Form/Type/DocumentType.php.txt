@@ -10,7 +10,13 @@ class DocumentType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('file');
+		$builder->add('file', 'file', array( 
+            'label'  => 'Bilddatei',
+				    'required' => false,
+            'attr'   =>  array( 'class'   => 'file-input'),
+				    'label_attr' =>  array( 'class'   => 'label'),
+            )
+        );
 	}
 	
 	public function setDefaultOptions(OptionsResolverInterface $resolver)

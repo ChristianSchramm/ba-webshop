@@ -120,6 +120,12 @@ class CartController extends Controller
     	$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	
+    	$products = $cart->getCartProducts();
+    	
+    	if ($products->count() == 0) {
+    		return $this->redirect($this->generateUrl('cart'));
+    	}
+    	
       // header
     	$pdf = new FPDFHelper();
     	$pdf->AddPage();
@@ -173,7 +179,6 @@ class CartController extends Controller
     	
       $summe = 0;
       $versand = 6.90;
-    	$products = $cart->getCartProducts();
     	for ($i = 0 ; $i < $products->count(); $i++){
     		$prod = $products[$i];
     		
@@ -238,6 +243,11 @@ class CartController extends Controller
     	
     	$em->persist($bill);
     	
+    	// amount verringern
+    	for ($i = 0 ; $i < $products->count(); $i++){
+    		// TODO
+    	}
+    	
     	// clear cart
     	
     	$products = $cart->getCartProducts();
@@ -252,7 +262,7 @@ class CartController extends Controller
     	
     	
     
-    	return $this->redirect($this->generateUrl('cart'));
+    	return array('bill' => $bill);
     }
 }
 
