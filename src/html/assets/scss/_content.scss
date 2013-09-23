@@ -29,11 +29,17 @@ p {
 /* Typo _____________________________________________________________ */
 
 .style1,
-.style2 {
-  @extend %textshadow-white;
-  color: $medium-blue;
+.style2,
+.style3,
+.style4 {
   font-family: "ExpletusSans-Bold";
   font-weight: normal;
+}
+
+.style1,
+.style2 {
+  @extend %textshadow-dark;
+  color: #fff;
 }
 
 .style1 {
@@ -47,9 +53,13 @@ p {
 .style3 {
   @extend %textshadow-dark;
   color: #fff;
-  font-family: "ExpletusSans-Bold";
-  font-weight: normal;
-  font-size: 1.6em;
+  font-size: 1.8em;
+}
+
+.style4 {
+  @extend %textshadow-dark;
+  color: $lighter-blue;
+  font-size: 1.5em;
 }
 
 /* Navigation _____________________________________________ */
@@ -80,10 +90,10 @@ p {
     }
   }
 
-  a:active,
-  a:hover,
-  a:focus,
-  strong {
+  > li:active > a,
+  > li:hover > a,
+  > li:focus > a,
+  > strong {
     color: $dark-grey;
     text-decoration: underline;
   }
@@ -98,11 +108,20 @@ p {
   strong {
     text-align: left;
   }
+
+  li:active a,
+  li:hover a,
+  li:focus a,
+  strong {
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 /* Meta-navigation */
 
-.meta-nav {
+.meta-nav,
+.footer-nav {
   a {
     @extend %textshadow-dark;
     color: #fff;
@@ -181,13 +200,35 @@ p {
   }
 }
 
+/* Warenkorb */
+
+.card {
+  &:active,
+  &:hover,
+  &:focus {
+    .amount span {
+      color: $lighter-blue;
+    }
+
+    .price {
+      color: $medium-grey;
+    }
+  }
+}
+
 .amount span,
 .price {
-  @extend %textshadow-dark;
   color: #fff;
-  font-family: "ExpletusSans-Bold";
   font-size: 1.3em;
   font-weight: normal;
+}
+
+.price {
+  font-family: "ExpletusSans-Bold";
+}
+
+.amount span {
+  font-family: 'Arial';
 }
 
 .empty {
@@ -200,6 +241,20 @@ p {
 
 .delivery {
   font-size: 1.3em;
+}
+
+/* Filter */
+
+.filter {
+  p,
+  .label {
+    @extend %textshadow-dark;
+    color: #fff;
+  }
+
+  p {
+    font-weight: bold;
+  }
 }
 
 /* Button ___________________________________________________________ */
