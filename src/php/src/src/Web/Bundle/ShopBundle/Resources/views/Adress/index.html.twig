@@ -4,16 +4,29 @@
 
 {% block content %}
 
-<h2>Adressdaten <small><a href="{{ path('account_adress_edit') }}">edit</a></small></h2>
-<br>
-<strong>Name: </strong>{{ adress.name }}
-<br>
-<strong>Straße: </strong>{{ adress.street }}
-<br>
-<strong>Postleitzahl: </strong>{{ adress.postcode }}
-<br>
-<strong>Ort: </strong>{{ adress.location }}
-<br>
-<strong>Land: </strong>{{ adress.country }}
+<h2 class="heading style2">Adressdaten</h2>
+<form  class="form" >
 
+    <div class="cols">
+      <div class="col c6of12">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, { 'disabled' : true}) }}
+        
+        {{ form_label(form.street) }}
+        {{ form_widget(form.street, { 'disabled' : true}) }}
+        
+        {{ form_label(form.postcode) }}
+        {{ form_widget(form.postcode, { 'disabled' : true}) }}
+        
+        {{ form_label(form.location) }}
+        {{ form_widget(form.location, { 'disabled' : true}) }}
+        
+        {{ form_label(form.country) }}
+        {{ form_widget(form.country, { 'disabled' : true}) }}
+        
+        <a class="btn form-btn" href="{{ path('account_adress_edit') }}">edit</a>
+      </div> <!-- c6of12 -->
+    </div>
+ </form>
+ 
 {% endblock %}

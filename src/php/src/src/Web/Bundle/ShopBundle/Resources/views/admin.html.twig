@@ -2,16 +2,16 @@
 
 {% block body %}
 
-				<nav class="main-nav">
+				<nav id="nav" class="main-nav">
           <ul class="layer0">
             <li>
-              <a href="{{ path('admin_genre') }}">Genre Verwaltung</a>
+							<a href="{{ path('admin_product') }}#nav">Product Verwaltung</a>
             </li>
             <li>
-							<a href="{{ path('admin_user') }}">User Verwaltung</a>
+              <a href="{{ path('admin_genre') }}#nav">Genre Verwaltung</a>
             </li>
             <li>
-							<a href="{{ path('admin_product') }}">Product Verwaltung</a>
+							<a href="{{ path('admin_user') }}#nav">User Verwaltung</a>
             </li>
           </ul>
         </nav>
@@ -23,12 +23,9 @@
 
           <div class="cols">
             <div class="col c2of12">
-              <div class="filter">
-              
-              </div> <!-- filter -->
             </div> <!-- c2of12 -->
 
-            <div class="col c10of12">
+            <div class="col c8of12">
               <div class="cols">
               
               </div> <!-- cols -->

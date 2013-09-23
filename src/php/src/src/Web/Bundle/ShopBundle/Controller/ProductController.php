@@ -16,6 +16,7 @@ class ProductController extends Controller
 {
 	/**
 	 * @Route("/admin/product/", name="admin_product")
+	 * @Route("/admin/", name="admin")
 	 * @Template()
 	 */
 	public function indexAction()

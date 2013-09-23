@@ -3,21 +3,21 @@
 {% block body %}
 
 
-        					<nav class="main-nav">
+        					<nav id="nav" class="main-nav">
                     <ul class="layer0">
                       <li>
                         {%  if type == 'BD' %}
                           <strong>Blu-Ray</strong>
                         {% else %}
-                           <a href="{{ path('bd', {'cond':'New'} ) }}">Blu-Ray</a>
+                           <a href="{{ path('bd', {'cond':'New'} ) }}#nav">Blu-Ray</a>
                         {% endif %}
                         <ul class="layer1">
                           <li>
                             <span class="ico-info"></span>
-                            <a href="{{ path('bd', {'cond':'New'} ) }}">Neu</a>
+                            <a href="{{ path('bd', {'cond':'New'} ) }}#nav">Neu</a>
                           </li>
                           <li>
-                            <a href="{{ path('bd', {'cond':'Old'} ) }}">Gebraucht</a>
+                            <a href="{{ path('bd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
                           </li>
                         </ul>
                       </li>
@@ -25,16 +25,16 @@
                         {%  if type == 'DVD' %}
                           <strong>DVD</strong>
                         {% else %}
-                           <a href="{{ path('dvd', {'cond':'New'} ) }}">DVD</a>
+                           <a href="{{ path('dvd', {'cond':'New'} ) }}#nav">DVD</a>
                         {% endif %}
                         
                         <ul class="layer1">
                           <li>
                             <span class="ico-info"></span>
-                            <a href="{{ path('dvd', {'cond':'New'} ) }}">Neu</a>
+                            <a href="{{ path('dvd', {'cond':'New'} ) }}#nav">Neu</a>
                           </li>
                           <li>
-                            <a href="{{ path('dvd', {'cond':'Old'} ) }}">Gebraucht</a>
+                            <a href="{{ path('dvd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
                           </li>
                         </ul>
                       </li>
@@ -42,16 +42,16 @@
                         {%  if type == 'CD' %}
                           <strong>CD</strong>
                         {% else %}
-                           <a href="{{ path('cd', {'cond':'New'} ) }}">CD</a>
+                           <a href="{{ path('cd', {'cond':'New'} ) }}#nav">CD</a>
                         {% endif %}
                         
                         <ul class="layer1">
                           <li>
                             <span class="ico-info"></span>
-                            <a href="{{ path('cd', {'cond':'New'} ) }}">Neu</a>
+                            <a href="{{ path('cd', {'cond':'New'} ) }}#nav">Neu</a>
                           </li>
                           <li>
-                            <a href="{{ path('cd', {'cond':'Old'} ) }}">Gebraucht</a>
+                            <a href="{{ path('cd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
                           </li>
                         </ul>
                       </li>
@@ -68,40 +68,43 @@
               <ul class="products">
               {% for product in products %}
                 <li>
-                  <div class="box product-card">
-                      <h2 class="heading level2">{{ product.title }}</h2>
+                  <div class="product-card">
+                    <h2 class="heading style1">{{ product.title }}</h2>
+                    <div class="box">
                       <div class="cols">
-                        <div class="col c6of12">
+                        <div class="col c5of12">
                           <figure class="image">
                           {% if product.image is not null %}
-		                        <img height="300" width="200px" src="/uploads/documents/{{ product.image.path }}">
+		                        <img height="300" width="200" src="/uploads/documents/{{ product.image.path }}">
 		                      {%  else %}
-		                        <img height="300" width="200px" src="http://dummyimage.com/300x200/000/0011ff">
+		                        <img height="300" width="200" src="http://dummyimage.com/300x200/000/0011ff">
 		                      {% endif %}
                           </figure>
-                        </div> <!-- c6of12 -->
-                        <div class="col c6of12">
+                        </div> <!-- c5of12 -->
+                        <div class="col c7of12">
                           <div class="small-box">
-                            <p><strong>auf Lager</strong></p>
-                            <p>Lieferung innerhalb der nächsten {{ product.shipping }} Werktage</p>
+                            <p><strong class="booking">{{ product.price }}&euro;</strong></p>
+                            <p><strong class="storing">auf Lager</strong></p>
+                            <p class="delivery">Lieferung innerhalb der nächsten {{ product.shipping }} Werktage</p>
                             <ul class="rating">
 				                      <li><a class="star one {% if product.stars < 1 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "1"}) }} {% endif %}">befriedigend</a></li>
 				                      <li><a class="star two {% if product.stars < 2 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "2"}) }} {% endif %}">gut</a></li>
 				                      <li><a class="star three {% if product.stars < 3 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "3"}) }} {% endif %}">sehr gut</a></li>
                             </ul>
-                            <ul>
-                             {% for genre in product.genres %}
-												        <li>{{ genre.name }}</li>
-												      {% endfor %}
-                            </ul>
-                            <strong class="booking">{{ product.price }}&euro;</strong>
+
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 									            <a class="add btn" href="{{ path('cart_add', {'id': product.id}) }}">in den Warenkorb</a>
 									          {% endif %}
                           </div> <!-- box -->
                         </div> <!-- c6of12 -->
                       </div> <!-- cols -->
+                      <ul class="genre-list">
+                        {% for genre in product.genres %}
+								        <li><strong>{{ genre.name }}</strong></li>
+								        {% endfor %}
+                      </ul>
                       <p>{{ product.description }}</p>
+                    </div> <!-- box -->
                     </div> <!-- box -->
                   </li>
 
@@ -116,9 +119,9 @@
                 <span class="price">({{ cartSum }}&euro;)</span>
               </a>
             
-              <div class="filter">
-                <h2 class="heading level2">Filter</h2>
-                <h3 class="heading level3">Genre:</h3>
+              <div class="filter box">
+                <h2 class="heading style3">Filter</h2>
+                <h3 class="heading style4">Genre:</h3>
                 <form action="{{ path('filter') }}" method="post">
                   <ul>
                   {% for genre in genres %}
@@ -128,8 +131,9 @@
 								   </li>
 								  {% endfor %}
                   </ul>
-                  <input class="from" name="from" type="text" size="3" value="{{ from }}">
-                  <input class="until" name="until" type="text" size="3" value="{{ until }}">
+                  <input class="input from" name="from" placeholder="5 &euro;" type="text" size="3" value="{{ from }}">
+                  <p>-</p>
+                  <input class="input until" name="until" placeholder="50 &euro;" type="text" size="3" value="{{ until }}">
                   <button class="btn">Filtern</button>
                 </form>
               </div> <!-- filter -->

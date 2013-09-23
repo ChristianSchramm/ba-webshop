@@ -19,6 +19,7 @@ class AdressController extends Controller
 	
 	/**
 	 * @Route("/account/adress/", name="account_adress")
+	 * @Route("/account/", name="account")
 	 * @Template()
 	 */
 	public function indexAction()
@@ -28,7 +29,9 @@ class AdressController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
 
-		return array('adress' => $adress);
+		$form = $this->createForm(new AdressType(), $adress);
+			
+		return array('form' => $form->createView() );
 	}
 	
 	/**

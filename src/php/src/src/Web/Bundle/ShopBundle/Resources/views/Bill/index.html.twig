@@ -3,17 +3,32 @@
 {% block title %} Accountverwaltung{% endblock %}
 
 {% block content %}
-<h2>Bestellungen</h2>
+<h2 class="heading style2">Bestellungen</h2>
 
-<ul>
-  {% for bill in bills %}
-    <li>Rechnung vom {{ bill.date|date('d.m.Y') }} - {{ bill.rechnungsnummer }} <a target="_blank" href="/uploads/bills/{{ bill.path }}">Hier</a>
-      {% if bill.paid %}
-         <stong>bezahlt</stong>
-      {% else %}
-        <stong>nicht bezahlt</stong>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+                        <table cellpadding="0" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th><h3 class="heading style3">Rechnung</h3></th>
+                              <th><h3 class="heading style3">Datum</h3></th>
+                              <th><h3 class="heading style3">Status</h3></th>
+                              <th><h3 class="heading style3">Anzeigen</h3></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for bill in bills %}
+                            <tr>
+                              <td><p>{{ bill.rechnungsnummer }}</p></td>
+                              <td><p>{{ bill.date|date('d.m.Y') }}</p></td>
+                              <td><p>{% if bill.paid %} <stong>bezahlt</stong> {% else %} <stong>nicht bezahlt</stong> {% endif %}</p></td>
+                              <td><a class="show" target="_blank" href="/uploads/bills/{{ bill.path }}">Show</a></td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="4"><small>*Hier können Sie ihre Produkte anpassen oder löschen...</small></td>
+                            </tr>
+                          </tfoot>
+                        </table>
+
 {% endblock %}

@@ -26,6 +26,10 @@
   @include box-shadow(0 3px 5px rgba($medium-grey, 0.8))
 }
 
+%boxshadow-footer {
+  @include box-shadow(0 -3px 5px rgba($medium-grey, 0.8))
+}
+
 /* Sonstige */
 
 %box-sizing {
@@ -59,7 +63,6 @@ li {
 }
 
 header {
-  @extend %boxshadow-meta;
   background: #fff;
   min-height: 250px;
   position: relative;
@@ -70,16 +73,20 @@ header {
   margin: 0 auto;
   padding: 15px;
   position: relative;
-  width: 90%;
+  width: 80%;
 }
 
 .main {
+  @extend %boxshadow-footer;
   min-height: 500px;
+  position: relative;
 }
 
 footer {
+  @extend %boxshadow-footer;
   background: $light-blue;
-  border-top: 5px solid $dark-blue;
+  border-bottom: 5px solid $dark-blue;
+  border-top: 1px solid #fff;
 }
 
 .logo {
@@ -101,6 +108,7 @@ footer {
 .meta {
   @extend %boxshadow-meta;
   background: $light-blue;
+  border-bottom: 1px solid #fff;
   border-top: 5px solid $dark-blue;
   height: 40px;
   width: 100%;
@@ -259,7 +267,8 @@ footer {
     width: 33.33%;
   
     > a {
-      background: $medium-blue;
+      background: $lighter-blue;
+      border: 1px solid #fff;
       position: relative;
       z-index: $z-basic;
     }
@@ -270,6 +279,7 @@ footer {
     > strong {
       @include box-shadow(0 6px 5px -4px rgba($dark-blue,.5));
       background: #fff;
+      border-bottom: 1px solid #fff;
       border-left: 1px solid $lighter-blue;
       border-right: 1px solid $lighter-blue;
       border-top: 5px solid $dark-blue;
@@ -326,10 +336,24 @@ footer {
   strong {
     padding: 10px 20px;
   }
+
+  li:active,
+  li:hover,
+  li:focus {
+    a,
+    strong {
+      background: $light-blue;
+    }
+
+    .ico-info {
+      @include base64-image($ico-edge-hover);
+    }
+  }
 }
 
 .ico-info {
-  background: red;
+  background: 30px 0 no-repeat;
+  @include base64-image($ico-edge);
   display: block;
   height: 10px;
   margin-top: -10px;
@@ -356,31 +380,39 @@ footer {
 }
 
 .card {
-  background: $medium-blue;
+  background: $lighter-blue;
   display: block;
   height: 40px;
   margin-bottom: 20px;
   position: relative;
+  
+  &:active,
+  &:hover,
+  &:focus {
+    .amount {
+      @include base64-image($ico-cart-hover);
+    }
+  }
 }
 
 .amount {
-  background: 6px 8px no-repeat;
+  background: 8px 8px no-repeat $medium-grey;
   @include base64-image($ico-cart);
   display: inline-block;
   height: 40px;
-  width: 40px;
+  width: 60px;
 
   span {
-    left: 34px;
+    left: 42px;
     position: absolute;
-    top: 16px;
+    top: 8px;
   }
 }
 
 .price {
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 9px;
 }
 
 
@@ -391,8 +423,8 @@ footer {
 
   > li {
     float: left;
-    margin: 5px 0 5px 10px;
-    max-width: 325px;
+    margin: 20px 10px 0;
+    max-width: 400px;
     min-width: 200px;
   }
 
@@ -409,7 +441,9 @@ footer {
   position: relative;
 
   .heading {
-    margin-bottom: 20px;
+    background: $medium-grey;
+    padding: 10px 0;
+    margin-bottom: 10px;
   }
 
   p {
@@ -420,7 +454,9 @@ footer {
 .image {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
   border: 1px solid $dark-blue;
+  display: inline-block;
   margin-bottom: 20px;
+  max-width: 100%;
 
   img {
     display: block;
@@ -439,6 +475,8 @@ footer {
   margin-bottom: 20px;
 }
 
+/* Bewertung */
+
 .rating {
   display: inline-block;
   margin: 10px 0 20px;
@@ -454,17 +492,31 @@ footer {
       margin-left: 0;
     }
   }
+}
 
-  a {
-    background: green;
-    display: block;
-    height: 20px;
-    width:20px;
+.star {
+  background: 0 0 no-repeat;
+  @include base64-image($ico-rate-set);
+  display: block;
+  height: image-height($ico-rate);
+  width: image-width($ico-rate);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-rate-hover);
   }
 }
 
+.empty {
+  @include base64-image($ico-rate);
+}
+
+/* Genre */
+
 .genre-list {
   display: inline-block;
+  margin-bottom: 20px;
 
   &:after {
     clear: both;
@@ -489,10 +541,28 @@ footer {
 /* Filter */
 
 .filter {
-  background: $dark-blue;
+  background: $medium-grey;
+  border: 2px solid $dark-blue;
+
+  li {
+    margin-bottom: 5px;
+  }
 
   label {
     margin-left: 5px;
+  }
+
+  .input {
+    margin: 5px 0 10px;
+    width: 45%;
+  }
+
+  .until {
+    margin-left: 2px;
+  }
+
+  p {
+    display: inline-block;
   }
 }
 
@@ -523,6 +593,7 @@ footer {
 
 .label {
   margin-right: 10px;
+  vertical-align: middle;
 }
 
 .input,
@@ -533,6 +604,10 @@ footer {
   background: #fff;
   border: 1px solid $dark-blue;
   padding: 5px;
+  vertical-align: middle;
+}
+
+input[type="checkbox"] {
   vertical-align: middle;
 }
 
@@ -598,7 +673,7 @@ tbody {
   tr {
     background: $light-grey;
 
-    &:nth-child(2) {
+    &:nth-child(odd) {
       background: #fff;
     }
   }
@@ -617,8 +692,21 @@ tbody {
 
 .edit {
   @include base64-image($ico-edit);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-edit-hover);    
+  }
 }
 
 .delete {
   @include base64-image($ico-delete);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-delete-hover);
+    
+  }
 }

@@ -4,16 +4,37 @@
 
 {% block content %}
 
-<h2>Produkt Verwaltung</h2>
+<h2 class="heading style2">Produkt Verwaltung</h2>
+                        <table cellpadding="0" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th><h3 class="heading style3">Titel</h3></th>
+                              <th><h3 class="heading style3">Bearbeiten</h3></th>
+                              <th><h3 class="heading style3">Löschen</h3></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for product in products %}
+                            <tr>
+                              <td><p>{{ product.title }}</p></td>
+                              <td><a class="edit" href="{{ path('admin_product_edit', { 'id': product.id}) }}">E</a></td>
+                              <td><a class="delete" href="{{ path('admin_product_remove', { 'id': product.id}) }}">X</a></td>
+
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="4"><small>*Hier können Sie ihre Produkte anpassen oder löschen...</small></td>
+                            </tr>
+                          </tfoot>
+                        </table>
 
 
-<p>
-  <a href="{{ path('admin_product_new') }}">new</a>
-</p>
-<ul>
-    {% for product in products %}
-        <li>{{ product.title }}  - <a href="{{ path('admin_product_remove', { 'id': product.id}) }}">X</a> - <a href="{{ path('admin_product_edit', { 'id': product.id}) }}">E</a></li>
-    {% endfor %}
-</ul>
+
+<a class="btn form-btn" href="{{ path('admin_product_new') }}">Neues Produkt anlegen</a>
+  
+
+
 
 {% endblock %}

@@ -673,7 +673,7 @@ tbody {
   tr {
     background: $light-grey;
 
-    &:nth-child(2) {
+    &:nth-child(odd) {
       background: #fff;
     }
   }
