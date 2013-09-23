@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<h2>Produkt anlegen</h2>
+<h2 class="heading style2">Produkt Anlegen</h2>
 
-<form action="{{  path('admin_product_create') }}" method="post" {{ form_enctype(form) }} }}>
+<form  class="form" action="{{  path('admin_product_create') }}" method="post" {{ form_enctype(form) }} }}>
 
-{% include 'WebShopBundle:Product:_form.html.twig' %}
-    
-<input type="submit" />
+	{% include 'WebShopBundle:Product:_form.html.twig' %}
+	    
+	<button class="btn form-btn" type="submit">Produkt anlegen</button>
 {{ form_end(form) }}
 {% endblock %}

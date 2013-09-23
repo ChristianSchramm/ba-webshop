@@ -60,9 +60,9 @@ class GenreController extends Controller
     }
     
     /**
-     * @Route("/admin/genre/delete/{id}", name="admin_genre_delete")
+     * @Route("/admin/genre/remove/{id}", name="admin_genre_remove")
      */
-    public function deleteAction($id)
+    public function removeAction($id)
     {
 
     	$em = $this->getDoctrine()->getManager();

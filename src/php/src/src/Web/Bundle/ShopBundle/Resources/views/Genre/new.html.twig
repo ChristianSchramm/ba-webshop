@@ -4,19 +4,20 @@
 
 {% block content %}
 
-<h2>Genre anlegen</h2>
-<br>
-<form action="{{  path('admin_genre_create') }}" method="post" }}>
-    {{ form_errors(form) }}
+<h2 class="heading style2">Genre Anlegen</h2>
 
-    <div>
+<form class="form" action="{{  path('admin_genre_create') }}" method="post" }}>
+    {{ form_errors(form) }}
+    <div class="cols">
+      <div class="col c6of12">  
+
         {{ form_label(form.name) }}
         {{ form_errors(form.name) }}
         {{ form_widget(form.name) }}
+        
+        <button class="btn form-btn" type="submit">Genre anlegen</button>
+      </div>
     </div>
-
-
-<input type="submit" />
 
 
 {{ form_end(form) }}

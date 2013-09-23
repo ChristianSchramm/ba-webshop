@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<h2>Produkt bearbeiten</h2>
+<h2 class="heading style2">Produkt Bearbeiten</h2>
 
-<form action="{{  path('admin_product_save', {'id':id}) }}" method="post" {{ form_enctype(form) }} }}>
+<form  class="form" action="{{  path('admin_product_save', {'id':id}) }}" method="post" {{ form_enctype(form) }} }}>
 
 {% include 'WebShopBundle:Product:_form.html.twig' %}
     
-<input type="submit" />
+<button class="btn form-btn" type="submit">Produkt speichern</button>
 {{ form_end(form) }}
 {% endblock %}

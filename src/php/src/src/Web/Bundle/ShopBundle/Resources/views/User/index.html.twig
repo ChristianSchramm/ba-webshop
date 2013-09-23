@@ -4,16 +4,36 @@
 
 {% block content %}
 
-<h2>User Verwaltung</h2>
-<ul>
-    {% for user in users %}
-        <li>{{ user.username }}
-          <a href="{{ path('admin_user_bill', {'id': user.id}) }}">Bestellungen</a>
-          <a href="{{ path('admin_user_edit', {'id': user.id}) }}">E</a>
-          <a href="{{ path('admin_user_show', {'id': user.id}) }}">S</a>
-          <a href="{{ path('admin_user_remove', {'id': user.id}) }}">X</a>
-        </li>
-    {% endfor %}
-</ul>
+
+<h2 class="heading style2">User Verwalten</h2>
+                        <table cellpadding="0" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th><h3 class="heading style3">Username</h3></th>
+                              <th><h3 class="heading style3">Bestellungen</h3></th>
+                              <th><h3 class="heading style3">Anzeigen</h3></th>
+                              <th><h3 class="heading style3">Bearbeiten</h3></th>
+                              <th><h3 class="heading style3">Löschen</h3></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for user in users %}
+                            <tr>
+                              <td><p>{{ user.username }}</p></td>
+                              <td><a href="{{ path('admin_user_bill', {'id': user.id}) }}">Bestellungen</a></td>
+                              <td><a class="show" href="{{ path('admin_user_show', {'id': user.id}) }}">Show</a></td>
+                              <td><a class="edit" href="{{ path('admin_user_edit', {'id': user.id}) }}">Edit</a></td>
+                              <td><a class="delete" href="{{ path('admin_user_remove', {'id': user.id}) }}">Remove</a></td>
+
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="5"></td>
+                            </tr>
+                          </tfoot>
+                        </table>
+
 
 {% endblock %}
