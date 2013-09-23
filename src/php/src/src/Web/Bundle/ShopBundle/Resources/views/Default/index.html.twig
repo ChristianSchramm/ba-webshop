@@ -84,7 +84,12 @@
                         <div class="col c7of12">
                           <div class="small-box">
                             <p><strong class="booking">{{ product.price }} &euro;</strong></p>
+                            {% if product.amount > 0 %}
                             <p><strong class="storing">auf Lager</strong></p>
+                            {% else %}
+                            <p><strong class="">nicht auf Lager</strong></p>
+                            
+                            {% endif %}
                             <p class="delivery">Lieferung innerhalb der nächsten {{ product.shipping }} Werktage</p>
                             <ul class="rating">
 				                      <li><a class="star one {% if product.stars < 1 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "1"}) }} {% endif %}">befriedigend</a></li>

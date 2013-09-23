@@ -1,11 +1,14 @@
-{% extends "::base.html.twig" %}
+{% extends 'WebShopBundle::site.html.twig' %}
 
-{% block title %}WebShopBundle:Cart:index{% endblock %}
+{% block title %}Warenkorb{% endblock %}
 
-{% block body %}
-<div>
-<h2>Bestellung erfolgreich</h2>
+{% block content %}
 
-Sie haben das pdf per mail bekommen
+<h2 class="heading style2">Bestellung erfolgreich</h2>
+
+<p>Bitte Bezahlen Sie innerhalb von 14 Tagen, damit wir Ihnen Ihre Waren zusenden können.</p>
+<p>Die Rechnung können sie in Ihrer Benutzerverwaltung oder in Ihren Postfach betrachten.</p>
+
+<p><a target="_blank" href="/uploads/bills/{{ bill.path }}">{{ bill.rechnungsnummer }}</a></p>
 
 {% endblock %}

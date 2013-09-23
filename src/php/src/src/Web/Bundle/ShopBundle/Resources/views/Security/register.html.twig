@@ -1,15 +1,38 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::site.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-<h2>Registrieren</h2>
+<h2 class="heading style2">Registrieren</h2>
 
 
-<form action="{{ path('create')}}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+<form  class="form" action="{{ path('create')}}" method="post" {{ form_enctype(form) }}>
+    <div class="cols">
+      <div class="col c6of12">    
 
-    <input type="submit" />
-</form>
+        {{ form_label(form.user.email) }}
+        {{ form_errors(form.user.email) }}
+        {{ form_widget(form.user.email) }}
+
+        {{ form_label(form.user.username) }}
+        {{ form_errors(form.user.username) }}
+        {{ form_widget(form.user.username) }}
+
+        {{ form_label(form.user.password.password) }}
+        {{ form_errors(form.user.password.password) }}
+        {{ form_widget(form.user.password.password) }}
+
+        {{ form_label(form.user.password.confirm) }}
+        {{ form_errors(form.user.password.confirm) }}
+        {{ form_widget(form.user.password.confirm) }}
+
+        {{ form_label(form.terms) }}
+        {{ form_errors(form.terms) }}
+        {{ form_widget(form.terms) }}
+
+       <button class="btn form-btn" type="submit">Registrieren</button>
+    </div>
+  </div>
+{{ form_end(form) }}
 
 	
 {% endblock %}
