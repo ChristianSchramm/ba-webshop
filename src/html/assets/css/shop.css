@@ -744,7 +744,8 @@ textarea {
     margin-bottom: 20px;
   }
   .form .input,
-  .form .textarea {
+  .form .textarea,
+  .form .select {
     width: 100%;
   }
   .form .textarea {
