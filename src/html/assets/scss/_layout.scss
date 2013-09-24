@@ -52,7 +52,7 @@ li {
 }
 
 .small-box {
-  padding: 10px;
+  padding: 0 10px;
 }
 
 /* Layout */
@@ -101,6 +101,11 @@ footer {
 .heading {
   display: block;
   margin-bottom: 20px;
+}
+
+h1 {
+  visibility: hidden;
+  position: absolute;
 }
 
 /* Navigation _______________________________________________________ */
@@ -159,16 +164,13 @@ footer {
 
 .search {
   position: absolute;
-  right: 15px;
-  top: 140px;
+  right: 220px;
+  top: 136px;
   
   .input {
     @extend %m-round-1-0-0-1;
     background: $lighter-grey;
-  }
-
-  .btn {
-    margin-left: -5px;
+    height: 40px;
   }
 }
 
@@ -267,7 +269,7 @@ footer {
     width: 33.33%;
   
     > a {
-      background: $lighter-blue;
+      background: $dark-blue;
       border: 1px solid #fff;
       position: relative;
       z-index: $z-basic;
@@ -337,13 +339,11 @@ footer {
     padding: 10px 20px;
   }
 
-  li:active,
-  li:hover,
-  li:focus {
-    a,
-    strong {
-      background: $light-blue;
-    }
+  li:active a,
+  li:hover a,
+  li:focus a,
+  strong {
+    background: $light-blue;
 
     .ico-info {
       @include base64-image($ico-edge-hover);
@@ -358,6 +358,7 @@ footer {
   height: 10px;
   margin-top: -10px;
   position: absolute;
+  top: 0;
   width: 100%;
 }
 
@@ -380,11 +381,13 @@ footer {
 }
 
 .card {
-  background: $lighter-blue;
+  background: $light-blue;
   display: block;
   height: 40px;
-  margin-bottom: 20px;
-  position: relative;
+  position: absolute;
+  right: 15px;
+  top: 136px;
+  width: 180px;
   
   &:active,
   &:hover,
@@ -436,12 +439,12 @@ footer {
 .product-card {
   @include box-shadow(0 0 6px rgba(0,0,0,.6));
   background: #fff;
-  border: 2px solid $dark-blue;
+  border: 1px solid $blue;
   display: block;
   position: relative;
 
   .heading {
-    background: $medium-grey;
+    background: $blue;
     padding: 10px 0;
     margin-bottom: 10px;
   }
@@ -543,18 +546,19 @@ footer {
 .filter {
   background: $medium-grey;
   border: 2px solid $dark-blue;
+  margin-top: 20px;
 
   li {
     margin-bottom: 5px;
   }
 
-  label {
-    margin-left: 5px;
+  .label {
+    padding-left: 5px;
   }
 
   .input {
     margin: 5px 0 10px;
-    width: 45%;
+    width: 40%;
   }
 
   .until {
@@ -568,14 +572,19 @@ footer {
 
 /* Button ___________________________________________________________ */
 
-.btn {
+.btn,
+.search-btn {
   @extend %box-sizing;
-  @extend %boxshadow-btn;
-  background: $dark-blue;
   border: 1px solid $dark-blue;
   cursor: pointer;
+  display: inline-block;
   padding: 0 10px;
   vertical-align: middle;
+}
+
+.btn {
+  @extend %boxshadow-btn;
+  background: $dark-blue;
 
   &:active,
   &:hover,
@@ -584,9 +593,28 @@ footer {
   }
 }
 
+.search-btn {
+  background: $light-blue;
+  margin-left: -5px;
+}
+
 .form-btn {
   float: right;
   margin-top: 40px;
+}
+
+.new-btn {
+  background: 5px 3px no-repeat $dark-blue;
+  @include base64-image($ico-new);
+  margin-bottom: 20px;
+  padding: 2px 10px 2px 40px;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background: 5px 3px no-repeat $light-blue;
+    @include base64-image($ico-new-hover);
+  }
 }
 
 /* Formulare ________________________________________________________ */
@@ -632,7 +660,8 @@ input[type="checkbox"] {
   }
 
   .input,
-  .textarea {
+  .textarea,
+  .select {
     width: 100%;
   }
 
@@ -646,6 +675,7 @@ input[type="checkbox"] {
 table {
   @extend %s-round-1;
   border: 1px solid $blue;
+  margin-bottom: 20px;
   width: 100%;
 
   .heading {
@@ -662,7 +692,7 @@ tfoot {
 td,
 th {
   border-left: 1px solid $dark-blue;
-  padding: 10px 15px;
+  padding: 5px 10px;
 
   &:first-child {
     border: 0;
@@ -683,7 +713,10 @@ tbody {
 /* Icons ____________________________________________________________ */
 
 .edit,
-.delete {
+.delete,
+.show,
+.payed,
+.notpayed {
     background: 50% 0 no-repeat;
     display: inline-block;
     height: 25px;
@@ -708,5 +741,35 @@ tbody {
   &:focus {
     @include base64-image($ico-delete-hover);
     
+  }
+}
+
+.show {
+  @include base64-image($ico-show);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-show-hover);    
+  }
+}
+
+.payed {
+  @include base64-image($ico-payed);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-payed-hover);    
+  }
+}
+
+.notpayed {
+  @include base64-image($ico-notpayed);
+
+  &:active,
+  &:hover,
+  &:focus {
+    @include base64-image($ico-notpayed-hover);    
   }
 }
