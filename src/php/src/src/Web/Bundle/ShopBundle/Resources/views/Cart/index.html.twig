@@ -23,7 +23,11 @@
                               <td><p>{{ product.amount }}</p></td>
                               <td><p>{{ product.product.price|number_format(2, ',', '') }} &euro;</p></td>
                               <td><p>{{ (product.amount * product.product.price)|number_format(2, ',', '')  }} &euro;</p></td>
-                              <td><a class="remove" href="{{ path('cart_del', {'id': product.product.id}) }}">del</a></td>
+                              {% if product.product.id is not empty%}
+                                <td><a class="remove" href="{{ path('cart_del', {'id': product.product.id}) }}">del</a></td>
+                              {% else %}
+                                <td><a class="remove" href="{{ path('cart_del', {'id': product.product.pubid}) }}">del</a></td>
+                              {% endif %}
                             </tr>
                             {% else %}
                             <tr>

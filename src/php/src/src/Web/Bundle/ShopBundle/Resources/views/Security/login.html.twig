@@ -1,26 +1,35 @@
-{% extends '::base.html.twig' %}
+{% extends 'WebShopBundle::site.html.twig' %}
 
-{% block body %}
+{% block content %}
+
+<h2 class="heading style2">Login</h2>
 	{% if error %}
 	    <div>{{ error.message }}</div>
 	{% endif %}
 	
 	
 	
-	<form action="{{ path('login_check') }}" method="post">
-		<div>
-			<ul>
-				<li><label for="username">Username:</label> <input type="text" id="username" name="_username" value="{{ last_username }}" /></li>
-				<li><label for="password">Password:</label> <input type="password" id="password" name="_password" /></li>
-		
-				<li><label for="remember_me">Keep me logged in</label> <input type="checkbox" id="remember_me" name="_remember_me" checked /></li>
-		  </ul>
-		</div>
-	    <button type="submit">login</button>
+	<form   class="form" action="{{ path('login_check') }}" method="post">
+    <div class="cols">
+      <div class="col c6of12">    
+			
+				<label class="label" for="username">Username:</label> 
+				<input class="input" type="text" id="username" name="_username" value="{{ last_username }}" />
+				
+				<label class="label" for="password">Password:</label> 
+				<input class="input" type="password" id="password" name="_password" />
+				
+				<label class="label" for="remember_me">Keep me logged in</label> 
+				<input class="checkbox" type="checkbox" id="remember_me" name="_remember_me" checked />
+		  
+
+	    <button class="btn form-btn" type="submit">Login</button>
+	    </div>
+	    </div>
 	</form>
 	
 	<p>
-		<a href="{{ path('register') }}"> register</a>
+		<a href="{{ path('register') }}"> Noch kein Kunde?</a>
 	</p>
 
 

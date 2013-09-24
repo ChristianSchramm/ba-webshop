@@ -2,6 +2,12 @@
 
 namespace Web\Bundle\ShopBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Web\Bundle\ShopBundle\Entity\Cart;
+
+use Web\Bundle\ShopBundle\Entity\User;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -22,6 +28,20 @@ class DefaultController extends Controller
     	$search = $session->get('search');
     	$type = $session->get('type');
     	$cond = $session->get('cond');
+    	
+      // anonym user
+    	$tmpUser = $session->get('tmpUser');
+    	$tmpCart = $session->get('tmpCart');
+    	$tmpProd = $session->get('tmpProd');
+    	if (is_null($tmpUser)){
+    		$tmpUser = new User();
+    		$session->set('tmpUser', $tmpUser);
+    		$tmpCart = new Cart();
+    		$session->set('tmpCart', $tmpCart);   
+    		$tmpProd = new ArrayCollection();
+    		$session->set('tmpProd', $tmpProd);     		
+    	}
+    	
     	
     	$from = $session->get('from');
     	if (is_null($from)){
@@ -63,7 +83,12 @@ class DefaultController extends Controller
 
     	  
     	$user = $this->get('security.context')->getToken()->getUser();
-    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
+    	
+    	if (is_object($user)){
+    		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
+    	}else{
+    		$cart = $session->get('tmpCart');
+    	}
     	$genres = $em->getRepository('WebShopBundle:Genre')->findAll();
     	
     	for ($i = 0; $i < count($genres); $i++){

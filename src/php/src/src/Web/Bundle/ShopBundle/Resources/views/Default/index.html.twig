@@ -97,9 +97,9 @@
 				                      <li><a class="star three {% if product.stars < 3 %} empty {% endif %} " href="{% if is_granted('IS_AUTHENTICATED_FULLY') %} {{ path('vote', {'productid' : product.id, 'value' : "3"}) }} {% endif %}">sehr gut</a></li>
                             </ul>
 
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            {# if is_granted('IS_AUTHENTICATED_FULLY') #}
 									            <a class="add btn" href="{{ path('cart_add', {'id': product.id}) }}">in den Warenkorb</a>
-									          {% endif %}
+									          {# endif #}
                           </div> <!-- box -->
                         </div> <!-- c6of12 -->
                       </div> <!-- cols -->

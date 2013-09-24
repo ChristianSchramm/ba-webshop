@@ -4,6 +4,10 @@ namespace Web\Bundle\ShopBundle\Controller;
 
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Web\Bundle\ShopBundle\Entity\Product;
+
 use Web\Bundle\ShopBundle\Entity\Bill;
 
 use Web\Bundle\ShopBundle\Helper\FPDFHelper;
@@ -24,10 +28,20 @@ class CartController extends Controller
      */
     public function indexAction()
     {
+    	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	
     	$user = $this->get('security.context')->getToken()->getUser();
-    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	
+    	if (is_object($user)){
+    		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	}else {
+    		$cart = $session->get('tmpCart');
+
+    	}
+    	
+
+    	
     	
     	return array('cart' => $cart);
     }
@@ -38,28 +52,79 @@ class CartController extends Controller
      */
     public function addAction($id)
     {
-    	$user = $this->get('security.context')->getToken()->getUser();
-    	
+    	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
-    	$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
-    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	
-    	// try find item
-    	$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
+    	$user = $this->get('security.context')->getToken()->getUser();
 
-    	if (!is_null($cartProduct)){
-    		$cartProduct->setAmount($cartProduct->getAmount()+1);
+    	$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
+
+    	if (is_object($user)){
+
+    	  // logged user
+    	  $cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	  // try find item
+    	  $cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
+    	  
+    	  if (!is_null($cartProduct)){
+    	  	$cartProduct->setAmount($cartProduct->getAmount()+1);
+    	  }else {
+    	  	$cartProduct = new CartProduct();
+    	  	$cartProduct->setCart($cart);
+    	  	$cartProduct->setAmount(1);
+    	  	$cartProduct->setProduct($product);
+    	  }
+    	  
+    	  $em->persist($cartProduct);
+    	  $em->flush();
+    	  
     	}else {
-	    	$cartProduct = new CartProduct();
-	    	$cartProduct->setCart($cart);
-	    	$cartProduct->setAmount(1);
-	    	$cartProduct->setProduct($product);
+
+    		
+    		// anonym user
+    		$user = $session->get("tmpUser");
+    		$cart = $session->get("tmpCart");
+    		
+    		$exits = false;
+    		
+    		
+    		foreach ($cart->getCartProducts() as $key => $value){
+    			if (!is_null($value) && $value->getProduct()->getPubId() == $id ){
+    				// incremtnt ammount
+    				$cart->getCartProducts()->get($key)->setAmount($value->getAmount()+1);
+    				$exits = true;
+    			}
+    		
+    		}
+
+    		
+    		if (!$exits){
+    			// new
+    			$prod = new Product();
+    			$prod->setPrice($product->getPrice());
+    			$prod->setTitle($product->getTitle());
+    			$prod->setPubId($product->getId()) ;
+    			
+    			
+    			$cartProduct = new CartProduct();
+    			$cartProduct->setCart($cart);
+    			$cartProduct->setAmount(1);
+    			$cartProduct->setProduct($prod);
+    			
+    			$cart->addCartProduct($cartProduct);
+    		}
+    		
+    		
+    		$session->set("tmpCart", $cart);
+
     	}
 
-    	$em->persist($cartProduct);
-    	$em->flush();
+
+    	
+
 
     	$url = $this->getRequest()->headers->get("referer");
+    	
     	if (empty($url)){
     		return $this->redirect($this->generateUrl('cart'));
     	}
@@ -72,18 +137,32 @@ class CartController extends Controller
      */
     public function removeAction($id)
     {
+    	$session = $this->getRequest()->getSession();
+    	$em = $this->getDoctrine()->getManager();
+    	
     	
     	$user = $this->get('security.context')->getToken()->getUser();
-    	
-    	$em = $this->getDoctrine()->getManager();
-    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
-    	
-    	// try find item
-    	$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
 
-
-    	$em->remove($cartProduct);
-    	$em->flush();
+    	if (is_object($user)){
+	    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+	    	
+	    	// try find item
+	    	$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
+	    	$em->remove($cartProduct);
+	    	$em->flush();
+    	
+    	}else {
+    		$cart = $session->get("tmpCart");
+    		
+    		
+    		foreach ($cart->getCartProducts() as $key => $value){
+    			if (!is_null($value) && $value->getProduct()->getPubId() == $id ){
+    				$cart->getCartProducts()->remove($key);
+    			}
+    			
+    		}
+    		$session->set("tmpCart", $cart);
+    	}
     	
 
     	return $this->redirect($this->generateUrl('cart'));
