@@ -25,7 +25,6 @@ p {
   height: 0;
 }
 
-
 /* Typo _____________________________________________________________ */
 
 .style1,
@@ -39,26 +38,27 @@ p {
 .style1,
 .style2 {
   @extend %textshadow-dark;
-  color: #fff;
 }
 
 .style1 {
   font-size: 2.4em;
+  color: $light-blue;
 }
 
 .style2 {
   font-size: 2em;
+  color: #fff;
 }
 
 .style3 {
   @extend %textshadow-dark;
   color: #fff;
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 .style4 {
   @extend %textshadow-dark;
-  color: $lighter-blue;
+  color: $light-blue;
   font-size: 1.5em;
 }
 
@@ -183,6 +183,15 @@ p {
   }
 }
 
+.medium {
+  color: $light-blue;
+  font-weight: bold;
+
+  strong {
+    font-weight: bold;
+  }
+}
+
 .rating {
   text-indent: -999em;
 }
@@ -207,7 +216,7 @@ p {
   &:hover,
   &:focus {
     .amount span {
-      color: $lighter-blue;
+      color: $light-blue;
     }
 
     .price {
@@ -231,7 +240,7 @@ p {
   font-family: 'Arial';
 }
 
-.empty {
+.not-available {
   color: $red;
 }
 
@@ -255,15 +264,27 @@ p {
   p {
     font-weight: bold;
   }
+
+  .label {
+    &:active,
+    &:hover,
+    &:focus {
+      color: $light-blue;
+    }
+  }
 }
 
 /* Button ___________________________________________________________ */
 
-.btn {
+.btn,
+.search-btn {
   @extend %textshadow-dark;
   color: #fff;
   font-family: "ExpletusSans-Bold";
   font-size: 1.5em;
+}
+
+.btn {
   line-height: 28px;
 
   &:active,
@@ -272,6 +293,16 @@ p {
     @extend %textshadow-white;
     color: $dark-grey;
     font-family: "ExpletusSans-Bold";
+  }
+}
+
+.search-btn {
+  line-height: 36px;
+
+  &:active,
+  &:hover,
+  &:focus {
+    background: $medium-grey;
   }
 }
 
@@ -300,6 +331,9 @@ tfoot {
 /* Links ____________________________________________________________ */
 
 .edit,
-.delete {
+.delete,
+.show,
+.payed,
+.notpayed {
   text-indent: -999em;
 }

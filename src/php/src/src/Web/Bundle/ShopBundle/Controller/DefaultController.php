@@ -134,23 +134,12 @@ class DefaultController extends Controller
 	    		}
     	}
 
-    	// berechne Warenkorb
-    	$cartCount = 0;
-    	$cartSum = 0;
-   	  if (!is_null($cart)){
-	    	foreach ($cart->getCartProducts() as $product){
-	    		$cartSum += $product->getAmount() * $product->getProduct()->getPrice();
-	    		$cartCount += $product->getAmount();
-	    	}
-   	  }
-    	
-   	  $cartSum = number_format($cartSum, 2, ',', ' ');
+
    	  
    	  
    	  // Variablen an die View übergeben
       return array('products' => $products,
-      		         'cartCount' => $cartCount,
-      		         'cartSum' => $cartSum,
+
       		         'search' => $search,
       		         'genres' => $genres,
       		         'type' => $type,

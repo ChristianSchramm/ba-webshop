@@ -45,6 +45,43 @@ class CartController extends Controller
     	
     	return array('cart' => $cart);
     }
+    
+    
+    /**
+     * @Template()
+     */
+    public function showCartAction()
+    {
+    	$session = $this->getRequest()->getSession();
+    	$em = $this->getDoctrine()->getManager();
+    	 
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	 
+    	if (is_object($user)){
+    		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
+    	}else {
+    		$cart = $session->get('tmpCart');
+    
+    	}
+    	
+    	// berechne Warenkorb
+    	$cartCount = 0;
+    	$cartSum = 0;
+    	if (!is_null($cart)){
+    		foreach ($cart->getCartProducts() as $product){
+    			$cartSum += $product->getAmount() * $product->getProduct()->getPrice();
+    			$cartCount += $product->getAmount();
+    		}
+    	}
+    	 
+    	$cartSum = number_format($cartSum, 2, ',', ' ');
+
+    	 
+    	return array('cart' => $cart,
+    			         'cartCount' => $cartCount,
+      		         'cartSum' => $cartSum
+    			);
+    }
 
     /**
      * @Route("/cart/add/{id}/", name="cart_add")

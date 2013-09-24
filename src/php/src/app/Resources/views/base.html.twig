@@ -69,10 +69,13 @@
                 
                 <form  action="{{ path('search') }}" method="post">
                   <input class="input" type="search" name="search" value="{% if search is defined %}{{ search }}{% endif %}">
-                  <button class="btn">Suchen</button>
+                  <button class="search-btn">Suchen</button>
                 </form>
                 
               </div> <!-- search -->
+              
+               {{ render(controller('WebShopBundle:Cart:showCart')) }}
+
               
             </div> <!-- inner  -->
           </div> <!-- meta -->
@@ -83,10 +86,9 @@
   
 				<div class="main" role="main">
           <div class="inner">
-            <h1 class="heading style1">Scheibenbude</h1>
-    {% block body %}
-        
-    {% endblock %}
+			    {% block body %}
+			        
+			    {% endblock %}
     
               </div> <!-- inner -->
         </div> <!-- main -->

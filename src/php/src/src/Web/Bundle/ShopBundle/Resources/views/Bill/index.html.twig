@@ -19,14 +19,22 @@
                             <tr>
                               <td><p>{{ bill.rechnungsnummer }}</p></td>
                               <td><p>{{ bill.date|date('d.m.Y') }}</p></td>
-                              <td><p>{% if bill.paid %} <stong>bezahlt</stong> {% else %} <stong>nicht bezahlt</stong> {% endif %}</p></td>
+                              <td>
+                              <p>
+                                {% if bill.paid %} 
+                                  <stong class="payed">bezahlt</stong> 
+                                {% else %}
+                                 <stong class="notpayed">nicht bezahlt</stong> 
+                                {% endif %}
+                              </p>
+                               </td>
                               <td><a class="show" target="_blank" href="/uploads/bills/{{ bill.path }}">Show</a></td>
                             </tr>
                             {% endfor %}
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colspan="4"><small>*Hier können Sie ihre Produkte anpassen oder löschen...</small></td>
+                              <td colspan="4"><small></small></td>
                             </tr>
                           </tfoot>
                         </table>

@@ -14,10 +14,18 @@
                         <ul class="layer1">
                           <li>
                             <span class="ico-info"></span>
-                            <a href="{{ path('bd', {'cond':'New'} ) }}#nav">Neu</a>
+                            {%  if (type == 'BD' and cond == 'New') %}
+                              <strong>Neu</strong>
+                            {% else  %}
+                              <a href="{{ path('bd', {'cond':'New'} ) }}#nav">Neu</a>
+                            {% endif %}
                           </li>
                           <li>
-                            <a href="{{ path('bd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
+                            {%  if (type == 'BD' and cond == 'Old') %}
+                              <strong>Gebraucht</strong>
+                            {% else %}
+                              <a href="{{ path('bd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
+                            {% endif %}
                           </li>
                         </ul>
                       </li>
@@ -31,10 +39,18 @@
                         <ul class="layer1">
                           <li>
                             <span class="ico-info"></span>
-                            <a href="{{ path('dvd', {'cond':'New'} ) }}#nav">Neu</a>
+                            {%  if (type == 'DVD' and cond == 'New') %}
+                              <strong>Neu</strong>
+                            {% else %}
+                              <a href="{{ path('dvd', {'cond':'New'} ) }}#nav">Neu</a>
+                            {% endif %}
                           </li>
                           <li>
-                            <a href="{{ path('dvd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
+                            {%  if (type == 'DVD' and cond == 'Old') %}
+                              <strong>Gebraucht</strong>
+                            {% else %}
+                              <a href="{{ path('dvd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
+                            {% endif %}
                           </li>
                         </ul>
                       </li>
@@ -48,10 +64,18 @@
                         <ul class="layer1">
                           <li>
                             <span class="ico-info"></span>
+                            {%  if (type == 'CD' and cond == 'New') %}
+                              <strong>Neu</strong>
+                            {% else %}
                             <a href="{{ path('cd', {'cond':'New'} ) }}#nav">Neu</a>
+                            {% endif %}
                           </li>
                           <li>
+                            {%  if (type == 'CD' and cond == 'Old') %}
+                              <strong>Gebraucht</strong>
+                            {% else %}
                             <a href="{{ path('cd', {'cond':'Old'} ) }}#nav">Gebraucht</a>
+                            {% endif %}
                           </li>
                         </ul>
                       </li>
@@ -61,7 +85,28 @@
                   
 
           <div class="cols">
+ 						<div class="col c2of12">
 
+            
+              <div class="filter box">
+                <h2 class="heading style3">Filter</h2>
+                <h3 class="heading style4">Genre:</h3>
+                <form action="{{ path('filter') }}" method="post">
+                  <ul>
+                  {% for genre in genres %}
+								   <li>
+								     <input id="g{{ loop.index }}" type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">
+								     <label for="g{{ loop.index }}" class="label">{{ genre.name }}</label>
+								   </li>
+								  {% endfor %}
+                  </ul>
+                  <input class="input from" name="from" placeholder="5 &euro;" type="text" size="3" value="{{ from }}">
+                  <p>-</p>
+                  <input class="input until" name="until" placeholder="50 &euro;" type="text" size="3" value="{{ until }}">
+                  <button class="btn">Filtern</button>
+                </form>
+              </div> <!-- filter -->
+            </div> <!-- c2of12 -->
 
             <div class="col c10of12">
   
@@ -69,7 +114,7 @@
               {% for product in products %}
                 <li>
                   <div class="product-card">
-                    <h2 class="heading style1">{{ product.title }}</h2>
+                    <h2 class="heading style2">{{ product.title }}</h2>
                     <div class="box">
                       <div class="cols">
                         <div class="col c5of12">
@@ -83,11 +128,12 @@
                         </div> <!-- c5of12 -->
                         <div class="col c7of12">
                           <div class="small-box">
+                            <p class="medium"><strong>{{ product.type.name }}</strong>&nbsp;–&nbsp;<strong>{{ product.status }}</strong></p>
                             <p><strong class="booking">{{ product.price }} &euro;</strong></p>
                             {% if product.amount > 0 %}
                             <p><strong class="storing">auf Lager</strong></p>
                             {% else %}
-                            <p><strong class="">nicht auf Lager</strong></p>
+                            <p><strong class="not-available">zur Zeit nicht verfügbar</strong></p>
                             
                             {% endif %}
                             <p class="delivery">Lieferung innerhalb der nächsten {{ product.shipping }} Werktage</p>
@@ -116,33 +162,7 @@
               {% endfor %}
               </ul>
             </div> <!-- c10of12 -->
-            <div class="col c2of12">
-              <a class="card" href="{{ path('cart') }}">
-               	<span class="amount">
-                	<span>{{ cartCount }}</span>
-               	</span>
-                <span class="price">({{ cartSum }}&euro;)</span>
-              </a>
-            
-              <div class="filter box">
-                <h2 class="heading style3">Filter</h2>
-                <h3 class="heading style4">Genre:</h3>
-                <form action="{{ path('filter') }}" method="post">
-                  <ul>
-                  {% for genre in genres %}
-								   <li>
-								     <input id="g{{ loop.index }}" type="checkbox" {% if genre.active %} checked="checked" {% endif %}  name="filter[]" value="{{ genre.id }}">
-								     <label for="g{{ loop.index }}" class="label">{{ genre.name }}</label>
-								   </li>
-								  {% endfor %}
-                  </ul>
-                  <input class="input from" name="from" placeholder="5 &euro;" type="text" size="3" value="{{ from }}">
-                  <p>-</p>
-                  <input class="input until" name="until" placeholder="50 &euro;" type="text" size="3" value="{{ until }}">
-                  <button class="btn">Filtern</button>
-                </form>
-              </div> <!-- filter -->
-            </div> <!-- c2of12 -->
+           
           </div> <!-- cols -->
 
 
