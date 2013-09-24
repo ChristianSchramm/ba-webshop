@@ -1,0 +1,48 @@
+{% extends 'WebShopBundle::admin.html.twig' %}
+
+{% block title %} Admin Control Panel{% endblock %}
+
+{% block content %}
+
+
+<h2 class="heading style2">Userdaten</h2>
+<form  class="form" >
+
+    <div class="cols">
+      <div class="col c6of12">
+      
+        {{ form_label(form.adress.name) }}
+        {{ form_widget(form.adress.name) }}
+        
+        {{ form_label(form.adress.street) }}
+        {{ form_widget(form.adress.street) }}
+        
+        {{ form_label(form.adress.postcode) }}
+        {{ form_widget(form.adress.postcode) }}
+        
+        {{ form_label(form.adress.location) }}
+        {{ form_widget(form.adress.location) }}
+        
+        {{ form_label(form.adress.country) }}
+        {{ form_widget(form.adress.country) }}
+        
+      </div>
+      <div class="col c6of12">
+        
+        
+        {{ form_label(form.security.username) }}
+        {{ form_widget(form.security.username) }}
+        
+        {{ form_label(form.security.email) }}
+        {{ form_widget(form.security.email) }}
+        
+        {{ form_label(form.security.roles) }}
+        {{ form_widget(form.security.roles) }}
+
+        
+        <button class="btn form-btn" type="submit">User speichern</button>
+      </div> <!-- c6of12 -->
+    </div>
+ </form>
+ 
+{% endblock %}

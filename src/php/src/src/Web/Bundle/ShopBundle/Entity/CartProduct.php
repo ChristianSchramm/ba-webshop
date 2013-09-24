@@ -32,7 +32,7 @@ class CartProduct
 
     /**
      * @ORM\ManyToOne(targetEntity="Cart", inversedBy="cartProducts")
-     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="cart_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $cart;
     

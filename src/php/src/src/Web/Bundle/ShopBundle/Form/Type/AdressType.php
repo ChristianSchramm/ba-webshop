@@ -4,6 +4,7 @@ namespace Web\Bundle\ShopBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class AdressType extends AbstractType
 {
@@ -39,6 +40,13 @@ class AdressType extends AbstractType
 				    'label_attr' =>  array( 'class'   => 'label'),
             )
         );
+	}
+	
+	public function setDefaultOptions(OptionsResolverInterface $resolver)
+	{
+		$resolver->setDefaults(array(
+				'data_class' => 'Web\Bundle\ShopBundle\Entity\Adress'
+		));
 	}
 	
 

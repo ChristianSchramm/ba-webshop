@@ -2,6 +2,10 @@
 
 namespace Web\Bundle\ShopBundle\Controller;
 
+use Web\Bundle\ShopBundle\Form\Type\SecurityFormType;
+
+use Web\Bundle\ShopBundle\Form\Model\SecurityForm;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -30,9 +34,17 @@ class UserController extends Controller
 	public function editAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$user = $em->getRepository('WebShopBundle:User')->findOneById($is);
+		$user = $em->getRepository('WebShopBundle:User')->findOneById($id);
+		$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
+		
+		$securityForm = new SecurityForm();
+		$securityForm->setSecurity($user);
+		$securityForm->setAdress($adress);
+		$form = $this->createForm(new SecurityFormType(), $securityForm);
 			
-		return array('user' => $user);
+		return array('user' => $user,
+				         'form' => $form->createView(),
+				);
 	}
 	
 
@@ -44,9 +56,17 @@ class UserController extends Controller
 	public function showAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$user = $em->getRepository('WebShopBundle:User')->findOneById($is);
+		$user = $em->getRepository('WebShopBundle:User')->findOneById($id);
+		$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
+		
+		$securityForm = new SecurityForm();
+		$securityForm->setSecurity($user);
+		$securityForm->setAdress($adress);
+		$form = $this->createForm(new SecurityFormType(), $securityForm);
 			
-		return array('user' => $user);
+		return array('user' => $user,
+				         'form' => $form->createView(),
+				);
 	}
 
 
@@ -58,7 +78,11 @@ class UserController extends Controller
 	public function removeAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$user = $em->getRepository('WebShopBundle:User')->findOneById($is);
+		$user = $em->getRepository('WebShopBundle:User')->findOneById($id);
+		
+
+		$em->remove($user);
+		$em->flush();
 			
 
 		return $this->redirect($this->generateUrl('admin_user'));
