@@ -22,15 +22,8 @@ class SecurityType extends AbstractType
 				    'label_attr' =>  array( 'class'   => 'label'),
             )
         );
-        
-        $builder->add('roles', 'entity', array(
-        		'label'  => 'Rolle',
-        		'class' => 'Web\Bundle\ShopBundle\Entity\Role',
-        		'attr'   =>  array( 'class'   => 'select'),
-        		'label_attr' =>  array( 'class'   => 'label'),
-            'property' => 'name',
-        )
-        );
+
+
 
     }
     

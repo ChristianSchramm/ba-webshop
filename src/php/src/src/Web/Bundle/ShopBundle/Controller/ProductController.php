@@ -132,7 +132,7 @@ class ProductController extends Controller
 		$form = $this->createForm(new ProductFormType(), $productForm);
 		
 		$form->bind($this->getRequest());
-		
+
 		if ($form->isValid()) {
 			$formData = $form->getData();
 				

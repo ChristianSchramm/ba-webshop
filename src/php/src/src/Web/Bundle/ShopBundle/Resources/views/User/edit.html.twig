@@ -5,9 +5,9 @@
 {% block content %}
 
 
-<h2 class="heading style2">Userdaten</h2>
-<form  class="form" >
-
+<h2 class="heading style2">Userdaten von User {{ user.id  }}</h2>
+<form  class="form"  action="{{  path('admin_user_save',{ 'id': user.id}) }}" method="post" }}>
+    {{ form_errors(form) }}
     <div class="cols">
       <div class="col c6of12">
       
@@ -36,13 +36,11 @@
         {{ form_label(form.security.email) }}
         {{ form_widget(form.security.email) }}
         
-        {{ form_label(form.security.roles) }}
-        {{ form_widget(form.security.roles) }}
 
         
         <button class="btn form-btn" type="submit">User speichern</button>
       </div> <!-- c6of12 -->
     </div>
- </form>
+{{ form_end(form) }}
  
 {% endblock %}

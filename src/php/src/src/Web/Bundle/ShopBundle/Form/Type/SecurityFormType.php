@@ -13,7 +13,15 @@ class SecurityFormType extends AbstractType
     {
         $builder->add('adress', new AdressType());
         $builder->add('security', new SecurityType());
-        
+        /*$builder->add('role', 'entity', array(
+				    'class' => 'WebShopBundle:Role',
+				    'property' => 'name',
+        		'attr'   =>  array( 'class'   => 'select'),
+        		'label_attr' =>  array( 'class'   => 'label'),
+       
+        )
+        );
+*/        
 
 
     }
