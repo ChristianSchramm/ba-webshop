@@ -174,9 +174,50 @@ class CartController extends Controller
      */
     public function orderAction()
     {
+    	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	 
     	$user = $this->get('security.context')->getToken()->getUser();
+    	
+    	// warenkorb mit temp updaten
+    	$tmpUser = $session->get('tmpUser');
+    	$tmpCart = $session->get('tmpCart');
+    	if (is_object($user) && $tmpUser != null && $tmpCart != null){
+    		// warenkorb befüllen, wenn der user sich neu einloggt
+    		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
+    	
+    		if ($tmpCart->getCartProducts()->count() > 0){
+    			foreach ($tmpCart->getCartProducts() as $key => $value){
+    				$product = $em->getRepository('WebShopBundle:Product')->findOneById($value->getProduct()->getPubId());
+    	
+    				$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $product->getId());
+    					
+    				if (!is_null($cartProduct)){
+    					$cartProduct->setAmount($cartProduct->getAmount()+$value->getAmount());
+    				}else {
+    	
+    					$cartProduct = new CartProduct();
+    					$cartProduct->setCart($cart);
+    					$cartProduct->setAmount($value->getAmount());
+    					$cartProduct->setProduct($product);
+    				}
+    	
+    				$em->persist($cartProduct);
+    				$em->flush();
+    			}
+    			 
+    	
+    		}
+
+    		$session->set('tmpUser', null);
+    		$session->set('tmpCart', null);
+    	}else{
+    		$cart = $session->get('tmpCart');
+    	}
+    	
+    	
+    	
+    	
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	 
     	return array('cart' => $cart);

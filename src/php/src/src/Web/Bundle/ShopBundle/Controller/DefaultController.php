@@ -2,6 +2,8 @@
 
 namespace Web\Bundle\ShopBundle\Controller;
 
+use Web\Bundle\ShopBundle\Entity\CartProduct;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Web\Bundle\ShopBundle\Entity\Cart;
@@ -32,15 +34,14 @@ class DefaultController extends Controller
       // anonym user
     	$tmpUser = $session->get('tmpUser');
     	$tmpCart = $session->get('tmpCart');
-    	$tmpProd = $session->get('tmpProd');
     	if (is_null($tmpUser)){
     		$tmpUser = new User();
     		$session->set('tmpUser', $tmpUser);
     		$tmpCart = new Cart();
-    		$session->set('tmpCart', $tmpCart);   
-    		$tmpProd = new ArrayCollection();
-    		$session->set('tmpProd', $tmpProd);     		
+    		$session->set('tmpCart', $tmpCart);  
+    		   		
     	}
+    	
     	
     	
     	$from = $session->get('from');
@@ -77,15 +78,47 @@ class DefaultController extends Controller
     	    }
     	    $prod->stars /= $prod->getVotes()->count();
     		}
-    }
-    	
+      }
     	
 
-    	  
     	$user = $this->get('security.context')->getToken()->getUser();
     	
+    	// set cart if temp not empty
+    	
+    	
+    	
+    	
     	if (is_object($user)){
+    		// warenkorb befüllen, wenn der user sich neu einloggt
     		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
+    		
+    		if ($tmpCart->getCartProducts()->count() > 0){
+    			foreach ($tmpCart->getCartProducts() as $key => $value){
+    				$product = $em->getRepository('WebShopBundle:Product')->findOneById($value->getProduct()->getPubId());
+    				
+    				$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $product->getId());
+    				 
+    				if (!is_null($cartProduct)){
+    					$cartProduct->setAmount($cartProduct->getAmount()+$value->getAmount());
+    				}else {
+    				
+	    				$cartProduct = new CartProduct();
+	    				$cartProduct->setCart($cart);
+	    				$cartProduct->setAmount($value->getAmount());
+	    				$cartProduct->setProduct($product);
+    				}
+    				
+    				$em->persist($cartProduct);
+    				$em->flush();
+    			}
+    			
+
+    		}
+    		
+    		
+    		
+    		$session->set('tmpUser', null);
+    		$session->set('tmpCart', null);
     	}else{
     		$cart = $session->get('tmpCart');
     	}
