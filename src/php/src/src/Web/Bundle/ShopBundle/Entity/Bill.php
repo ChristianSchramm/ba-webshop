@@ -58,7 +58,7 @@ class Bill
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="bill")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user;
     
