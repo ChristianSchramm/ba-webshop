@@ -53,7 +53,7 @@ p {
 .style3 {
   @extend %textshadow-dark;
   color: #fff;
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 .style4 {
@@ -331,6 +331,9 @@ tfoot {
 /* Links ____________________________________________________________ */
 
 .edit,
-.delete {
+.delete,
+.show,
+.payed,
+.notpayed {
   text-indent: -999em;
 }
