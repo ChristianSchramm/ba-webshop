@@ -18,13 +18,6 @@ p {
   font-size: 1.4em;
 }
 
-/* Header */
-
-.text{
-  // text-indent: -999em;
-  height: 0;
-}
-
 /* Typo _____________________________________________________________ */
 
 .style1,
@@ -252,6 +245,14 @@ p {
   font-size: 1.3em;
 }
 
+.edit,
+.delete,
+.show,
+.payed,
+.notpayed {
+  text-indent: -999em;
+}
+
 /* Filter */
 
 .filter {
@@ -326,14 +327,4 @@ tfoot {
     @extend %textshadow-dark;
     color: #fff;
   }
-}
-
-/* Links ____________________________________________________________ */
-
-.edit,
-.delete,
-.show,
-.payed,
-.notpayed {
-  text-indent: -999em;
 }

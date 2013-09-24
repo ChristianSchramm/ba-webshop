@@ -59,12 +59,13 @@ li {
 
 .wrapper {
   background: $lighter-grey;
+  overflow: hidden;
   width: 100%;
 }
 
 header {
   background: #fff;
-  min-height: 250px;
+  min-height: 600px;
   position: relative;
 }
 
@@ -250,7 +251,24 @@ h1 {
   }
 }
 
-/* Hauptnavigation */
+/* Slider */
+
+.slider {
+  bottom: 0;
+  height: 450px;
+  position: absolute;
+  width: 100%;
+}
+
+.slides {
+  li {
+    background-position: 50% bottom;
+    background-repeat: no-repeat;
+    height: 450px;
+  }
+}
+
+/* Hauptnavigation __________________________________________________ */
 
 .main-nav {
   bottom: 0;
