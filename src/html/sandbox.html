@@ -54,9 +54,17 @@
               <div class="search">
                 <form>
                   <input class="input" type="search">
-                  <button class="btn">Suchen</button>
+                  <button class="search-btn">Suchen</button>
                 </form>
               </div> <!-- search -->
+
+              <a class="card" href="#">
+                  <span class="amount">
+                    <span>3</span>
+                  </span>
+                  <!-- <span class="text">Warenkorb</span> -->
+                  <span class="price">199,89 &euro;</span>
+                </a>
               
             </div> <!-- inner  -->
           </div> <!-- meta -->
@@ -73,8 +81,10 @@
                   <a href="#">Blu-Ray</a>
                   <ul class="layer1">
                     <li>
+                      <a href="#">
                       <span class="ico-info"></span>
-                      <a href="#">Neu</a>
+                        Neu
+                      </a>
                     </li>
                     <li><a href="#">Gebraucht</a></li>
                   </ul>
@@ -83,8 +93,10 @@
                   <strong>DVD</strong>
                   <ul class="layer1">
                     <li>
-                      <span class="ico-info"></span>
-                      <strong>Neu</strong>
+                      <strong>
+                        <span class="ico-info"></span>
+                        Neu
+                      </strong>
                     </li>
                     <li><a href="#">Gebraucht</a></li>
                   </ul>
@@ -93,8 +105,10 @@
                   <a href="#">CD</a>
                   <ul class="layer1">
                     <li>
-                      <span class="ico-info"></span>
-                      <a href="#">Neu</a>
+                      <a href="#">
+                        <span class="ico-info"></span>
+                        Neu
+                      </a>
                     </li>
                     <li><a href="#">Gebraucht</a></li>
                   </ul>
@@ -104,12 +118,36 @@
 
             <div class="cols">
 
+               <div class="col c2of12">
+
+                <div class="filter box">
+                  <h2 class="heading style3">Filter</h2>
+                  <h3 class="heading style4">Genre:</h3>
+                  <form>
+                    <ul>
+                      <li><input id="g1" type="checkbox"><label class="label" for="g1">Krimi</label></li>
+                      <li><input id="g2" type="checkbox"><label class="label" for="g2">Thriller</label></li>
+                      <li><input id="g3" type="checkbox"><label class="label" for="g3">Romanze</label></li>
+                      <li><input id="g4" type="checkbox"><label class="label" for="g4">Action</label></li>
+                      <li><input id="g5" type="checkbox"><label class="label" for="g5">Historie</label></li>
+                      <li><input id="g6" type="checkbox"><label class="label" for="g6">Animation</label></li>
+                      <li><input id="g7" type="checkbox"><label class="label" for="g7">Horror</label></li>
+                      <li><input id="g8" type="checkbox"><label class="label" for="g8">Komödie</label></li>
+                      <li><input id="g9" type="checkbox"><label class="label" for="g9">Science-Fiction</label></li>
+                    </ul>
+                    <input class="input from" placeholder="5 &euro;" type="text">
+                    <p>-</p>
+                    <input class="input until"  placeholder="50 &euro;" type="text">
+                    <button class="btn">Filtern</button>
+                  </form>
+                </div> <!-- filter -->
+              </div> <!-- c2of12 -->
               <div class="col c10of12">
                 
                 <ul class="products">
                   <li>
                     <div class="product-card">
-                      <h2 class="heading style1">Produkttitel</h2>
+                      <h2 class="heading style2">Produkttitel</h2>
                       <div class="box">
                         <div class="cols">
                           <div class="col c5of12">
@@ -119,6 +157,7 @@
                           </div> <!-- c5of12 -->
                           <div class="col c7of12">
                             <div class="small-box">
+                              <p class="medium"><strong>Bluray</strong>&nbsp;&ndash;&nbsp;<strong>Neu</strong></p>
                               <p><strong class="booking">99,99&euro;</strong></p>
                               <p><strong class="storing">auf Lager</strong></p>
                               <p class="delivery">Lieferung innerhalb der nächsten 2 Werktage</p>
@@ -147,7 +186,7 @@
                   </li>
                   <li>
                     <div class="product-card">
-                      <h2 class="heading style1">Produkttitel</h2>
+                      <h2 class="heading style2">Produkttitel</h2>
                       <div class="box">
                         <div class="cols">
                           <div class="col c5of12">
@@ -157,6 +196,7 @@
                           </div> <!-- c5of12 -->
                           <div class="col c7of12">
                             <div class="small-box">
+                              <p class="medium"><strong>DVD</strong>&nbsp;&ndash;&nbsp;<strong>Gebraucht</strong></p>
                               <p><strong class="booking">99,99&euro;</strong></p>
                               <p><strong class="storing">auf Lager</strong></p>
                               <p class="delivery">Lieferung innerhalb der nächsten 2 Werktage</p>
@@ -185,7 +225,7 @@
                   </li>
                   <li>
                     <div class="product-card">
-                      <h2 class="heading style1">Produkttitel</h2>
+                      <h2 class="heading style2">Produkttitel</h2>
                       <div class="box">
                         <div class="cols">
                           <div class="col c5of12">
@@ -196,7 +236,7 @@
                           <div class="col c7of12">
                             <div class="small-box">
                               <p><strong class="booking">99,99&euro;</strong></p>
-                              <p><strong class="storing">auf Lager</strong></p>
+                              <p><strong class="not-available">zur Zeit nicht verfügbar</strong></p>
                               <p class="delivery">Lieferung innerhalb der nächsten 2 Werktage</p>
                               <ul class="rating">
                                 <li><a class="star one" href="#">befriedigend</a></li>
@@ -223,7 +263,7 @@
                   </li>
                   <li>
                     <div class="product-card">
-                      <h2 class="heading style1">Produkttitel</h2>
+                      <h2 class="heading style2">Produkttitel</h2>
                       <div class="box">
                         <div class="cols">
                           <div class="col c5of12">
@@ -261,37 +301,6 @@
                   </li>
                 </ul>
               </div> <!-- c10of12 -->
-              <div class="col c2of12">
-                <a class="card" href="#">
-                  <span class="amount">
-                    <span>3</span>
-                  </span>
-                  <!-- <span class="text">Warenkorb</span> -->
-                  <span class="price">199,89 &euro;</span>
-                </a>
-
-                <div class="filter box">
-                  <h2 class="heading style3">Filter</h2>
-                  <h3 class="heading style4">Genre:</h3>
-                  <form>
-                    <ul>
-                      <li><input id="g1" type="checkbox"><label class="label" for="g1">Krimi</label></li>
-                      <li><input id="g2" type="checkbox"><label class="label" for="g2">Thriller</label></li>
-                      <li><input id="g3" type="checkbox"><label class="label" for="g3">Romanze</label></li>
-                      <li><input id="g4" type="checkbox"><label class="label" for="g4">Action</label></li>
-                      <li><input id="g5" type="checkbox"><label class="label" for="g5">Historie</label></li>
-                      <li><input id="g6" type="checkbox"><label class="label" for="g6">Animation</label></li>
-                      <li><input id="g7" type="checkbox"><label class="label" for="g7">Horror</label></li>
-                      <li><input id="g8" type="checkbox"><label class="label" for="g8">Komödie</label></li>
-                      <li><input id="g9" type="checkbox"><label class="label" for="g9">Science-Fiction</label></li>
-                    </ul>
-                    <input class="input from" placeholder="5 &euro;" type="text">
-                    <p>-</p>
-                    <input class="input until"  placeholder="50 &euro;" type="text">
-                    <button class="btn">Filtern</button>
-                  </form>
-                </div> <!-- filter -->
-              </div> <!-- c2of12 -->
             </div> <!-- cols -->
 
             <div class="cols">
