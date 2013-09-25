@@ -99,6 +99,41 @@ footer {
   z-index: $z-medium;
 }
 
+@media screen and (min-width: 401px) and (max-width:740px) {
+  .main > .inner > .cols > .col {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .col {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .inner {
+    width: auto;
+  }
+
+  .logo {
+    display: block;
+    left: 10px;
+    max-width: 100%;
+    right: 10px;
+    top: 60px;
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  header {
+    min-height: 270px;
+  }
+}
+
 /* Typo _____________________________________________________________ */
 
 .heading {
@@ -145,7 +180,6 @@ small {
   }
 }
 
-
 /* Metanavigation */
 
 .meta-nav {
@@ -167,6 +201,39 @@ small {
   }
 }
 
+@media screen and (min-width: 401px) and (max-width:740px) {
+  .meta-nav {
+    left: 100px;
+    right: auto;
+    top: 11px;
+
+    ul {
+      float: left;
+      margin: 0 0 0 10px;
+    }
+  }
+}
+
+@media screen and (max-width:400px) {
+  .meta-nav {
+    height: 40px;
+    left: 95px;
+    min-width: 100%;
+    right: auto;
+    top: 0;
+    z-index: $z-high;
+
+    ul {
+      float: none;
+      margin: 11px 0 0;
+
+      a {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
 /* Suche */
 
 .search {
@@ -179,6 +246,43 @@ small {
     @extend %m-round-1-0-0-1;
     background: $lighter-grey;
     height: 40px;
+  }
+}
+
+.search-btn {
+  background: $light-blue;
+  margin-left: -5px;
+  padding: 0 10px;
+}
+
+@media screen and (min-width:401px) and (max-width:740px) {
+  .search {
+    right: 15px;
+    top: 2px;
+    
+    .search-btn {
+      @include text-shadow(none);
+      background: #fff;
+      color: $dark-blue;
+      line-height: 32px;
+
+      &:active,
+      &:hover,
+      &:focus {
+        color: #fff;
+      }
+    }
+
+    .input {
+      height: 36px;
+    }
+  }
+}
+
+@media screen and (max-width:400px) {
+  .search {
+    right: 15px;
+    top: 155px;
   }
 }
 
@@ -258,6 +362,80 @@ small {
   }
 }
 
+@media screen and (min-width: 401px) and (max-width:740px) {
+  .login {
+    left: 15px;
+    right: auto;
+    top: 0;
+  }
+
+  .login-form {
+    left: -2px;
+    right: auto;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .meta {
+    .inner {
+      padding: 0;
+    }
+  }
+  
+  .login {
+    left: 0;
+    right: auto;
+    top: 0;
+    position: relative;
+  }
+
+  .login-form {
+    left: -2px;
+    padding: 0;
+    right: auto;
+    width: 100%;
+
+    form {
+      display: inline-block;
+      margin: 20px 0;
+    }
+
+    li {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .input {
+      margin: 5px 10%; 
+      width: 80%;
+    }
+
+    .btn {
+      float: right;
+      margin: 10px 10% 0 0;
+    }
+  }
+
+  .register {
+    bottom: auto;
+    display: inline-block;
+    left: auto;
+    margin: 0 0 10px 10%;
+    position: relative;
+
+    li {
+      display: inline-block;
+      float: left;
+      margin-left: 20px;
+      width: auto;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
 /* Slider */
 
 .slider {
@@ -278,6 +456,12 @@ small {
     background-position: 50% bottom;
     background-repeat: no-repeat;
     height: 300px;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .slider {
+    display: none;
   }
 }
 
@@ -393,6 +577,47 @@ small {
   width: 100%;
 }
 
+@media screen and (max-width:740px) {
+  .main-nav {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .layer0 {
+    display: block;
+    width: 100%;
+
+    > li {
+      display: block;
+      width: 100%;
+
+      > a {
+        border: 1px solid $lighter-blue;
+
+        &:active,
+        &:hover,
+        &:focus {
+        }
+      }
+
+      &:active > a,
+      &:hover > a,
+      &:focus > a,
+      > strong {
+        background: $medium-grey;
+        border: 1px solid #fff;
+        color: #fff !important;
+      }
+    }
+  }
+
+  .layer1 {
+    position: relative;
+    width: 100%;
+  }
+}
+
 /* Footer-Navigation */
 
 .footer-nav {
@@ -450,6 +675,11 @@ small {
   top: 9px;
 }
 
+@media screen and (max-width:400px) {
+  .card {
+    top: 210px;
+  }
+}
 
 /* Produkte _________________________________________________________ */
 
@@ -505,6 +735,24 @@ small {
   display: inline-block;
   float: right;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width:740px) {
+  .products {
+    > li {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width:400px) {
+  .products {
+    .col {
+      min-height: 1px !important;
+    }
+  }
 }
 
 /* Bewertung */
@@ -599,6 +847,56 @@ small {
   }
 }
 
+@media screen and (max-width:740px) {
+  .filter {
+    min-height: 100px;
+
+    li {
+      float: left;
+    }
+
+    ul {
+      display: inline-block;
+    }
+
+    form {
+      padding-bottom: 40px;
+      position: relative;
+    }
+    
+    .from,
+    .until,
+    .btn {
+      bottom: 0;
+      position: absolute;
+    }
+
+    .from,
+    .until {
+      margin-bottom: 2px;
+      width: 50px;
+    }
+
+    .from {
+      left: 0;
+    }
+
+    .until {
+      left: 60px;
+    }
+
+    p {
+      bottom: 10px;
+      left: 53px;
+      position: absolute;
+    }
+
+    .btn {
+      right: 0;
+    }
+  }
+}
+
 /* Button ___________________________________________________________ */
 
 .btn,
@@ -622,12 +920,6 @@ small {
   }
 }
 
-.search-btn {
-  background: $light-blue;
-  margin-left: -5px;
-  padding: 0 10px;
-}
-
 .form-btn {
   float: right;
   margin-top: 40px;
@@ -648,6 +940,12 @@ small {
   &:focus {
     background: 5px 3px no-repeat $light-blue;
     @include base64-image($ico-new-hover);
+  }
+}
+
+@media screen and (max-width:400px) {
+  .form-btn {
+    margin-bottom: 20px;
   }
 }
 
