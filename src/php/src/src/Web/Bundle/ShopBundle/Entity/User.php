@@ -97,6 +97,11 @@ class User  implements UserInterface
      */
     protected $bills;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Activation", mappedBy="user")
+     */
+    private  $activations;
+    
     
     /**
      * cosntruct
@@ -490,5 +495,38 @@ class User  implements UserInterface
     public function removeAdresss(\Web\Bundle\ShopBundle\Entity\Adress $adresss)
     {
         $this->adresss->removeElement($adresss);
+    }
+
+    /**
+     * Add activations
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Activation $activations
+     * @return User
+     */
+    public function addActivation(\Web\Bundle\ShopBundle\Entity\Activation $activations)
+    {
+        $this->activations[] = $activations;
+
+        return $this;
+    }
+
+    /**
+     * Remove activations
+     *
+     * @param \Web\Bundle\ShopBundle\Entity\Activation $activations
+     */
+    public function removeActivation(\Web\Bundle\ShopBundle\Entity\Activation $activations)
+    {
+        $this->activations->removeElement($activations);
+    }
+
+    /**
+     * Get activations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActivations()
+    {
+        return $this->activations;
     }
 }

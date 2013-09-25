@@ -1,0 +1,21 @@
+{% extends 'WebShopBundle::site.html.twig' %}
+
+{% block content %}
+
+<h2 class="heading style2">Passwort neusetzen</h2>
+
+
+	<form class="form" action="{{ path('reset_password_email') }}" method="post">
+    {{ form_errors(form) }}
+    
+    <div class="cols">
+      <div class="col c6of12">
+				{{ form_label(form.email) }}
+				{{ form_widget(form.email) }}
+				{{ form_errors(form.email) }}
+	    <button class="btn form-btn" type="submit">Passwort zurücksetzen</button>
+				</div>
+    </div>
+{{ form_end(form) }}
+
+{% endblock %}

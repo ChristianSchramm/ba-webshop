@@ -1,0 +1,19 @@
+<p>
+Dear {{ user.username }},<br>
+<br>
+da Sie vermutlich Ihr Kennwort bei RCTracks vergessen haben, 
+wollten Sie sich ein neues Kennwort zuschicken lassen. 
+Sollten Sie kein neues Kennwort angefordert haben, ignorieren Sie bitte diese E-Mail. 
+Der unten angegebene Link wird in 24 Stunden nicht mehr funktionsfähig sein.
+
+Möchten Sie ein neues Kennwort erhalten, besuchen Sie bitte folgende Seite:
+<a href="http://www.rctracks.net{{ path('reset_password_save', { 'code': code }) }}">{{ code }}</a>
+
+Wenn Sie diese Seite aufrufen, wird Ihr bisheriges Kennwort durch ein neues ersetzt, welches Ihnen per E-Mail zugeschickt wird.
+
+
+
+<p>
+If clicking on the link doesn't work then copy and paste the url into your browser.<br>
+http://www.rctracks.net{{ path('reset_password_save', { 'code': code }) }}
+</p>
