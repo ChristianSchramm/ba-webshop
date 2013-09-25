@@ -294,7 +294,7 @@ class CartController extends Controller
     	//adress
     	$pdf->Ln(20);
     	$pdf->SetFont('Arial','',8);
-    	$pdf->Cell(30,10,utf8_decode('ScheibenBude, Buden Straße 123, Scheibenheim 01234'));
+    	$pdf->Cell(30,10,utf8_decode('ScheibenBude, Buden Straße 123, 01234 Scheibenheim'));
 
     	// anschrift
     	$pdf->Ln(15);
