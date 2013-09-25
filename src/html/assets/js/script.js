@@ -3,6 +3,10 @@ $(document).ready(function() {
   $('.product-card .col').mf_EqualHeight();
 
   $('.slider').flexslider({
-    animation: "slide"
+    // animation: "fade",
+    animation: "slide",
+    animationSpeed: 1000,
+    slideshowSpeed: 7000,
+    pauseOnHover: false,
   });
 });
