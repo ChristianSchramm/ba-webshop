@@ -357,7 +357,7 @@ class CartController extends Controller
     	$pdf->SetFont('Arial','',10);
     	$pdf->Cell(120);
     	$pdf->Cell(30,10,"Netto Summe:");
-    	$pdf->Cell(30,10,number_format($summe/119*100 , 2, '.', '')." EUR", 0, 0, 'R');
+    	$pdf->Cell(30,10,number_format($summe/1.19 , 2, '.', '')." EUR", 0, 0, 'R');
     	$pdf->Ln(5);
     	$pdf->Cell(120);
     	$pdf->Cell(30,10,"zzgl. 19.00% MwSt.:");
@@ -376,9 +376,9 @@ class CartController extends Controller
     	// text
     	
     	$pdf->Ln(20);
-    	$pdf->Cell(30,10,utf8_decode("Die Ware bleibt bis zur Bezahlung Eingemtum des Lieferanten."));
+    	$pdf->Cell(30,10,utf8_decode("Die Ware bleibt bis zur vollständigen Bezahlung Eingemtum des Verkäufers."));
     	$pdf->Ln(5);
-    	$pdf->Cell(30,10,utf8_decode("Zahlungsziel ist innerhalb von 14 Tagen nach erhalt der Rechnung."));
+    	$pdf->Cell(30,10,utf8_decode("Zahlungsziel ist innerhalb von 14 Tagen nach Erhalt der Rechnung."));
     	$pdf->Ln(10);
     	$pdf->Cell(30,10,utf8_decode("Vielen Dank für Ihren Auftrag!"));
     	
@@ -386,7 +386,7 @@ class CartController extends Controller
     	
     	$pdf->SetY(-25);
     	$pdf->SetFont('Arial','',8);
-    	$pdf->Cell(30,0,utf8_decode('UmsatzStID: DE-13579123 - Bankverbindung: Budenbank - Kontonummer: 123456 - BLZ: 9876543'));
+    	$pdf->Cell(30,0,utf8_decode('USt-ID: DE-13579123 - Bankverbindung: Budenbank - Kontonummer: 123456 - BLZ: 9876543'));
     	 
     	
     	$fileName = "rechnung_".$user->getNumber()."_".$rechnungsNummer.".pdf";
