@@ -37,10 +37,19 @@ class StaticController extends Controller
 	}
 	
 	/**
-	 * @Route("/payment", name="static_payment")
+	 * @Route("/data", name="static_data")
 	 * @Template()
 	 */
-	public function paymentAction()
+	public function dataAction()
+	{
+		return array();
+	}
+	
+	/**
+	 * @Route("/widerruf", name="static_widerruf")
+	 * @Template()
+	 */
+	public function widerrufAction()
 	{
 		return array();
 	}
