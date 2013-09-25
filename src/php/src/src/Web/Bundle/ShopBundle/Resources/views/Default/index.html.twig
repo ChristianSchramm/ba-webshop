@@ -129,7 +129,8 @@
                         <div class="col c7of12">
                           <div class="small-box">
                             <p class="medium"><strong>{{ product.type.name }}</strong>&nbsp;–&nbsp;<strong>{{ product.status }}</strong></p>
-                            <p><strong class="booking">{{ product.price }} &euro;</strong></p>
+                            <p><strong class="booking">{{ product.price }}&euro;</strong> <small>inkl. 19% MwSt.</small></p>
+                            
                             {% if product.amount > 0 %}
                             <p><strong class="storing">auf Lager</strong></p>
                             {% else %}

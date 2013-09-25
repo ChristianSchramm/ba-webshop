@@ -356,16 +356,16 @@ class CartController extends Controller
     	$pdf->Ln(10);
     	$pdf->SetFont('Arial','',10);
     	$pdf->Cell(120);
-    	$pdf->Cell(30,10,"Brutto Summe:");
-    	$pdf->Cell(30,10,number_format($summe , 2, '.', '')." EUR", 0, 0, 'R');
+    	$pdf->Cell(30,10,"Netto Summe:");
+    	$pdf->Cell(30,10,number_format($summe/119*100 , 2, '.', '')." EUR", 0, 0, 'R');
+    	$pdf->Ln(5);
+    	$pdf->Cell(120);
+    	$pdf->Cell(30,10,"zzgl. 19.00% MwSt.:");
+    	$pdf->Cell(30,10,number_format(($summe/119*19) , 2, '.', '')." EUR", 0, 0, 'R');
     	$pdf->Ln(5);
     	$pdf->Cell(120);
     	$pdf->Cell(30,10,"Versandkosten:");
     	$pdf->Cell(30,10,number_format($versand , 2, '.', '')." EUR", 0, 0, 'R');
-    	$pdf->Ln(5);
-    	$pdf->Cell(120);
-    	$pdf->Cell(30,10,"inkl. 19.00% MwSt.:");
-    	$pdf->Cell(30,10,number_format(($summe/119*19) , 2, '.', '')." EUR", 0, 0, 'R');
     	$pdf->Ln(5);
     	$pdf->SetFont('Arial','B',10);
     	$pdf->Cell(120);
@@ -415,6 +415,20 @@ class CartController extends Controller
     	
     	
     	$em->flush();
+    	
+    	$message = \Swift_Message::newInstance()     // we create a new instance of the Swift_Message class
+    	->setSubject('Scheiben-Bude.de.vu')     // we configure the title
+    	->setFrom('notification@scheiben-bude.de.vu')     // we configure the sender
+    	->setTo($user->getEmail())     // we configure the recipient
+    	->setBody(
+    			$this->renderView('WebShopBundle:Cart:checkout.email.html.twig',
+    					array( 'user' => $user)),
+    			'text/html'
+    	)
+    	->attach(\Swift_Attachment::fromPath("uploads/bills/".$fileName))
+    	// and we pass the $name variable to the text template which serves as a body of the message
+    	;
+    	$this->get('mailer')->send($message);     // then we send the message.
     	
     	
     	
