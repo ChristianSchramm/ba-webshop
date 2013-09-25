@@ -55,6 +55,10 @@ li {
   padding: 0 10px;
 }
 
+img {
+  border: 0;
+}
+
 /* Layout */
 
 .wrapper {
@@ -1037,6 +1041,20 @@ tbody {
 
     &:nth-child(odd) {
       background: #fff;
+    }
+
+    .lt-ie9 & {
+      background: #fff;
+
+      td {
+        border-top: 1px solid $dark-blue;
+      }
+
+      &:first-child {
+        td {
+          border-top: 0;
+        }
+      }
     }
   }
 }

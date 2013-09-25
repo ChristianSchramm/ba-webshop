@@ -239,6 +239,10 @@ textarea {
     padding: 0 10px;
   }
 
+  img {
+    border: 0;
+  }
+
   /* Layout */
   .wrapper {
     background: #f0f0f0;
@@ -836,6 +840,15 @@ textarea {
   }
   tbody tr:nth-child(odd) {
     background: #fff;
+  }
+  .lt-ie9 tbody tr {
+    background: #fff;
+  }
+  .lt-ie9 tbody tr td {
+    border-top: 1px solid #004f9f;
+  }
+  .lt-ie9 tbody tr:first-child td {
+    border-top: 0;
   }
 
   /* Icons ____________________________________________________________ */
