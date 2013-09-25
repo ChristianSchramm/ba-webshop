@@ -291,6 +291,10 @@ textarea {
     position: absolute;
   }
 
+  small {
+    white-space: nowrap;
+  }
+
   /* Navigation _______________________________________________________ */
   .meta {
     background: #399bff;
