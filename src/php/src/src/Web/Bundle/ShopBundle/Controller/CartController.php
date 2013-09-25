@@ -215,6 +215,7 @@ class CartController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	 
     	$user = $this->get('security.context')->getToken()->getUser();
+    	$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
     	
     	// warenkorb mit temp updaten
     	$tmpUser = $session->get('tmpUser');
@@ -257,7 +258,7 @@ class CartController extends Controller
     	
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	 
-    	return array('cart' => $cart);
+    	return array('cart' => $cart, 'adress' => $adress);
     }
     
     

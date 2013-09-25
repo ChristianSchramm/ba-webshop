@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h2 class="heading style2">Zusammenfassung</h2>
+<h2 class="heading style1">Zusammenfassung</h2>
 
                         <table cellpadding="0" cellspacing="0">
                           <thead>
@@ -35,12 +35,42 @@
                             </tr>
                           </tfoot>
                         </table>
+                        
+    <div class="cols">
+      <div class="col c6of12">
+        <p>
+        <strong>Versandadresse:</strong><br>
+        
+        {{ adress.name }}<br>
+        {{ adress.postcode }}
+        {{ adress.location }}<br>
+        {{ adress.street }}<br>
+        {{ adress.country }}
+        </p>
+      </div>
+      <div class="col c6of12">
+         <p>
+         <strong>Rechnungsadresse:</strong><br>
+       
+        {{ adress.name }}<br>
+        {{ adress.postcode }}
+        {{ adress.location }}<br>
+        {{ adress.street }}<br>
+        {{ adress.country }}
+        </p>
+      </div>
+      {% if adress.name is  empty %}
+        <p class="error">Bitte aktualisieren sie Ihre Adresse.</p>
+      {% endif %}
+    </div>
+                        
 
 <p>
-{% if cart.CartProducts is not empty %}
+{% if cart.CartProducts is not empty and adress.name is not empty %}
 <a class=" btn form-btn" href="{{ path('cart_checkout') }}">Kostenpflichtig Bestellen</a>
 {% endif %}
 <a class=" btn form-btn" href="{{ path('default') }}">Weiter Einkaufen</a>
+<a class=" btn form-btn" href="{{ path('account') }}">Adresse ändern</a>
 
 
 

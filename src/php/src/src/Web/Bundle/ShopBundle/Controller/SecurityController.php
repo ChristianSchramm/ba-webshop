@@ -139,14 +139,14 @@ class SecurityController extends Controller
 		      $em->flush();
 		        
 		      // send atctivation mail
-		     /*  	        
+		      	        
 		      $message = \Swift_Message::newInstance()     // we create a new instance of the Swift_Message class
-		        					->setSubject('RCTracks.net account activation')     // we configure the title
-		        	        ->setFrom('notification@rctracks.net')     // we configure the sender
+		        					->setSubject('Scheiben-Bude.de.vu')     // we configure the title
+		        	        ->setFrom('notification@scheiben-bude.de.vu')     // we configure the sender
 		        	        ->setTo($user->getEmail())     // we configure the recipient
 		        	        ->setBody(
-		        	        		$this->renderView('RCTracksUserBundle:Security:activation.email.html.twig', 
-		        	        				              array( 'code' => $activation->getCode(), 'user' => $user)),
+		        	        		$this->renderView('WebShopBundle:Security:register.email.html.twig', 
+		        	        				              array( 'user' => $user)),
 		        	        		'text/html'
 		        	        		)
 		        
@@ -155,7 +155,7 @@ class SecurityController extends Controller
 		      $this->get('mailer')->send($message);     // then we send the message.
 		        
 	     		//return array( );
-		*/
+		
 		      return array('user' => $user);
 				}
 				
