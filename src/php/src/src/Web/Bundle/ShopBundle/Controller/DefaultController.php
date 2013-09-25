@@ -144,8 +144,8 @@ class DefaultController extends Controller
       		         'genres' => $genres,
       		         'type' => $type,
       		         'cond' => $cond,
-      		         'from' => $from,
-      		         'until' => $until
+      		         'from' => $from. " €",
+      		         'until' => $until. " €"
       		);
     }
     
