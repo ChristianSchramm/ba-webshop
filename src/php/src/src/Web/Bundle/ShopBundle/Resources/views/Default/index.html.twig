@@ -5,7 +5,7 @@
 
         					<nav id="nav" class="main-nav">
                     <ul class="layer0">
-                      <li>
+                      <li {%  if type == 'BD' %} class="active" {% endif %}>
                         {%  if type == 'BD' %}
                           <strong>Blu-Ray</strong>
                         {% else %}
@@ -29,7 +29,7 @@
                           </li>
                         </ul>
                       </li>
-                      <li>
+                      <li {%  if type == 'DVD' %} class="active" {% endif %}>
                         {%  if type == 'DVD' %}
                           <strong>DVD</strong>
                         {% else %}
@@ -54,7 +54,7 @@
                           </li>
                         </ul>
                       </li>
-                      <li>
+                      <li {%  if type == 'CD' %} class="active" {% endif %}>
                         {%  if type == 'CD' %}
                           <strong>CD</strong>
                         {% else %}
