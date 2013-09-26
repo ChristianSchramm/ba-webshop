@@ -518,7 +518,8 @@ small {
 
     &:active,
     &:hover,
-    &:focus {
+    &:focus,
+    .active {
       .layer1 {
         display: block;
       }
@@ -591,15 +592,6 @@ small {
 @media screen and (max-width:740px) {
   .main-nav {
     margin-bottom: 10px;
-
-    li:active,
-    li:focus {
-      .touch & {
-        .layer1 {
-          display: block;
-        }
-      }
-    }
   }
 }
 
@@ -623,15 +615,6 @@ small {
         background: $medium-grey;
         border: 1px solid #fff;
         color: #fff !important;
-        
-      }
-      &:active,
-      &:focus {
-        .touch & {
-          .layer1 {
-            display: block;
-          }
-        }
       }
     }
   }
