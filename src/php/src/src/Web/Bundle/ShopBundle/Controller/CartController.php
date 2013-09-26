@@ -28,21 +28,24 @@ class CartController extends Controller
      */
     public function indexAction()
     {
+    	// Session holen
     	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	
+    	// User aus Session holen
     	$user = $this->get('security.context')->getToken()->getUser();
     	
+    	// Wenn User eingeloggt ist, Warenkorb aus Datenbank holen
+    	// Wenn nicht, dann hole den Session Warenkorb
     	if (is_object($user)){
+    		// Datenbank Warenkorb laden
     		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	}else {
+    		// Session Warenkorb laden
     		$cart = $session->get('tmpCart');
-
     	}
     	
-
-    	
-    	
+    	// Warenkorb an View übergeben
     	return array('cart' => $cart);
     }
     
@@ -52,35 +55,42 @@ class CartController extends Controller
      */
     public function showCartAction()
     {
+    	// Session laden
     	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	 
+    	// User aus Session laden
     	$user = $this->get('security.context')->getToken()->getUser();
     	 
+    	// Wenn User eingeloggt ist, Warenkorb aus Datenbank holen
+    	// Wenn nicht, dann hole den Session Warenkorb
     	if (is_object($user)){
+    		// Datenbank Warenkorb laden
     		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	}else {
+    		// Session Warenkorb laden
     		$cart = $session->get('tmpCart');
-    
     	}
     	
-    	// berechne Warenkorb
+    	// Warenkorb Übersicht berechnen
     	$cartCount = 0;
     	$cartSum = 0;
+    	// Anzhal und Summe der Waren berechnen
     	if (!is_null($cart)){
     		foreach ($cart->getCartProducts() as $product){
     			$cartSum += $product->getAmount() * $product->getProduct()->getPrice();
     			$cartCount += $product->getAmount();
     		}
     	}
-    	 
+    	// Zahl formatieren
     	$cartSum = number_format($cartSum, 2, ',', ' ');
 
     	 
+    	// Warenkrob und Eigenschaften an View übergeben
     	return array('cart' => $cart,
     			         'cartCount' => $cartCount,
       		         'cartSum' => $cartSum
-    			);
+    			        );
     }
 
     /**
@@ -89,20 +99,29 @@ class CartController extends Controller
      */
     public function addAction($id)
     {
+    	// Session laden
     	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	
+    	// User aus Session laden
     	$user = $this->get('security.context')->getToken()->getUser();
 
+    	// Product aus Dtenbank laden
     	$product = $em->getRepository('WebShopBundle:Product')->findOneById($id);
 
+    	
+    	// Wenn User eingeloggt ist, dann die Waren zu dem Datenbank Warenkorb hinzufügen
+    	// Wenn nicht, dann die Ware zu dem Session Warenkorb hinzufügen
     	if (is_object($user)){
 
-    	  // logged user
+    	  // Warenkorb des Users aus der Datenbnak laden
     	  $cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
-    	  // try find item
+    	  
+    	  // Schaue ob die Waren schon einmal im Warenkorb liegt
     	  $cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
     	  
+    	  // Wenn ja, einfach Menge erhöhen
+    	  // Wenn nicht, neu zu Warenkorb hinzufügen
     	  if (!is_null($cartProduct)){
     	  	$cartProduct->setAmount($cartProduct->getAmount()+1);
     	  }else {
@@ -112,36 +131,36 @@ class CartController extends Controller
     	  	$cartProduct->setProduct($product);
     	  }
     	  
+    	  // Warenkorb in der Datenbank speichern
     	  $em->persist($cartProduct);
     	  $em->flush();
     	  
     	}else {
 
     		
-    		// anonym user
+    		// Session Warenkorb und User laden, wenn der User nicht eingeloggt ist
     		$user = $session->get("tmpUser");
     		$cart = $session->get("tmpCart");
     		
     		$exits = false;
     		
-    		
+    		// Testen ob das Product schon einmal im Warenkorb liegt
+    		// Wenn ja einfach die Menge erhöhen
     		foreach ($cart->getCartProducts() as $key => $value){
     			if (!is_null($value) && $value->getProduct()->getPubId() == $id ){
     				// incremtnt ammount
     				$cart->getCartProducts()->get($key)->setAmount($value->getAmount()+1);
     				$exits = true;
     			}
-    		
     		}
 
-    		
+    		// Wenn nicht, neu zum Warenkorb hinzufügen
     		if (!$exits){
     			// new
     			$prod = new Product();
     			$prod->setPrice($product->getPrice());
     			$prod->setTitle($product->getTitle());
     			$prod->setPubId($product->getId()) ;
-    			
     			
     			$cartProduct = new CartProduct();
     			$cartProduct->setCart($cart);
@@ -151,20 +170,18 @@ class CartController extends Controller
     			$cart->addCartProduct($cartProduct);
     		}
     		
-    		
+    		// Warenkorb zurück in die Session speichern
     		$session->set("tmpCart", $cart);
-
     	}
 
-
-    	
-
-
+			// Weiterleitung auf die letzte Seite
     	$url = $this->getRequest()->headers->get("referer");
     	
+    	// Wenn Referer leer sein sollte, zurück zum Warenkorb
     	if (empty($url)){
     		return $this->redirect($this->generateUrl('cart'));
     	}
+    	
     	return new RedirectResponse($url);
     }
 
@@ -174,34 +191,43 @@ class CartController extends Controller
      */
     public function removeAction($id)
     {
+    	// Session laden
     	$session = $this->getRequest()->getSession();
-    	$em = $this->getDoctrine()->getManager();
     	
+    	$em = $this->getDoctrine()->getManager();   	
     	
+    	// User aus Session laden
     	$user = $this->get('security.context')->getToken()->getUser();
 
+    	// Wenn User eingeloggt ist, dann die Waren zu dem Datenbank Warenkorb hinzufügen
+    	// Wenn nicht, dann die Ware zu dem Session Warenkorb hinzufügen
     	if (is_object($user)){
+    		// Warenkorb aus Datenbank laden
 	    	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
 	    	
-	    	// try find item
+	    	// Produkt finden und löschen
 	    	$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $id);
+	    	
+	    	// Warenkorb in Datenbank speichern
 	    	$em->remove($cartProduct);
 	    	$em->flush();
     	
     	}else {
+    		// Warenkorb aus Session holen
     		$cart = $session->get("tmpCart");
-    		
-    		
+
+    		// Produckt finden und löschen
     		foreach ($cart->getCartProducts() as $key => $value){
     			if (!is_null($value) && $value->getProduct()->getPubId() == $id ){
     				$cart->getCartProducts()->remove($key);
     			}
-    			
     		}
+    		
+    		// Warenkorb in der Session aktualisieren
     		$session->set("tmpCart", $cart);
     	}
     	
-
+    	// Weiterleitung zum Warenkorb
     	return $this->redirect($this->generateUrl('cart'));
     }
     
@@ -211,35 +237,45 @@ class CartController extends Controller
      */
     public function orderAction()
     {
+    	// Session laden
     	$session = $this->getRequest()->getSession();
     	$em = $this->getDoctrine()->getManager();
     	 
+    	// User aus Session laden
     	$user = $this->get('security.context')->getToken()->getUser();
     	$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
     	
-    	// warenkorb mit temp updaten
+    	// Sollte sich der User nach dem auswahl von Produkte einloggen
+    	// werden alle bestehenden Waren aus dem Session Warenkorb in 
+    	// den echten Warenkorb übernommen
     	$tmpUser = $session->get('tmpUser');
     	$tmpCart = $session->get('tmpCart');
+    	
+    	// Testen ob die Session nciht leer ist
     	if (is_object($user) && $tmpUser != null && $tmpCart != null){
     		// warenkorb befüllen, wenn der user sich neu einloggt
     		$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUserIdOverview($user);
     	
+    		// Wenn der Temporäre Warenkorb nicht leer ist
     		if ($tmpCart->getCartProducts()->count() > 0){
+    			// Jedes Produkt durch gehen
     			foreach ($tmpCart->getCartProducts() as $key => $value){
+    				
+    				// Produkt in der Datenbank suchen
     				$product = $em->getRepository('WebShopBundle:Product')->findOneById($value->getProduct()->getPubId());
-    	
-    				$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $product->getId());
+    	  		$cartProduct = $em->getRepository('WebShopBundle:CartProduct')->findOneByCartAndProduct($cart->getId(), $product->getId());
     					
+    	  		// Wenn das Produkt im Warenkorb liegt, einfach die Menge angleichen
     				if (!is_null($cartProduct)){
     					$cartProduct->setAmount($cartProduct->getAmount()+$value->getAmount());
     				}else {
-    	
+    	        // Neues Produkt in den Warenkorb legen
     					$cartProduct = new CartProduct();
     					$cartProduct->setCart($cart);
     					$cartProduct->setAmount($value->getAmount());
     					$cartProduct->setProduct($product);
     				}
-    	
+    				// Warenkorb speichern
     				$em->persist($cartProduct);
     				$em->flush();
     			}
@@ -247,17 +283,18 @@ class CartController extends Controller
     	
     		}
 
+    		// Session Warenkorb leeren
     		$session->set('tmpUser', null);
     		$session->set('tmpCart', null);
     	}else{
+    		// Session Warenorb laden
     		$cart = $session->get('tmpCart');
     	}
     	
-    	
-    	
-    	
+    	// Warenkorb aus der Datenbank alsen    	
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	 
+    	// Warenkorb und Adresse an View übergeben
     	return array('cart' => $cart, 'adress' => $adress);
     }
     
@@ -269,34 +306,39 @@ class CartController extends Controller
      */
     public function checkoutAction()
     {
+    	// Rechnungsnummer ermitteln
     	$rechnungsNummer = "R-". (rand(100000,999999));
-    	
-    	
+    	    	
     	$em = $this->getDoctrine()->getManager();
     	 
+    	// User, Adresse und Warenkorb aus der Datenbnak laden
     	$user = $this->get('security.context')->getToken()->getUser();
     	$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
     	$cart = $em->getRepository('WebShopBundle:Cart')->findOneByUser($user->getId());
     	
     	$products = $cart->getCartProducts();
     	
+    	// Checkout nur ermöglichen, wenn der Warenkorb nicht leer ist
     	if ($products->count() == 0) {
+    		// Weiterleitun zur Übersicht, falls der Warenkorb leer ist
     		return $this->redirect($this->generateUrl('cart'));
     	}
     	
-      // header
+    	// Rechnungs PDF erstellen
+    	
+      // Header einbauen
     	$pdf = new FPDFHelper();
     	$pdf->AddPage();
     	$pdf->SetFont('Arial','B',16);
     	$pdf->Cell(80);
     	$pdf->Cell(30,10,'Rechnung');
     	
-    	//adress
+    	// Adresse einfügen
     	$pdf->Ln(20);
     	$pdf->SetFont('Arial','',8);
     	$pdf->Cell(30,10,utf8_decode('ScheibenBude, Buden Straße 123, 01234 Scheibenheim'));
 
-    	// anschrift
+    	// Anschrift einfügen
     	$pdf->Ln(15);
     	$pdf->SetFont('Arial','',10);
     	$pdf->Cell(30,10,utf8_decode($adress->getName()));
@@ -317,13 +359,13 @@ class CartController extends Controller
     	$pdf->Cell(30,10,utf8_decode($adress->getCountry()));
 
     	
-    	// betreff
+    	// Betreff einfügen
 
     	$pdf->Ln(30);
     	$pdf->SetFont('Arial','',12);
     	$pdf->Cell(30,10,'Rechnung');
     	
-    	// waren
+    	// Waren auflisten
         // header
     	$pdf->Ln(10);
     	$pdf->SetFont('Arial','B',10);
@@ -352,7 +394,7 @@ class CartController extends Controller
     	$pdf->Ln(1);
     	$pdf->Cell(180,10,'','B');
     	
-    	// gesamtbetrag
+    	// Preise ermitteln
     	$pdf->Ln(10);
     	$pdf->SetFont('Arial','',10);
     	$pdf->Cell(120);
@@ -373,7 +415,7 @@ class CartController extends Controller
     	$pdf->Cell(30,10,number_format(($summe+$versand) , 2, '.', '')." EUR", 0, 0, 'R');
     	
 
-    	// text
+    	// Abschließender Text
     	
     	$pdf->Ln(20);
     	$pdf->Cell(30,10,utf8_decode("Die Ware bleibt bis zur vollständigen Bezahlung Eingemtum des Verkäufers."));
@@ -382,17 +424,20 @@ class CartController extends Controller
     	$pdf->Ln(10);
     	$pdf->Cell(30,10,utf8_decode("Vielen Dank für Ihren Auftrag!"));
     	
-    	//footer
+    	//Footer erstellen
     	
     	$pdf->SetY(-25);
     	$pdf->SetFont('Arial','',8);
     	$pdf->Cell(30,0,utf8_decode('USt-ID: DE-13579123 - Bankverbindung: Budenbank - Kontonummer: 123456 - BLZ: 9876543'));
     	 
     	
+    	// PDF im Dateisystem sepichern
+    	
     	$fileName = "rechnung_".$user->getNumber()."_".$rechnungsNummer.".pdf";
     	
     	$pdf->Output("uploads/bills/".$fileName);
     	
+    	// Rechnung in die Datenbank schreiben
     	$bill = new Bill();
     	$bill->setPath($fileName);
     	$bill->setUser($user);
@@ -406,15 +451,15 @@ class CartController extends Controller
     		// TODO
     	}
     	
-    	// clear cart
-    	
+    	// Warenkorb leeren
     	$products = $cart->getCartProducts();
     	for ($i = 0 ; $i < $products->count(); $i++){
     		$em->remove($products[$i]);
     	}
-    	
-    	
+    	   	
     	$em->flush();
+    	
+    	// Email mit PDF verschicken
     	
     	$message = \Swift_Message::newInstance()     // we create a new instance of the Swift_Message class
     	->setSubject('Scheiben-Bude.de.vu')     // we configure the title
@@ -430,10 +475,7 @@ class CartController extends Controller
     	;
     	$this->get('mailer')->send($message);     // then we send the message.
     	
-    	
-    	
-    	
-    
+    	// Erfolgsseite rednern    
     	return array('bill' => $bill);
     }
 }
