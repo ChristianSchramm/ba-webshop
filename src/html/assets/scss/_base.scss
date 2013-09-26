@@ -63,7 +63,7 @@ $z-high:             10;
   @include text-shadow(1px 1px 1px #fff);
 }
 
-/* Fertige */
+/* Spaltenraster generieren */
 
 @mixin mf-layout ($columns: 12, $col-margin: 2.1276%) {
   
@@ -107,7 +107,7 @@ $z-high:             10;
  *background-image: image-url($url);
 }
 
-/* Font */
+/* Schrift einbetten */
 
 @mixin mf-webfont($fontname, $fontpath: "/assets/font") {
   @font-face {
