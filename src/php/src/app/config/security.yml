@@ -10,7 +10,7 @@ security:
             iterations: 5000
 
     role_hierarchy:
-        ROLE_USER:       [ROLE_BLOCK, ROLE_INACTIVE]
+        ROLE_USER:       [ROLE_DELETED, ROLE_INACTIVE]
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 

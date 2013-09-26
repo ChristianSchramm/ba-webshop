@@ -7,7 +7,11 @@
 
 <form  class="form" action="{{ path('create')}}" method="post" {{ form_enctype(form) }}>
     <div class="cols">
-      <div class="col c6of12">    
+      <div class="col c6of12">   
+        
+        {% if error is defined %} 
+          {{ error }}
+        {% endif %}
 
         {{ form_label(form.user.email) }}
         {{ form_errors(form.user.email) }}

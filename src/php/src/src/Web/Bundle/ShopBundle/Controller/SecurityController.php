@@ -102,7 +102,7 @@ class SecurityController extends Controller
 	     	$user = $registration->getUser();
 	    	// Daten aus Formular abgreifen
 	    	// unique user ?
-	    	$unique = $em->getRepository('WebShopBundle:User')->isUserUnique($user->getUsername());
+	    	$unique = $em->getRepository('WebShopBundle:User')->isUserUnique($user->getUsername(), $user->getEmail());
 	      // Wenn neuer User, dann Anlegen
 				if ($unique){
 						
@@ -160,6 +160,7 @@ class SecurityController extends Controller
 			return $this->render('WebShopBundle:Security:register.html.twig', array(
 					'user' => $user,
 					'form' => $form->createView(),
+					'error' => "Email oder Username schon registriert!"
 	    ));
     }
 

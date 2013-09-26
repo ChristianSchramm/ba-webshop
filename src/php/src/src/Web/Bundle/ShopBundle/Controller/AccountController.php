@@ -73,5 +73,36 @@ class AccountController extends Controller
 	{		
 		return array( );
 	}
+	
+
+	/**
+	 * @Route("/account/account", name="account_account")
+	 * @Template()
+	 */
+	public function accountAction()
+	{
+		return array( );
+	}
+	
+
+	/**
+	 * @Route("/account/delete", name="account_account_delete")
+	 * @Template()
+	 */
+	public function deleteAction()
+	{
+		$user = $this->get('security.context')->getToken()->getUser();
+		$em = $this->getDoctrine()->getManager();
+		
+		$role = $em->getRepository('WebShopBundle:Role')->findOneByName('ROLE_DELETED');
+		
+		$oldRole = $user->getRoles();
+		$user->removeRole($oldRole[0]);
+		$user->addRole($role);
+		
+		$em->persist($user);
+		$em->flush();
+		return $this->redirect($this->generateUrl('logout'));
+	}
 
 }
