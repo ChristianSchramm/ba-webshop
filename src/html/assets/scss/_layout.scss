@@ -519,7 +519,7 @@ small {
     &:active,
     &:hover,
     &:focus,
-    .active {
+    &.active {
       .layer1 {
         display: block;
       }

@@ -480,8 +480,7 @@ textarea {
     position: relative;
     z-index: 5;
   }
-  .layer0 > li:active .layer1, .layer0 > li:hover .layer1, .layer0 > li:focus .layer1,
-  .layer0 > li .active .layer1 {
+  .layer0 > li:active .layer1, .layer0 > li:hover .layer1, .layer0 > li:focus .layer1, .layer0 > li.active .layer1 {
     display: block;
   }
   .layer0 > li > a,
