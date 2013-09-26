@@ -9,5 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class AdminController extends Controller
 {
 
+	//TODO Erweiterte Admin Funktionen
 
 }

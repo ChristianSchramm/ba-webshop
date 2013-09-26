@@ -15,10 +15,12 @@ class AdminBillController extends Controller
 	public function indexAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$user = $em->getRepository('WebShopBundle:User')->findOneById($id);
 		
+		// User und Rechnung für die View abfragen
+		$user = $em->getRepository('WebShopBundle:User')->findOneById($id);		
 		$bills = $em->getRepository('WebShopBundle:Bill')->findByUser($user->getId());
 
+		// User und Rechnung an die View übergeben
 		return array('user' => $user, 'bills' => $bills);
 	}
 	
@@ -29,18 +31,22 @@ class AdminBillController extends Controller
 	public function setAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();	
+		
+		// Rechnung aus der Datenbank holen
 		$bill = $em->getRepository('WebShopBundle:Bill')->findOneById($id);
 		
+		// Rechnung auf bezhalt oder unbezhalt setzen
 		if ($bill->getPaid()){
 			$bill->setPaid(false);
 		}else {
 			$bill->setPaid(true);
 		}
 		
-		
+		//Rechnung in der Datenbank speichern		
 		$em->persist($bill);
 		$em->flush();
-	
+		
+	  // Weiterleitung zur Übersicht
 		return $this->redirect($this->generateUrl('admin_user_bill', array('id' => $bill->getUser()->getId())));
 	}
 	
