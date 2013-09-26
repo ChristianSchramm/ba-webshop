@@ -353,7 +353,7 @@ class CartController extends Controller
     	$pdf->Ln(5);
     	$pdf->Cell(30,10,utf8_decode($adress->getPostcode(). " " . $adress->getLocation()));
     	$pdf->Cell(100);
-    	$pdf->Cell(30,10,utf8_decode("Datum.: "));
+    	$pdf->Cell(30,10,utf8_decode("Datum: "));
     	$pdf->Cell(30,10,utf8_decode(date("d.m.Y")));
     	$pdf->Ln(5);
     	$pdf->Cell(30,10,utf8_decode($adress->getCountry()));
@@ -418,7 +418,7 @@ class CartController extends Controller
     	// Abschließender Text
     	
     	$pdf->Ln(20);
-    	$pdf->Cell(30,10,utf8_decode("Die Ware bleibt bis zur vollständigen Bezahlung Eingemtum des Verkäufers."));
+    	$pdf->Cell(30,10,utf8_decode("Die Ware bleibt bis zur vollständigen Bezahlung Eigentum des Verkäufers."));
     	$pdf->Ln(5);
     	$pdf->Cell(30,10,utf8_decode("Zahlungsziel ist innerhalb von 14 Tagen nach Erhalt der Rechnung."));
     	$pdf->Ln(10);
