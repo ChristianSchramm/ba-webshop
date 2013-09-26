@@ -518,8 +518,7 @@ small {
 
     &:active,
     &:hover,
-    &:focus,
-    &.active {
+    &:focus {
       .layer1 {
         display: block;
       }
@@ -592,6 +591,12 @@ small {
 @media screen and (max-width:740px) {
   .main-nav {
     margin-bottom: 10px;
+
+    li.active {
+      .layer1 {
+        display: block;
+      }
+    }
   }
 }
 
