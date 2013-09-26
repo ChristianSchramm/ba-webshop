@@ -212,8 +212,7 @@ textarea {
   }
 
   /* Sonstige */
-  .login-btn, .btn,
-  .search-btn, .input,
+  .search .input, .search-btn, .login-btn, .btn, .input,
   .textarea,
   .select {
     -webkit-box-sizing: border-box;
@@ -437,7 +436,11 @@ textarea {
   .slides li {
     background-position: 50% bottom;
     background-repeat: no-repeat;
+    display: none;
     height: 300px;
+  }
+  .slides li:first-child {
+    display: block;
   }
 
   /* Hauptnavigation __________________________________________________ */
@@ -1078,11 +1081,15 @@ textarea {
   .layer0 > li > a {
     border: 1px solid #6cb5ff;
   }
-  .layer0 > li:active > a, .layer0 > li:hover > a, .layer0 > li:focus > a,
+  .layer0 > li:active > a
+  .layer0 > li:focus > a,
   .layer0 > li > strong {
     background: #5d5d5d;
     border: 1px solid #fff;
     color: #fff !important;
+  }
+  .touch .layer0 > li .layer1 {
+    display: block;
   }
 
   .layer1 {
