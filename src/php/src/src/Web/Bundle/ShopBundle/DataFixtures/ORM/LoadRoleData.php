@@ -36,14 +36,19 @@ class LoadRoleData extends AbstractFixture implements OrderedFixtureInterface
   	$role3 = new Role();
   	$role3->setName('ROLE_INACTIVE');
 
+  	$role4 = new Role();
+  	$role4->setName('ROLE_DELTED');
+
   	$manager->persist($role1);
     $manager->persist($role2);
     $manager->persist($role3);
+    $manager->persist($role4);
 
     
     $this->addReference('role1', $role1);
     $this->addReference('role2', $role2);
     $this->addReference('role3', $role3);
+    $this->addReference('role4', $role4);
   	
   	
     $manager->flush();
