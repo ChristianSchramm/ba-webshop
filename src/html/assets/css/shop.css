@@ -1395,7 +1395,7 @@ p {
 }
 
 .search-btn {
-  line-height: 36px;
+  line-height: 38px;
 }
 .search-btn:active, .search-btn:hover, .search-btn:focus {
   background: #5d5d5d;
