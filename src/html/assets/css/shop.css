@@ -1068,6 +1068,10 @@ textarea {
   .main-nav {
     margin-bottom: 10px;
   }
+  .touch .main-nav li:active .layer1, .touch
+  .main-nav li:focus .layer1 {
+    display: block;
+  }
 }
 @media screen and (max-width: 400px) {
   .layer0 {
@@ -1088,7 +1092,7 @@ textarea {
     border: 1px solid #fff;
     color: #fff !important;
   }
-  .touch .layer0 > li .layer1 {
+  .touch .layer0 > li:active .layer1, .touch .layer0 > li:focus .layer1 {
     display: block;
   }
 
