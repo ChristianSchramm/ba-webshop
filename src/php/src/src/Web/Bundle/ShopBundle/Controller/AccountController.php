@@ -43,18 +43,35 @@ class AccountController extends Controller
 		// Speichern, wenn das Formular Valid ist
 		if ($form->isValid()) {
 			$pass = $form->getData();
+
+			
+			$encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
+			//Neues Passwort für den Benutzer erzuegen
+			$password = $encoder->encodePassword($pass['password'], $user->getSalt());
+	
+			// Passwort verschlüsselt in der Datenbank speichern
+			$user->setPassword($password);
 		
 			// Adresse in die Datenbank speichern
-			$em->persist($adress);
+			$em->persist($user);
 			$em->flush();
 			
 			// Weiterleitung zur Übersicht 
-			return $this->redirect($this->generateUrl('account_adress'));
+			return $this->redirect($this->generateUrl('account_password_ok'));
 		}
 		// Zurück mit Fehlerausgabe
 		return $this->render('WebShopBundle:Account:password.html.twig',
 				array('form' => $form->createView())
 		);
+	}
+	
+	/**
+	 * @Route("/account/password/ok", name="account_password_ok")
+	 * @Template()
+	 */
+	public function okAction()
+	{		
+		return array( );
 	}
 
 }

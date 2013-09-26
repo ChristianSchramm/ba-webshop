@@ -28,7 +28,7 @@ class SecurityController extends Controller
      */
     public function loginAction()
     {
-
+			// Session laden
     	
     	$request = $this->getRequest();
     	$session = $request->getSession();
@@ -74,11 +74,12 @@ class SecurityController extends Controller
      * @Template()
      */
     public function registerAction(){
+    	// Registrier Formular initialisieren
        $form = $this->createForm(
             new RegistrationType(),
             new Registration()
         );
-
+				// Formular an View übergeben
         return array('form' => $form->createView());
     }
     
@@ -89,56 +90,50 @@ class SecurityController extends Controller
      */
     public function createAction(){
 			$em = $this->getDoctrine()->getManager();
-			
+			// Formular initialisieren
 	    $form = $this->createForm(new RegistrationType(), new Registration());
 	
 	    $form->bind($this->getRequest());
-	
+			
+	    // Testen ob das Formular valid ist
 	    if ($form->isValid()) {
 	    	
 	    	$registration = $form->getData();
 	     	$user = $registration->getUser();
-	    	
+	    	// Daten aus Formular abgreifen
 	    	// unique user ?
 	    	$unique = $em->getRepository('WebShopBundle:User')->isUserUnique($user->getUsername());
-	   
+	      // Wenn neuer User, dann Anlegen
 				if ($unique){
 						
-					//load inactive role
+					// Rolle für den USer setzen
 					$role = $em->getRepository('WebShopBundle:Role')->findOneByName('ROLE_USER');
 		      $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
-		        //encode password using current encoder
+		        // Passwort setzen
 		      $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
 		        
-		      //set encrypted password
+		      //Passwort verschlüsselt in Datenbank schreiben
 	
 		      $user->setPassword($password);
 		      $user->addRole($role);
 		        
 		      $em->persist($user);
 		        
-		        
+		      // Adresse für User anlegen  
 		      $adress = new Adress();
 				  $adress->setUser($user);
 		      $em->persist($adress);
 		      
-
+          // Warenkorb für USer anlegen
 		      $cart = new Cart();
 		      $cart->setUser($user);
 		      $em->persist($cart);
 	
-		        
-		     // $adress = new Adress();
-		     // $profile = new Profile();
-		     // $adress->setProfile($profile);
-		     // $profile->setUser($user);
-		        
-		     // $em->persist($profile);
-		     // $em->persist($adress);
+
 		        
 		      $em->flush();
 		        
-		      // send atctivation mail
+		      // Willkommens Email an User vershcicken
 		      	        
 		      $message = \Swift_Message::newInstance()     // we create a new instance of the Swift_Message class
 		        					->setSubject('Scheiben-Bude.de.vu')     // we configure the title
