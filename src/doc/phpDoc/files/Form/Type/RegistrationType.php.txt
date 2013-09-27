@@ -14,7 +14,7 @@ class RegistrationType extends AbstractType
             'terms',
             'checkbox',
         		array(
-            'label'  => 'Bestädigung der AGB\'s',
+            'label'  => 'Bestätigung der AGB\'s',
             'attr'   =>  array( 'class'   => 'checkbox'),
 				    'label_attr' =>  array( 'class'   => 'label'),
         		'property_path' => 'termsAccepted',

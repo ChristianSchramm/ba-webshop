@@ -40,7 +40,7 @@ class ProductType extends AbstractType
 				'required' => false,
 				'multiple' => true,
         'label'  => 'Genres',
-        'attr'   =>  array( 'class'   => 'input'),
+        'attr'   =>  array( 'class'   => 'select'),
 				'label_attr' =>  array( 'class'   => 'label'),
 		));
 		$builder->add('description', 'textarea', array( 

@@ -14,10 +14,14 @@ class BillController extends Controller
      */
     public function indexAction()
     {
-    	$em = $this->getDoctrine()->getManager();    	 
+    	// User aus Session holen
     	$user = $this->get('security.context')->getToken()->getUser();
+    	
+    	// Alle Rechnungen aus der Datenbnak holen
+    	$em = $this->getDoctrine()->getManager();    	 
     	$bills = $em->getRepository('WebShopBundle:Bill')->findByUser($user->getId());
     	
+    	// Rechnungen an die View übergeben
     	return array('bills' => $bills);
     }
 

@@ -24,13 +24,17 @@ class AdressController extends Controller
 	 */
 	public function indexAction()
 	{
+		// User aus Session holen
 		$user = $this->get('security.context')->getToken()->getUser();
-	
+
+		// Adresse aus der Datenbank mit der aktuellen UserId holen
 		$em = $this->getDoctrine()->getManager();
 		$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
 
+		// Formular initialisieren
 		$form = $this->createForm(new AdressType(), $adress);
 			
+		// Formular an View übergeben
 		return array('form' => $form->createView() );
 	}
 	
@@ -40,13 +44,17 @@ class AdressController extends Controller
 	 */
 	public function editAction()
 	{
+		// User aus Session holen
 		$user = $this->get('security.context')->getToken()->getUser();
 		
+		// Adresse aus der Datenbank mit der aktuellen UserId holen
 		$em = $this->getDoctrine()->getManager();
 		$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
 			
+		// Formular initialisieren
 		$form = $this->createForm(new AdressType(), $adress);
 			
+		// Formular an View übergeben
 		return array('form' => $form->createView() );
 	}
 	
@@ -56,21 +64,34 @@ class AdressController extends Controller
 	 */
 	public function saveAction()
 	{
+		// User aus Session holen
 		$user = $this->get('security.context')->getToken()->getUser();
-		$em = $this->getDoctrine()->getManager();
 
+		// Adresse aus der Datenbank mit der aktuellen UserId holen
+		$em = $this->getDoctrine()->getManager();
 		$adress = $em->getRepository('WebShopBundle:Adress')->findOneByUser($user->getId());
 		
+		// Formular initialisieren
 		$form = $this->createForm(new AdressType(), $adress);
+		
+		// Request auf das Formular binden
 		$form->bind($this->getRequest());
 		
+		// Testen ob die Eingaben valid sind
 		if ($form->isValid()) {
+			
+			// Daten abgreifen
 			$adress = $form->getData();
 
+			// Adresse des Users speichern
 			$em->persist($adress);
 			$em->flush();
+			
+			// Weiterleitung zur Übersicht
 			return $this->redirect($this->generateUrl('account_adress'));
 		}
+		
+		// Zurück mit Fehlerausgabe
 		return $this->render('WebShopBundle:Adress:edit.html.twig',
 				array('form' => $form->createView())
 		);

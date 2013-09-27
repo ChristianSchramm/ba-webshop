@@ -24,10 +24,11 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         $q = $this
             ->createQueryBuilder('u')
             ->join('u.roles', 'r')
-            ->where('(u.username = :username OR u.email = :email) AND r.name != :role')
+            ->where('(u.username = :username OR u.email = :email) AND r.name != :roleA AND r.name != :roleB')
             ->setParameter('username', $username)
             ->setParameter('email', $username)
-            ->setParameter('role', 'ROLE_INACTIVE')
+            ->setParameter('roleA', 'ROLE_INACTIVE')
+            ->setParameter('roleB', 'ROLE_DELETED')
             ->getQuery()
         ;
 	
@@ -56,13 +57,13 @@ class UserRepository extends EntityRepository implements UserProviderInterface
 		return $user;
 	}
 	
-	public function isUserUnique($username)
+	public function isUserUnique($username, $email)
 	{
 		$q = $this
 		->createQueryBuilder('u')
 		->where('u.username = :username OR u.email = :email')
 		->setParameter('username', $username)
-		->setParameter('email', $username)
+		->setParameter('email', $email)
 		->getQuery()
 		;
 

@@ -20,6 +20,9 @@ class Product
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+
+    private $pubId;
 
     /**
      * @var string
@@ -122,6 +125,28 @@ class Product
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * Get pubId
+     *
+     * @return integer
+     */
+    public function getPubId()
+    {
+    	return $this->pubId;
+    }
+    
+    /**
+     * Get pubId
+     *
+     * @param string $id
+     * @return Product
+     */
+    public function setPubId($id)
+    {
+    	$this->pubId = $id;
+    	return $this;
     }
 
     /**

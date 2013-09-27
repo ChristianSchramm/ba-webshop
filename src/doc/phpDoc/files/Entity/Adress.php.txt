@@ -71,7 +71,7 @@ class Adress
     
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="adress")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $user;
 
