@@ -767,10 +767,9 @@ small {
 }
 
 @media screen and (max-width:400px) {
-  .products {
-    .col {
-      min-height: 1px !important;
-    }
+  .product-card,
+  .products .col {
+    min-height: 1px !important;
   }
 }
 

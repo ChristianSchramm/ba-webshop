@@ -1125,6 +1125,7 @@ textarea {
   }
 }
 @media screen and (max-width: 400px) {
+  .product-card,
   .products .col {
     min-height: 1px !important;
   }
