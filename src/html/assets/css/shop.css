@@ -220,6 +220,21 @@ textarea {
     box-sizing: border-box;
   }
 
+  .login-form {
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+  }
+
   /* Allgemein ________________________________________________________ */
   * {
     padding: 0;
@@ -365,7 +380,7 @@ textarea {
     top: 0;
   }
   .login:active .login-form, .login:hover .login-form, .login:focus .login-form {
-    display: block;
+    visibility: visible;
   }
   .login:active .login-btn, .login:hover .login-btn, .login:focus .login-btn {
     background: #004f9f;
@@ -384,10 +399,10 @@ textarea {
     background: #fff;
     border: solid #0682ff;
     border-width: 0 2px 2px;
-    display: none;
     padding: 20px 20px 50px;
     position: absolute;
     right: -2px;
+    visibility: hidden;
     width: 398px;
     z-index: 10;
   }
@@ -1843,7 +1858,7 @@ html[xmlns] .slides {
     page-break-after: avoid;
   }
 }
-/*! normalize.css v1.1.2 | MIT License | git.io/normalize */
+/* normalize.css v1.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
