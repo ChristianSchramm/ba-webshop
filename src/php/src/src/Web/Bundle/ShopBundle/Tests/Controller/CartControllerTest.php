@@ -11,6 +11,10 @@ class CartControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/cart');
+        
+        $url = $client->getHistory()->current()->getUri();
+        
+        $this->assertRegExp('/\/cart$/', $url);
     }
 
 }
